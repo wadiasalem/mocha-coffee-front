@@ -1,0 +1,56 @@
+
+@use '~@angular/material' as mat;
+
+@include mat.core();
+
+$palette: (
+  50 : #faf4ed,
+  100 : #f3e3d1,
+  200 : #ecd0b2,
+  300 : #e4bd93,
+  400 : #deae7c,
+  500 : #d8a065,
+  600 : #d4985d,
+  700 : #ce8e53,
+  800 : #c88449,
+  900 : #bf7337,
+  A100 : #ffffff,
+  A200 : #ffe7d6,
+  A400 : #ffcaa3,
+  A700 : #ffbb8a,
+  contrast: (
+      50 : #000,
+      100 : #000,
+      200 : #000,
+      300 : #000,
+      400 : #000,
+      500 : #000,
+      600 : #000,
+      700 : #fff,
+      800 : #fff,
+      900 : #fff,
+      A100 : #000000,
+      A200 : #000,
+      A400 : #000,
+      A700 : #000,
+  ),
+);
+
+
+$mocha-coffee-primary: mat.define-palette($palette);
+$mocha-coffee-accent: mat.define-palette($palette, A200, A100, A400);
+
+
+$mocha-coffee-warn: mat.define-palette(mat.$red-palette);
+
+
+$mocha-coffee-theme: mat.define-light-theme((
+  color: (
+    primary: $mocha-coffee-primary,
+    accent: $mocha-coffee-accent,
+    warn: $mocha-coffee-warn,
+  )
+));
+
+
+@include mat.all-component-themes($mocha-coffee-theme);
