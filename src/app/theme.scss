@@ -3,6 +3,12 @@
 
 @include mat.core();
 
+
+$base-color: #9F837E;
+$orange-color : #D8A065;
+$background-color : #EEE4DC;
+$shadow-color : rgba(0, 0, 0, 0.160) ;
+
 $palette: (
   50 : #faf4ed,
   100 : #f3e3d1,
@@ -54,3 +60,68 @@ $mocha-coffee-theme: mat.define-light-theme((
 
 
 @include mat.all-component-themes($mocha-coffee-theme);
+
+.view{
+  max-width: 1110px;
+  margin: auto;
+  padding: 0px 20px;
+  height: 100%;
+}
+
+.white-btn{
+  color: $base-color;
+  border: solid 2px $base-color ;
+  background-color: #fff;
+  padding-left: 30px;
+  padding-right: 30px;
+  a{
+    color: $base-color;
+  }
+}
+
+.white-orange-btn{
+  color: $orange-color;
+  border: solid 2px $orange-color;
+  background-color: #fff;
+  padding-left: 30px;
+  padding-right: 30px;
+  a{
+    color: $orange-color;
+  }
+}
+
+.orange-btn{
+  color: #fff;
+  background-color:  $orange-color;
+  border: solid 2px #fff ;
+  a{
+    color: #fff;
+  }
+}
+
+.small-btn{
+  font-size: 20px;
+  font-weight: 700;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 30px;
+}
+
+.larg-btn{
+  font-size: 30px;
+  font-weight: 700;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 40px;
+}
+
+.vertical{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.horizontal{
+  display: flex;
+  align-items: center;
+}

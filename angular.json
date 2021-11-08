@@ -57,6 +57,20 @@
               ],
               "outputHashing": "all"
             },
+            "hmr": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -76,8 +90,13 @@
             },
             "development": {
               "browserTarget": "mocha-coffee:build:development"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "mocha-coffee:build:hmr"
             }
           },
+          
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

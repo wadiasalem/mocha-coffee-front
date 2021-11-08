@@ -1,0 +1,178 @@
+@import '/src/app/theme.scss';
+
+.home{
+  padding-bottom: 50px;
+  h5{
+    font-size: 60px;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    z-index: 10;
+    position: relative
+  }
+  .item{
+    padding: 50px;
+    border-radius: 100px;
+    position: relative ;
+  }
+  .thumbnail{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    height: 500px;
+    margin-top: -150px;
+    margin-bottom: -150px;
+    color: white;
+    font-family:'Dancing Script', cursive;
+    .view{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .home-thumbnail{
+    background-image: url('/assets/img/home/thumbnail.png');
+    height: 80vh;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .thumbnail-content{
+      height: 100%;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      color: white;
+      .thumbnail-title{
+        font-size: 60px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .sign-up-btn{
+        border : solid 2px #fff;
+        background-color: transparent;
+        margin-left: 20px;
+        a{
+          color: #fff;
+        }
+      }
+    }
+  }
+  .flavors{
+    position:relative;
+    background-color: $base-color;
+    color: white;
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    h5{
+      margin-top: 50px;
+    }
+    .cup{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: -10vw;
+      .cup-item{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: 20px;
+        div{
+          border-radius: 50%;
+          height: 15vw;
+          width: 15vw;
+          margin-bottom: 20px;
+        }
+        img{
+          margin-top: -5vw;
+          height: 100%;
+        }
+      }
+      .circle1{
+        background-color: #AA705D;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        left: 200px;
+        top:200px ;
+      }
+  
+      .circle2{
+        background-color: #D28F66;
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        position: absolute;
+        left: -50px;
+        top:-50px ;
+      }
+  
+      .circle3{
+        background-color: #916752;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        right: -50px;
+        top:-100px ;
+      }
+      
+    }
+
+  }
+  .thumbnail2{
+    background-image: url('/assets/img/home/thumbnail2.png');
+  }
+
+  .gift{
+    color: $orange-color;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .order{
+    color: #fff;
+    background-color: $base-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .left-item,.right-item{
+    width: 45%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .thumbnail3{
+    background-image: url('/assets/img/home/thumbnail3.png');
+  }
+  .thumbnail4{
+    background-image: url('/assets/img/home/thumbnail4.png');
+  }
+
+  .books-insta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .card{
+      color: $orange-color;
+      text-align: center;
+      background-color: #fff;
+      width: 40%;
+      img{
+        width: 100%;
+        border-radius: 50px;;
+      }
+    }
+  }
+
+}
