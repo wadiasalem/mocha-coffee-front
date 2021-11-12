@@ -1,0 +1,15 @@
+@import '/src/app/theme.scss';
+
+
+.title-page{
+  color: $orange-color;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 20px;
+  width: auto;
+}
+.line{
+  height: 50%;
+  border-bottom: solid 4px $orange-color;
+  width: 50%;
+}

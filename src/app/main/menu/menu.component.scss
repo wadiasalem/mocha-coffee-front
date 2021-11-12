@@ -1,0 +1,62 @@
+@import '/src/app/theme.scss';
+
+.menu{
+  margin-top: 100px;
+  margin-bottom: 50px;
+  .menu-content{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    h3{
+      text-align: center;
+      color: $base-color;
+    }
+    .left-nav{
+      height: 700px;
+      width: 25%;
+      background-color: #fff;
+      color: $base-color;
+      ul{
+        list-style: none;
+        padding-inline-start: 0;
+        .selected{
+          color: $orange-color;
+        }
+        li{
+          margin-top: 10px;
+          padding-bottom: 10px;
+          border-bottom: solid 2px $base-color;
+          cursor: pointer;
+        }
+      }
+    }
+    .right-content{
+      width: 60%;
+      .category{
+        h3{
+          text-align: left;
+          width: 100%;
+          color: $base-color;
+          border-bottom: solid 3px $base-color;
+        }
+        .section{
+          display: flex;
+          flex-wrap: wrap;
+          .item-categ{
+            color: $base-color;
+            width: auto;
+            padding: 20px;
+            img{
+              height: 10vw;
+              width: 10vw;
+              margin-bottom: 20px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      
+    }
+  }
+}
+

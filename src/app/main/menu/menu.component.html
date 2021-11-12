@@ -1,0 +1,74 @@
+<div class="view">
+  <div class="menu">
+    <app-page-title title="MENU" width ="200px" ></app-page-title>
+    <div class="menu-content" *ngIf="!categError ; else categErrorElse">
+      <div class="left-nav item">
+        <h3>Filter</h3>
+          <ul>
+            <li *ngFor="let item of categ" (click)="select(item.id)" id="{{item.id}}">{{item.name}}</li>
+          </ul>
+      </div>
+      <div class="right-content" >
+        <!-- initial page when no category selected -->
+        <div class="category" *ngIf="!categorySelected ; else categorySelectedElse">
+          <div class="drinks">
+            <h3>Drinks</h3>
+            <div class="section">
+              <ng-template ngFor let-item [ngForOf]="categ">
+                <div *ngIf="item.menu == 'Drinks'" class="item-categ vertical">
+                  <img src="{{item.url}}" alt="" (click)="select(item.id)">
+                  {{item.name}}
+                </div>
+              </ng-template>
+            </div>
+          </div>
+          <div class="food">
+            <h3>Food</h3>
+            <div class="section">
+              <ng-template ngFor let-item [ngForOf]="categ">
+                <div *ngIf="item.menu == 'Food'" class="item-categ vertical">
+                  <img src="{{item.url}}" alt="" (click)="select(item.id)">
+                  {{item.name}}
+                </div>
+              </ng-template>
+            </div>
+            
+          </div>
+          <div class="diy">
+            <h3>Diy</h3>
+            <div class="section">
+              <ng-template ngFor let-item [ngForOf]="categ">
+                <div *ngIf="item.menu == 'DIY'" class="item-categ vertical">
+                  <img src="{{item.url}}" alt="" (click)="select(item.id)">
+                  {{item.name}}
+                </div>
+              </ng-template>
+            </div>
+            
+          </div>
+        </div>
+        <!-- end initial page when no category selected -->
+        
+        <!-- Productes when category selected -->
+        <ng-template #categorySelectedElse>
+          <div *ngIf="!productError ; else productErrorElse">
+            <ng-template ngFor let-item [ngForOf]="product">
+              <div class="item-product vertical">
+                <img src="{{item.url}}" alt="" >
+                {{item.name}}
+              </div>
+            </ng-template>
+          </div>
+          <ng-template #productErrorElse>
+            <h3>{{productError}}</h3>
+          </ng-template>
+        </ng-template>
+        <!-- Productes when category selected -->
+      </div>
+    </div>
+    <ng-template #categErrorElse>
+      <h3>{{categError}}</h3>
+    </ng-template>
+  </div>
+</div>
+

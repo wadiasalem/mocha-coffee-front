@@ -125,3 +125,9 @@ $mocha-coffee-theme: mat.define-light-theme((
   display: flex;
   align-items: center;
 }
+
+.item{
+  padding: 50px;
+  border-radius: 100px;
+  position: relative ;
+}

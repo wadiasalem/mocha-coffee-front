@@ -4,6 +4,9 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { MenuComponent } from './menu/menu.component';
+import {TemplateModule} from '../template/template.module';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes : Routes= [
   { 
@@ -13,6 +16,10 @@ const routes : Routes= [
 { 
   path: "sign-up", 
   component : SignUpComponent
+},
+{ 
+  path: "menu", 
+  component : MenuComponent
 },
 { 
   path: "", 
@@ -25,9 +32,12 @@ const routes : Routes= [
   declarations: [
     HomeComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    MenuComponent
   ],
   imports: [
+    HttpClientModule,
+    TemplateModule,
     CommonModule,
     RouterModule.forChild(routes),
   ]

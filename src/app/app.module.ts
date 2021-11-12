@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderModule } from './layout/header/header.module';
+import { TemplateModule } from './template/template.module';
 
 
 const appRoutes: Routes = [
@@ -40,9 +41,10 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
+    TemplateModule,
     MainModule,
     MatButtonModule,
     BrowserModule,

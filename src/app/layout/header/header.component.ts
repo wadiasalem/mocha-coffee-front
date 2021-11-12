@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
     menu_left:[
     {
       title : "Menu",
-      href : "#"
+      href : "/menu"
     },
     {
       title : "Rewards",
