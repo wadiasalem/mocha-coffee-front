@@ -7,9 +7,10 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { MenuComponent } from './menu/menu.component';
 import {TemplateModule} from '../template/template.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 const routes : Routes= [
-  { 
+  {
   path: "sign-in", 
   component : SignInComponent
 },
@@ -31,11 +32,10 @@ const routes : Routes= [
 @NgModule({
   declarations: [
     HomeComponent,
-    SignInComponent,
-    SignUpComponent,
     MenuComponent
   ],
   imports: [
+    AuthModule,
     HttpClientModule,
     TemplateModule,
     CommonModule,

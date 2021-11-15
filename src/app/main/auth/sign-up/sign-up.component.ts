@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {  FormBuilder, FormGroup , Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +9,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  hidePassword : boolean ;
+  hideConfirmPassword : boolean ;
 
-  ngOnInit(): void {
+  loginForm: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) {
+    this.hidePassword = true ;
+    this.hideConfirmPassword = true ;
   }
 
+  ngOnInit(): void {
+    this.loginForm = this._formBuilder.group({
+      firstName   : ['', Validators.required],
+      lastName   : ['', Validators.required],
+      email   : ['', [Validators.required,Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+  }, {
+    validator: MustMatch('password','confirmPassword')
+})
+  }
+
+  
+
+  checkPassword  (){ 
+    let pass = this.loginForm.get('password')!.value;
+    let confirmPass = this.loginForm.get('confirmPassword')!.value;
+    return pass === confirmPass ? false : true
+  }
+
+}
+
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
 }

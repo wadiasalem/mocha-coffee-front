@@ -21,9 +21,9 @@ $palette: (
   800 : #c88449,
   900 : #bf7337,
   A100 : #ffffff,
-  A200 : #ffe7d6,
-  A400 : #ffcaa3,
-  A700 : #ffbb8a,
+  A200 : #D8A065,
+  A400 : #D8A065,
+  A700 : #D8A065,
   contrast: (
       50 : #000,
       100 : #000,
@@ -35,10 +35,10 @@ $palette: (
       700 : #fff,
       800 : #fff,
       900 : #fff,
-      A100 : #000000,
-      A200 : #000,
-      A400 : #000,
-      A700 : #000,
+      A100 : #fff,
+      A200 : #fff,
+      A400 : #fff,
+      A700 : #9F837E,
   ),
 );
 
@@ -128,6 +128,6 @@ $mocha-coffee-theme: mat.define-light-theme((
 
 .item{
   padding: 50px;
-  border-radius: 100px;
+  border-radius: 50px;
   position: relative ;
 }

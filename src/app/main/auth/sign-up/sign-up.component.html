@@ -1,1 +1,114 @@
-<p>sign-up works!</p>
+<div class="sign-up">
+  <div class="view">
+    <div class="content horizontal">
+      <div class="title">
+        <H3>MOCHA COFFEE</H3>
+        <b>Create an account</b><br>MOCHACOFE MEMBERSHIP
+        <p>
+          Join <span>MOCHACOFE</span> Membership to earn Points for free food and drinks, 
+          any way you  pay. Get access to mobile ordering,
+          a birthday Reward, and more.
+        </p>
+      </div>
+
+      <div >
+        <form name="loginForm" [formGroup]="loginForm" novalidate class="form vertical">
+          
+          <div>
+            <div class="title-form">
+              Personal Information
+            </div> 
+            <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" >
+              <mat-error *ngIf="loginForm.get('firstName')?.hasError('required')">
+                First Name is required
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" >
+              <mat-error *ngIf="loginForm.get('lasttName')?.hasError('required')">
+                Last Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div>
+            <div class="title-form">
+              Account Security
+            </div>
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Abc@mocha.com">
+            <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="!loginForm.get('email')?.hasError('required') &&
+                      loginForm.get('email')?.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error>
+                  Password is required
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword">
+            <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('confirmPassword')?.hasError('required')">
+              Confirm Password is required
+            </mat-error>
+            <mat-error 
+            *ngIf="!loginForm.get('confirmPassword')?.hasError('required') &&
+            loginForm.get('confirmPassword')?.hasError('mustMatch')">
+              Confirm Password doesn't match
+          </mat-error>
+          </mat-form-field>
+          </div>
+          
+  
+          
+  
+          <div class="links">
+            <a class="forgot-password" [routerLink]="'/sign-ip'">
+                Already have MochaCoffe Account
+            </a>
+          </div>
+
+          <mat-checkbox class="remember-me" aria-label="Remember Me">
+            Yes,I'd like email from MochaCoffe.
+          </mat-checkbox>
+
+          <div>
+            <mat-checkbox class="remember-me" aria-label="Remember Me">
+              Yes,I agree to the <a href="#">Termes and Conditions</a>.
+            </mat-checkbox>
+          </div>
+          
+          <button mat-raised-button color="accent" class="submit-button" aria-label="Create Account"
+                  [disabled]="loginForm.invalid">
+              Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

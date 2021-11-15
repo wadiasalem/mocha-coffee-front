@@ -1,0 +1,48 @@
+@import '/src/app/theme.scss';
+
+.sign-in{
+  padding-top: 150px;
+  padding-bottom: 100px;
+  background-image: url('/assets/img/auth/Sign\ In\ background.png');
+  background-position: center;
+  .content{
+    justify-content: space-between;
+    padding: 0 20px;
+    .form{
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color:#fff ;
+      border-radius: 7px;
+      padding: 20px;
+      height: 400px;
+      width: 300px;
+      padding: 40px;
+      mat-form-field{
+        width: 100%;
+      }
+      .links{
+        display: grid;
+        a{
+          color: $orange-color;
+        }
+      }
+      .submit-button{
+        border-radius: 25px;
+      }
+    }
+    .title{
+      color: #fff;
+      font-size: 20px;
+      width: 380px;
+      h3{
+        color: #fff;
+        font-size: 50px;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+    }
+    
+  }
+  
+}
