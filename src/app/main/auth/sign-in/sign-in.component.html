@@ -2,10 +2,15 @@
   <div class="view">
     <div class="content horizontal">
       <div >
-        <form name="loginForm" [formGroup]="loginForm" novalidate class="form vertical">
+        <form 
+          name="loginForm" 
+          [formGroup]="loginForm" 
+          novalidate 
+          (ngSubmit)="Authenticate()"
+          class="form vertical">
           <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Abc@mocha.com">
+            <mat-label>Email or Username</mat-label>
+            <input matInput formControlName="login" placeholder="Abc@mocha.com">
             <mat-icon matSuffix class="secondary-text">mail</mat-icon>
             <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
               Email is required
@@ -30,7 +35,7 @@
           </mat-form-field>
   
           
-          <mat-checkbox class="remember-me" aria-label="Remember Me">
+          <mat-checkbox class="remember-me" aria-label="Remember Me" formControlName="remember">
               Keep me Signed in.
           </mat-checkbox>
   
