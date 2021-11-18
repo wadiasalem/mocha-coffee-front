@@ -13,6 +13,7 @@ export class SignInComponent implements OnInit {
   hide : boolean ;
 
   loginForm: FormGroup;
+  maxPrice : number = 100;
 
   constructor(
     private _formBuilder: FormBuilder,

@@ -1,0 +1,172 @@
+<div class="view">
+  <div class="gifts">
+    <app-page-title title="GIFTS-CENTER" width ="380px" ></app-page-title>
+    <div class='subscription horizontal'>
+      <div class="sub">
+        <h3>Review Shipping Fees</h3>
+        <span>Anywhere you are</span>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      
+      <div class="sub">
+        <h3>Subscribe to Center NewsFeed</h3>
+        <span>Stay updated on new arrivals</span>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="sub">
+        <h3>Follow us on Instagram</h3>
+        <span>@mochacofeTunisie</span>
+      </div>
+    </div>
+    <div class="gifts-content">
+      <div class="left-nav item">
+        <h3>Filter</h3>
+
+        <form 
+        name="SearchForm" 
+        [formGroup]="SearchForm" 
+        novalidate 
+        (ngSubmit)="filter()"
+        class="form-search horizontal">
+          <mat-form-field appearance="fill">
+            <mat-label>search</mat-label>
+            <input matInput formControlName="search" >
+          </mat-form-field>
+
+          <button 
+          mat-raised-button 
+          color="accent" 
+          class="submit-button" 
+          aria-label="SEARCH">
+            <mat-icon>search</mat-icon>
+          </button>
+
+        </form>
+
+        <form 
+        name="filterForm" 
+        [formGroup]="filterForm" 
+        novalidate 
+        (ngSubmit)="filter()"
+        class="form-filter">
+
+        <h5>Price :</h5> 
+        <div class="horizontal">
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Min</mat-label>
+            <input matInput placeholder="0" type="number" formControlName="min" >
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Max</mat-label>
+            <input matInput placeholder="100" type="number" formControlName="max" >
+          </mat-form-field>
+        </div>
+        
+        <button 
+        mat-raised-button 
+        (click)="reset()">
+            Reset
+        </button>
+        <button 
+        mat-raised-button 
+        color="accent" 
+        class="submit-button" 
+        aria-label="FILTER">
+            Filter
+        </button>
+        
+        
+      </form>
+      </div>
+      <div class="right-content" >
+        <div class="sort-view horizontal">
+          <div class="horizontal">
+            View : 
+            <mat-button-toggle-group
+            name="view"
+            aria-label="view style"
+            appearance="legacy"
+            value="grid">
+              <mat-button-toggle value="grid" (click)="viewChange('grid')">
+                Grid 
+                <mat-icon aria-hidden="false" aria-label="apps icon">apps</mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle value="list" (click)="viewChange('list')">
+                List 
+                <mat-icon aria-hidden="false" aria-label="view_headline icon">view_headline</mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+            
+            
+          </div>
+          <div class="horizontal">
+              
+            <form>
+              <mat-form-field appearance="legacy">
+                <mat-label>Sort By</mat-label>
+                <mat-select [(ngModel)]="sortSelected" name="value">
+                  <mat-option *ngFor="let item of sort" [value]="item" (click)="filter()">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+        <div *ngIf="!giftsError ; else categErrorElse">
+        
+        <div *ngIf="layout == 'grid' ; else list" class="grid">
+            <ng-template ngFor let-item [ngForOf]="gifts">
+              <div>
+                <div 
+                matRipple 
+                [matRippleCentered]="true" 
+                class="item-grid-gift vertical" 
+                (click)="showDescription(item.id)">
+
+                  <img src="{{item.img}}" alt="" >
+                  {{item.name}}
+                  <span class="price">
+                    {{item.price}} DT
+                  </span>
+                  
+                </div>
+                <div id="{{item.id}}" class="description">
+                  {{item.description}}
+                </div>
+              </div>
+            </ng-template>
+        </div>
+        <ng-template  #list>
+          <div class="list">
+            <ng-template ngFor let-item [ngForOf]="gifts">
+              <div class="item-list-gift horizontal">
+                <img src="{{item.img}}" alt="" >
+                <mat-divider [vertical]="true"></mat-divider>
+                <div class="description">
+                  <span class="title">{{item.name}}</span>
+                  <p>
+                    {{item.description}}
+                  </p>
+                  <span class="price">
+                    {{item.price}} DT
+                  </span>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+          
+      </ng-template>
+    </div>
+    <ng-template #categErrorElse>
+      <h3>{{giftsError}}</h3>
+    </ng-template>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+

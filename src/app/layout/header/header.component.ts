@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   menu_right:[
     {
       title : "Gift-Center",
-      href : "#"
+      href : "/gifts"
     },
     {
       title : "Reservation",
