@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -43,5 +43,14 @@ export class AuthService {
 
       
     );
+  }
+
+  getAuthorization():HttpHeaders{
+    if(!localStorage.token)
+      return new HttpHeaders();
+    
+    return new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.token}`
+    });
   }
 }

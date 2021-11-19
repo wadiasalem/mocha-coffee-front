@@ -9,6 +9,9 @@ import { MainModule } from './main/main.module';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderModule } from './layout/header/header.module';
 import { TemplateModule } from './template/template.module';
+import { Error404Component } from './errors/error404/error404.component';
+import { NavigationModule } from './navigation/navigation.module';
+import { ErrorsModule } from './errors/errors.module';
 
 
 const appRoutes: Routes = [
@@ -18,23 +21,13 @@ const appRoutes: Routes = [
       import("./main/main.module").then((m) => m.MainModule),
   },
   {
-    path : "errors",
+    path: "profil",
     loadChildren: () =>
-      import("./navigation/errors/errors.module").then((m) => m.ErrorsModule),
+      import("./navigation/navigation.module").then((m) => m.NavigationModule),
   },
   {
-    path : "admin",
-    loadChildren: () =>
-      import("./navigation/admin/admin.module").then((m) => m.AdminModule),
-  },
-  {
-    path : "client",
-    loadChildren: () =>
-      import("./navigation/client/client.module").then((m) => m.ClientModule),
-  },
-  {
-    path: "**",
-    redirectTo: "errors/error-404",
+    path : "**",
+    component : Error404Component
   },
 ];
 
@@ -44,8 +37,11 @@ const appRoutes: Routes = [
     FooterComponent,
   ],
   imports: [
+    NavigationModule,
+    ErrorsModule,
     TemplateModule,
     MainModule,
+    TemplateModule,
     MatButtonModule,
     BrowserModule,
     HeaderModule,
