@@ -2,6 +2,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "paths": { "@services/*": ["src/services/*"] },
     "outDir": "./out-tsc/app",
     "types": ["node"]
   },

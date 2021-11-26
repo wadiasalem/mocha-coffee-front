@@ -5,7 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -19,6 +19,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     HeaderComponent,
   ],
   imports: [
+    MatBadgeModule,
     CommonModule,
     MatDividerModule,
     MatButtonModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuradService } from '../auth/auth-gurad.service';
+import { AuthGuradService } from '@services/auth-gurad.service';
 
 @Component({
   selector: 'app-order',

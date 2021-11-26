@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
-import { Sort } from './sort.service';
+import { CartService } from '@services/cart.service';
+import { Sort } from '@services/sort.service';
 
 interface sort{
   name : String,
@@ -33,7 +35,8 @@ export class GiftsComponent implements OnInit {
     private http: HttpClient,
     private _formBuilder:FormBuilder,
     private sort : Sort,
-    private renderer: Renderer2
+    private cart : CartService,
+    private _snackBar: MatSnackBar
     ) {
       this.sortList = this.sort.getSort();
     }
@@ -124,14 +127,14 @@ export class GiftsComponent implements OnInit {
         this.element[0] = null ;
       }
     
-    if(this.element[1]!=document.getElementById(id+"1")){
+    if(this.element[1]!=document.getElementById("D"+id)){
       if (this.element[1] && this.element[2]) {
         this.element[1].style.display = 'none';
         this.element[2].style.display = 'none';
       }
   
-      this.element[1] = document.getElementById(id+"1");
-      this.element[0] = document.getElementById(id+"0");
+      this.element[1] = document.getElementById("D"+id);
+      this.element[0] = document.getElementById("P"+id);
       if (this.element[1] && this.element[0]) {
         this.element[1].style.display = 'block';
         this.element[0].style.display = 'block';
@@ -149,4 +152,14 @@ export class GiftsComponent implements OnInit {
     this.element[1] = null ;
     this.element[0] = null ;
   }
+
+  addToCart(id : string){
+    let quantity :number = +(<HTMLInputElement>document.getElementById("Q"+id)).value
+    this.cart.add(id,quantity);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
 }

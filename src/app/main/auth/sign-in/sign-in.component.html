@@ -38,11 +38,16 @@
           <mat-checkbox class="remember-me" aria-label="Remember Me" formControlName="remember">
               Keep me Signed in.
           </mat-checkbox>
-  
-          <button mat-raised-button color="accent" class="submit-button" aria-label="LOG IN"
+          <div class="">
+
+          </div>
+          <div class="submit-button">
+            <button mat-raised-button color="accent"  aria-label="LOG IN"
                   [disabled]="loginForm.invalid">
               LOGIN
           </button>
+          </div>
+          
   
           <div class="links">
             <a class="forgot-password" [routerLink]="'/'">
@@ -53,9 +58,17 @@
                 Forgot you  Password?
             </a>
           </div>
-          
-  
         </form>
+        <div class="go-to-signup vertical">
+          <h5>
+            STILL DON'T HAVE AN ACCOUNT?
+          </h5>
+          <p>
+            Join MochaCofe Rewards to eran free food and
+            drinks, get free refills, pay and order with your phone, and more
+          </p>
+          <a href="/auth/sign-up"><button>Join now</button></a>
+        </div>
       </div>
       <div class="title">
         <H3>MOCHA COFFEE</H3>

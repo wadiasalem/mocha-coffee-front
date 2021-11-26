@@ -7,6 +7,7 @@
 $base-color: #9F837E;
 $orange-color : #D8A065;
 $background-color : #EEE4DC;
+$black-color : #626262;
 $shadow-color : rgba(0, 0, 0, 0.160) ;
 
 $palette: (
@@ -70,53 +71,71 @@ $mocha-coffee-theme: mat.define-light-theme((
 
 .white-btn{
   color: $base-color;
-  border: solid 2px $base-color ;
+  border: solid 2px #fff;
   background-color: #fff;
-  padding-left: 30px;
-  padding-right: 30px;
-  a{
-    color: $base-color;
-  }
+}
+.white-btn:hover{
+  color: #fff;
+  border: solid 2px #fff;
+  background-color: transparent;
+}
+
+.white-base-btn{
+  color: #fff;
+  border: solid 2px #fff;
+  background-color: transparent;
+}
+.white-base-btn:hover{
+  color: $base-color;
+  border: solid 2px #fff;
+  background-color: #fff;
 }
 
 .white-orange-btn{
   color: $orange-color;
   border: solid 2px $orange-color;
   background-color: #fff;
-  padding-left: 30px;
-  padding-right: 30px;
-  a{
-    color: $orange-color;
-  }
+}
+.white-orange-btn:hover{
+  color: #fff;
+  border: solid 2px #fff;
+  background-color: $orange-color;
 }
 
 .orange-btn{
   color: #fff;
   background-color:  $orange-color;
-  border: solid 2px #fff ;
-  a{
-    color: #fff;
-  }
+  border: solid 2px $orange-color ;
 }
-
-.btn{
-  border-radius: 20px;
+.orange-btn:hover{
+  color: $orange-color;
+  background-color:  transparent;
+  border: solid 2px $orange-color ;
 }
 
 .small-btn{
   font-size: 20px;
   font-weight: 700;
-  height: 40px;
+  height: 35px;
   border-radius: 20px;
   padding: 0 30px;
   cursor: pointer;
 }
 
+.extra-small-btn{
+  font-size: 15px;
+  font-weight: 600;
+  height: 30px;
+  border-radius: 15px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
 .larg-btn{
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
-  height: 50px;
-  border-radius: 25px;
+  height: 40px;
+  border-radius: 20px;
   padding: 0 40px;
   cursor: pointer;
 }

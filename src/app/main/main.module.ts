@@ -19,7 +19,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { OrderComponent } from './order/order.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { routes } from './routes.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { routes } from '@services/routes.service';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,11 @@ import { routes } from './routes.service';
     MenuComponent,
     GiftsComponent,
     OrderComponent,
-    ReservationComponent
+    ReservationComponent,
   ],
   imports: [
+    DashboardModule,
+    MatSnackBarModule,
     FormsModule,
     MatSelectModule,
     MatInputModule,

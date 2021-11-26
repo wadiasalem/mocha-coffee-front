@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup , Validators } from '@angular/forms';
-import { AuthGuradService } from '../auth-gurad.service';
+import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
 
 
 @Component({
@@ -13,35 +14,43 @@ export class SignUpComponent implements OnInit {
   hidePassword : boolean ;
   hideConfirmPassword : boolean ;
 
-  loginForm: FormGroup;
+  registerForm: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder,private authGuard : AuthGuradService) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private auth : AuthService,
+    private Router : Router
+    ) {
     this.hidePassword = true ;
     this.hideConfirmPassword = true ;
   }
 
   ngOnInit(): void {
-    this.authGuard.isConnected(['/']);
-    this.loginForm = this._formBuilder.group({
-      firstName   : ['', Validators.required],
-      lastName   : ['', Validators.required],
+    if(this.auth.getIsConnected())
+      this.Router.navigate(['/']);
+    this.registerForm = this._formBuilder.group({
+      name   : ['', Validators.required],
+      user_name   : ['', Validators.required],
       email   : ['', [Validators.required,Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
-  }, {
-    validator: MustMatch('password','confirmPassword')
-})
+      }, {
+        validator: MustMatch('password','confirmPassword')
+    })
   }
 
-  
+  Authenticate(){
+    this.auth.register(this.registerForm.value);
+  }
 
   checkPassword  (){ 
-    let pass = this.loginForm.get('password')!.value;
-    let confirmPass = this.loginForm.get('confirmPassword')!.value;
+    let pass = this.registerForm.get('password')!.value;
+    let confirmPass = this.registerForm.get('confirmPassword')!.value;
     return pass === confirmPass ? false : true
   }
-
 }
+
+
 
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthGuradService } from '../auth-gurad.service';
-import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,15 +17,17 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private authGuard : AuthGuradService,
-    private auth : AuthService) {
+    private auth : AuthService,
+    private Router : Router) {
     this.hide = true ;
   }
 
   ngOnInit(): void {
-    this.authGuard.isConnected(['/']);
+    console.log(this.auth.isConnected());
+    if(this.auth.getIsConnected())
+      this.Router.navigate(['/']);
     this.loginForm = this._formBuilder.group({
-        login   : ['', [Validators.required, Validators.email]],
+        login   : ['', [Validators.required]],
         password: ['', Validators.required],
         remember : ['']
     });
@@ -33,9 +35,7 @@ export class SignInComponent implements OnInit {
   }
 
   Authenticate(){
-    console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value);
-
   }
   
   

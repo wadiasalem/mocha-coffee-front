@@ -1,0 +1,33 @@
+<div class="view">
+  <div class="dashboard">
+    <app-page-title title="Dashboard" width ="245px" ></app-page-title>
+    <div class="dashboard-content horizontal">
+      <div class="left-nav item vertical">
+        <img class="profile-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
+        <h3>{{name}}</h3>
+        <div>{{points}} pts</div>
+        <mat-divider class="line"></mat-divider>
+        <div class="nav">
+          <ul>
+            <li class="" id="{{item.id}}" (click)="select(item.id)" *ngFor="let item of nav">{{item.title}}</li>
+          </ul>
+        </div>
+        <button class="logout-btn small-btn" (click)="logout()">Logout</button>
+      </div>
+      <div class="right-nav">
+        <div *ngIf="navigation('0')">
+          <app-general-settings></app-general-settings>
+        </div>
+        <div *ngIf="navigation('1')">
+          <app-gift-orders></app-gift-orders>
+        </div>
+        <div *ngIf="navigation('2')">
+          <app-coffee-orders></app-coffee-orders>
+        </div>
+        <div *ngIf="navigation('3')">
+          <app-reservations></app-reservations>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,14 +18,4 @@ export class AuthGuradService {
       
   }
 
-  isConnected(nav : any){
-    if(localStorage.getItem('token')){
-      this.Router.navigate(nav);
-      return true;
-    }
-    else{
-      return false;
-    }
-      
-  }
 }

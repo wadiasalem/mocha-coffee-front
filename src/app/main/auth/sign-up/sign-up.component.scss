@@ -8,29 +8,42 @@
   background-size: cover;
   .content{
     justify-content: space-between;
-    padding: 0 20px;
     .form{
+      position: relative;
       justify-content: space-between;
       align-items: flex-start;
       background-color:#fff ;
       border-radius: 7px;
       padding: 20px;
-      height: 700px;
-      width: 320px;
-      padding: 40px;
-      div{
+      height: 540px;
+      width: 340px;
+      padding: 20px;
+      .Personal-Information{
+        width: 100%;
+        .fildes{
+          display: flex;
+          justify-content: space-between;
+        mat-form-field{
+          width: 47%;
+        }
+        }
+      }
+      .Account-Security{
         mat-form-field{
           width: 100%;
         }
-          .title-form{
-            margin-bottom: 30px;
-          }
-          
-          a{
-            color: $orange-color;
-          }
+      }
+      div{
+        .title-form{
+          margin-bottom: 10px;
+        }
+        
+        a{
+          color: $orange-color;
+        }
         
       }
+      
       
       .links{
         display: grid;
@@ -39,8 +52,19 @@
         }
       }
       .submit-button{
-        border-radius: 25px;
-        margin-top: 20px;
+        text-align: center;
+        width: 100%;
+        button{
+          border-radius: 25px;
+        margin : 20px 0;
+        width: 80%;
+        }
+      }
+      img{
+        position: absolute;
+        bottom: -5px;
+        right: -35px;
+        height: 100px;
       }
     }
     .title{

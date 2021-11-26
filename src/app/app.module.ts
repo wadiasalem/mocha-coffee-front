@@ -50,7 +50,7 @@ const appRoutes: Routes = [
     BrowserModule,
     LayoutModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'enabled'}),
   ],
   providers: [],
   bootstrap: [AppComponent]

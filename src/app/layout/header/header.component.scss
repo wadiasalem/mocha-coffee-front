@@ -12,21 +12,31 @@
   .view{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     .logo{
       margin: auto;
       height: 50px;
     }
     .header-menu{
       justify-content: space-between;
-      width: calc(50% - 50px) ;
       ul{
         list-style-type: none;
         padding-inline-start: 0;
         li{
           display: inline;
-          margin: 20px;
-          color: $base-color;
+        }
+      }
+      a{
+        margin: 20px;
+        color: $base-color;
+      }
+      .profile{
+        height: 30px;
+        width: 30px;
+        mat-icon{
+          height: 30px;
+          width: 30px;
+          font-size: 30px;
         }
       }
     }

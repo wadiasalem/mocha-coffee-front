@@ -27,20 +27,15 @@
         [formGroup]="SearchForm" 
         novalidate 
         (ngSubmit)="filter()"
-        class="form-search horizontal">
-          <mat-form-field appearance="fill">
-            <mat-label>search</mat-label>
-            <input matInput formControlName="search" >
-          </mat-form-field>
-
-          <button 
-          mat-raised-button 
-          color="accent" 
-          class="submit-button" 
-          aria-label="SEARCH">
-            <mat-icon>search</mat-icon>
-          </button>
-
+        class="form-search">
+          <h5>Search :</h5> 
+          <div class="horizontal">
+            <input formControlName="search" placeholder="exemple : Black">
+            <button 
+            class="search-button orange-btn">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
         </form>
 
         <form 
@@ -49,32 +44,32 @@
         novalidate 
         (ngSubmit)="filter()"
         class="form-filter">
-
         <h5>Price :</h5> 
         <div class="horizontal">
-          <mat-form-field appearance="fill" floatLabel="always">
+          <mat-form-field appearance="outline" floatLabel="always">
             <mat-label>Min</mat-label>
             <input matInput placeholder="0" type="number" formControlName="min" >
           </mat-form-field>
   
-          <mat-form-field appearance="fill" floatLabel="always">
+          <mat-form-field appearance="outline" floatLabel="always">
             <mat-label>Max</mat-label>
             <input matInput placeholder="100" type="number" formControlName="max" >
           </mat-form-field>
+          
         </div>
-        
-        <button 
-        mat-raised-button 
-        (click)="reset()">
-            Reset
-        </button>
-        <button 
-        mat-raised-button 
-        color="accent" 
-        class="submit-button" 
-        aria-label="FILTER">
-            Filter
-        </button>
+        <mat-divider></mat-divider>
+
+        <div class="actions horizontal">
+          <button 
+          class="extra-small-btn white-orange-btn"
+          (click)="reset()">
+              Reset
+          </button>
+          <button 
+          class="extra-small-btn orange-btn">
+              Filter
+          </button>
+        </div>
         
         
       </form>
@@ -130,13 +125,13 @@
                   <span class="price">
                     {{item.price}} DT
                   </span>
-                  <div id="{{item.id}}0" class="description-poly">
+                  <div id="P{{item.id}}" class="description-poly">
                     <svg xmlns="http://www.w3.org/2000/svg" width="61" height="76" viewBox="0 0 61 76">
                       <path id="Polygon_1" data-name="Polygon 1" d="M30.5,0,61,76H0Z" fill="#e0e0e0"/>
                     </svg>                    
                   </div>
                 </div>
-                <div id="{{item.id}}1" class="description">
+                <div id="D{{item.id}}" class="description">
                   <div class="close-btn"> 
                     <button  mat-mini-fab color="warn" (click)="close()">
                       <mat-icon>close</mat-icon>
@@ -156,13 +151,17 @@
                           </span><br>
                           In Stock : {{item.quantity}}
                         </div>
-                        <mat-form-field appearance="fill" >
+                        <mat-form-field appearance="outline" >
                           <mat-label>Quantity</mat-label>
-                          <input matInput type="number" placeholder="1"  min="1">
+                          <input value="1" id="Q{{item.id}}" matInput type="number" placeholder="1"  min="1">
                         </mat-form-field>
-                        <div class="actions">
-                          <button class="btn add-to-cart">ADD TO CART</button>
-                          <button class="btn command-now">COMMAND NOW</button>
+                        <div class="actions horizontal">
+                          <button 
+                          class="extra-small-btn add-to-cart" 
+                          (click)="addToCart(item.id)" 
+                          (click)="openSnackBar('Product added', 'OK')">
+                            ADD TO CART</button>
+                          <button class="extra-small-btn btn command-now">COMMAND NOW</button>
                         </div>
                         <div class="details">
                           {{item.description}}

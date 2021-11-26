@@ -1,15 +1,15 @@
 <header class="header">
   <div class="view horizontal">
-    <div class="header-menu horizontal menu-left" style="justify-content: end;">
-      <ul>
-        <a *ngFor="let item of menu.menu_left" href="{{item.href}}"><li>{{item.title}}</li></a>
-      </ul>
-    </div>
-    <a href="/" ><img class="logo" src="assets/icons/logo.png" alt=""></a>
+    <a href="/" ><img class="logo" src="assets/icons/logo-text.png" alt=""></a>
     <div class="header-menu horizontal menu-right">
       <ul>
-        <a *ngFor="let item of menu.menu_right" href="{{item.href}}"><li>{{item.title}}</li></a>
+        <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
       </ul>
+      <a *ngIf="cart.length != 0" href=""><mat-icon matBadge="{{cart.length}}" matBadgeColor="accent">shopping_cart</mat-icon></a>
+      <a *ngIf="!isconnected ; else Connected" href="/auth/sign-in" ><button class="orange-btn extra-small-btn">Login</button></a>
+      <ng-template #Connected>
+        <a href="/dashboard" class="profile"><mat-icon>account_circle</mat-icon></a>
+      </ng-template>
     </div>
   </div>
 </header>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuradService } from '../auth/auth-gurad.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +10,16 @@ export class HomeComponent implements OnInit {
 
   isConnected : boolean ;
 
-  constructor(private authGuard : AuthGuradService) { }
+  constructor(private auth : AuthService) { }
 
   ngOnInit(): void {
-    this.isConnected = this.authGuard.isConnected([]);
-    console.log(this.isConnected)
+    this.auth.isConnected().subscribe((value)=>{
+      this.isConnected = value;
+    });
+  }
+
+  logout(){
+    this.auth.logout();
   }
 
 }
