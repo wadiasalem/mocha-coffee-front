@@ -99,12 +99,17 @@ $mocha-coffee-theme: mat.define-light-theme((
   }
 }
 
+.btn{
+  border-radius: 20px;
+}
+
 .small-btn{
   font-size: 20px;
   font-weight: 700;
   height: 40px;
   border-radius: 20px;
   padding: 0 30px;
+  cursor: pointer;
 }
 
 .larg-btn{
@@ -113,6 +118,7 @@ $mocha-coffee-theme: mat.define-light-theme((
   height: 50px;
   border-radius: 25px;
   padding: 0 40px;
+  cursor: pointer;
 }
 
 .vertical{

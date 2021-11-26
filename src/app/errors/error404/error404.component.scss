@@ -1,0 +1,15 @@
+@import '/src/app/theme.scss';
+
+.error-404{
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  color: $base-color;
+  a{
+    color: $orange-color;
+  }
+  img{
+    height: 200PX;
+    margin: 30px;
+  }
+}

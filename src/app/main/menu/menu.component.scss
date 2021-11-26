@@ -16,6 +16,13 @@
       width: 25%;
       background-color: #fff;
       color: $base-color;
+      .waiting{
+        width: 100%;
+        height: 100%;
+        img{
+          width: 100%;
+        }
+      }
       ul{
         list-style: none;
         padding-inline-start: 0;
@@ -53,6 +60,37 @@
               cursor: pointer;
             }
           }
+        }
+      }
+      .product{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        .item-product{
+          background-color: #fff;
+          border-radius: 10px;
+          color: $base-color;
+          text-align: center;
+          width: 190px;
+          padding: 10px 10px 30px 10px;
+          margin: 10px;
+          position: relative;
+          
+            img{
+              width: 100%;
+            }
+          
+          .title{
+            margin-bottom: 10px;
+          }
+          .price{
+            color: $orange-color;
+            font-size: 15px;
+            position: absolute;
+            bottom: 10px;
+
+          }
+          
         }
       }
       

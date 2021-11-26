@@ -11,6 +11,8 @@
   top: 0;
   .view{
     width: 100%;
+    display: flex;
+    justify-content: center;
     .logo{
       margin: auto;
       height: 50px;

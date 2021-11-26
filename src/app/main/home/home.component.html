@@ -8,10 +8,15 @@
             Start your day with<br>
             a Mocha Coffee
           </div>
-          <div>
-            <button id="sign-in" class="white-btn small-btn"><a href="/sign-in">Sign In</a></button>
-            <button id="sign-up" class="sign-up-btn small-btn"><a href="/sign-up">Sign Up</a></button>
+          <div *ngIf="isConnected ; else notConnected">
+            <a href="/dashbord"><button class="white-btn small-btn">My Dashbord</button></a>
           </div>
+          <ng-template #notConnected>
+            <div>
+              <a href="auth/sign-in"><button id="sign-in" class="white-btn small-btn">Sign In</button></a>
+              <a href="auth/sign-up"><button id="sign-up" class="sign-up-btn small-btn">Sign Up</button></a>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -20,24 +25,24 @@
     <div class="flavors item">
       <div class="cup">
         <div class="cup-item">
-          <div style="background-color: #916752;">
-            <img  src="assets/img/home/cup hazelnut.png" alt="">
+          <div style="background-color: #9E7B56;">
+            <img  src="assets/img/home/cup chocolate.png" alt="">
+            
           </div>
           Chocolate
         </div>
-
-        <div class="cup-item">
-          <div style="background-color: #D28F66;">
-            <img  src="assets/img/home/cup chocolate.png" alt="">
-          </div>
-          Caramel
-        </div>
         
         <div class="cup-item">
-          <div style="background-color: #AA705D;">
+          <div style="background-color: #CF9B64;">
             <img  src="assets/img/home/cup caramel.png" alt="">
           </div>
           Hazelnut
+        </div>
+        <div class="cup-item">
+          <div style="background-color: #EDBD75;">
+            <img  src="assets/img/home/cup hazelnut.png" alt="">
+          </div>
+          Caramel
         </div>
         <div class="circle1"></div>
         <div class="circle2"></div>
@@ -48,7 +53,7 @@
         50 DIFFERENT<br>
         FLAVORS
       </h5>
-      <button class="white-btn larg-btn">Check our Menu</button>
+      <a href="/menu"><button class="white-btn larg-btn">Check our Menu</button></a>
     </div>
   </div>
   <div class="thumbnail thumbnail2">
@@ -65,7 +70,7 @@
           Take a Luck in
           our Gift center
         </h5>
-        <button class="orange-btn larg-btn">Visit shop</button>
+        <a href="/gifts"><button class="orange-btn larg-btn">Visit shop</button></a>
       </div>
       <div class="right-item">
         <img src="assets/img/home/gifts.png" alt="" width="100%">
@@ -89,7 +94,7 @@
           your coffee
           will come to you
         </h5>
-        <button class="white-btn larg-btn">Order Now</button>
+        <a href="/order"><button class="white-btn larg-btn">Order Now</button></a>
       </div>
       
     </div>

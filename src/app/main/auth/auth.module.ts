@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -11,7 +11,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-
+const routes : Routes= [
+  {
+  path: "sign-in", 
+  component : SignInComponent
+},
+{ 
+  path: "sign-up", 
+  component : SignUpComponent
+}
+]
 
 @NgModule({
   declarations: [
@@ -26,7 +35,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forChild(routes),
   ]
 })
 export class AuthModule { }

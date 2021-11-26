@@ -106,7 +106,7 @@
               <mat-form-field appearance="legacy">
                 <mat-label>Sort By</mat-label>
                 <mat-select [(ngModel)]="sortSelected" name="value">
-                  <mat-option *ngFor="let item of sort" [value]="item" (click)="filter()">
+                  <mat-option *ngFor="let item of sortList" [value]="item" (click)="filter()">
                     {{item.name}}
                   </mat-option>
                 </mat-select>
@@ -130,10 +130,46 @@
                   <span class="price">
                     {{item.price}} DT
                   </span>
-                  
+                  <div id="{{item.id}}0" class="description-poly">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="61" height="76" viewBox="0 0 61 76">
+                      <path id="Polygon_1" data-name="Polygon 1" d="M30.5,0,61,76H0Z" fill="#e0e0e0"/>
+                    </svg>                    
+                  </div>
                 </div>
-                <div id="{{item.id}}" class="description">
-                  {{item.description}}
+                <div id="{{item.id}}1" class="description">
+                  <div class="close-btn"> 
+                    <button  mat-mini-fab color="warn" (click)="close()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </div>
+                  <div class="description-content">
+                    <div class="description-img">
+                      <img src="{{item.img}}" alt="" >
+                    </div>
+                      <div class="description-text">
+                        <h3>
+                          {{item.name}}
+                        </h3>
+                        <div>
+                          <span class="price">
+                            {{item.price}} DT
+                          </span><br>
+                          In Stock : {{item.quantity}}
+                        </div>
+                        <mat-form-field appearance="fill" >
+                          <mat-label>Quantity</mat-label>
+                          <input matInput type="number" placeholder="1"  min="1">
+                        </mat-form-field>
+                        <div class="actions">
+                          <button class="btn add-to-cart">ADD TO CART</button>
+                          <button class="btn command-now">COMMAND NOW</button>
+                        </div>
+                        <div class="details">
+                          {{item.description}}
+                        </div>
+                        
+                      </div>
+                  </div>
                 </div>
               </div>
             </ng-template>
@@ -145,13 +181,26 @@
                 <img src="{{item.img}}" alt="" >
                 <mat-divider [vertical]="true"></mat-divider>
                 <div class="description">
-                  <span class="title">{{item.name}}</span>
-                  <p>
+                  <h3>
+                    {{item.name}}
+                  </h3>
+                  <div>
+                    <span class="price">
+                      {{item.price}} DT
+                    </span><br>
+                    In Stock : {{item.quantity}}
+                  </div>
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Quantity</mat-label>
+                    <input matInput type="number" placeholder="1"  min="1">
+                  </mat-form-field>
+                  <div class="actions">
+                    <button class="btn add-to-cart">ADD TO CART</button>
+                    <button class="btn command-now">COMMAND NOW</button>
+                  </div>
+                  <div class="details">
                     {{item.description}}
-                  </p>
-                  <span class="price">
-                    {{item.price}} DT
-                  </span>
+                  </div>
                 </div>
               </div>
             </ng-template>

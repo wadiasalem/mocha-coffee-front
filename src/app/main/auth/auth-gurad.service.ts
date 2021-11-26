@@ -12,15 +12,15 @@ export class AuthGuradService {
     if(localStorage.getItem('token'))
       return true;
     else{
-      this.Router.navigate(['/sign-in']);
+      this.Router.navigate(['auth/sign-in']);
       return false;
     }
       
   }
 
-  isConnected(){
+  isConnected(nav : any){
     if(localStorage.getItem('token')){
-      this.Router.navigate(['/']);
+      this.Router.navigate(nav);
       return true;
     }
     else{

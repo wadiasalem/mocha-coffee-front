@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { Sort } from './sort.service';
 
-interface Sort{
+interface sort{
   name : String,
   sort_by : String,
   value : String
@@ -23,34 +24,19 @@ export class GiftsComponent implements OnInit {
   giftsError : string ='';
 
   layout : string = 'grid';
-  sort : Array<Sort>= [
-    {
-      name : '-Select-',
-    sort_by :'id',
-    value : 'asc'
-    },
-    { name : 'Name, A to Z',
-    sort_by :'name',
-    value : 'asc'},
+  sortList : Array<sort> ;
+  sortSelected : sort;
 
-    { name : 'Name, Z to A',
-    sort_by :'name',
-    value : 'desc'},
+  element : Array<HTMLElement | null> = [];
 
-    { name : 'Ascending Price',
-    sort_by :'price',
-    value : 'asc'},
-
-    { name : 'Descending Price',
-    sort_by :'price',
-    value : 'desc'}
-    
-  ];
-
-  sortSelected : Sort;
-  itemIdSelected :string ;
-
-  constructor(private http: HttpClient,private _formBuilder:FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private _formBuilder:FormBuilder,
+    private sort : Sort,
+    private renderer: Renderer2
+    ) {
+      this.sortList = this.sort.getSort();
+    }
 
   ngOnInit(): void {
     this.SearchForm = this._formBuilder.group({
@@ -130,19 +116,37 @@ export class GiftsComponent implements OnInit {
   }
 
   showDescription(id:string){
+    if(this.element[1] && this.element[0])
+      {
+        this.element[1].style.display = 'none';
+        this.element[0].style.display = 'none';
+        this.element[1] = null ;
+        this.element[0] = null ;
+      }
     
-    let element = document.getElementById(this.itemIdSelected);
-    console.log(element);
-    if (element) {
-      element.style.display = 'none';
+    if(this.element[1]!=document.getElementById(id+"1")){
+      if (this.element[1] && this.element[2]) {
+        this.element[1].style.display = 'none';
+        this.element[2].style.display = 'none';
+      }
+  
+      this.element[1] = document.getElementById(id+"1");
+      this.element[0] = document.getElementById(id+"0");
+      if (this.element[1] && this.element[0]) {
+        this.element[1].style.display = 'block';
+        this.element[0].style.display = 'block';
+        this.element[1].scrollIntoView({behavior: "smooth", block: "center"});
+      }
     }
-    
-    element = document.getElementById(id);
-    console.log(element);
-    if (element) {
-    element.style.display = 'block';
-    }
-    this.itemIdSelected = id ;
   }
 
+  close(){
+    if(this.element[1] && this.element[0])
+      {
+        this.element[1].style.display = 'none';
+        this.element[0].style.display = 'none';
+      }
+    this.element[1] = null ;
+    this.element[0] = null ;
+  }
 }

@@ -11,12 +11,11 @@ export class MenuComponent implements OnInit {
 
   categ : any =[];
   categError : string ='';
-  categSelected : string = '';
+  categorySelected : string = '';
 
   product : any =[];
   productError : string ='';
 
-  categorySelected : boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -33,11 +32,12 @@ export class MenuComponent implements OnInit {
   }
 
   select($id : string):void {
-    this.categorySelected = true; 
-    document.getElementById(this.categSelected)?.classList.remove('selected');
+    document.getElementById(this.categorySelected)?.classList.remove('selected');
 
-    this.categSelected=$id;
-    document.getElementById($id)?.classList.add('selected');
+    this.categorySelected=$id;
+    setTimeout(() => {
+      document.getElementById($id)?.classList.add('selected');
+    }, 5);
 
     this.http.get(`${environment.API_URL}/menu/product?id=${$id}`)
       .subscribe((res: any) => {

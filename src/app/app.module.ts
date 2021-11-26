@@ -6,12 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
-import { FooterComponent } from './layout/footer/footer.component';
-import { HeaderModule } from './layout/header/header.module';
 import { TemplateModule } from './template/template.module';
 import { Error404Component } from './errors/error404/error404.component';
 import { NavigationModule } from './navigation/navigation.module';
 import { ErrorsModule } from './errors/errors.module';
+import { LayoutModule } from './layout/layout.module';
 
 
 const appRoutes: Routes = [
@@ -27,14 +26,19 @@ const appRoutes: Routes = [
   },
   {
     path : "**",
-    component : Error404Component
+    redirectTo : "error/404"
   },
+  {
+    path : "error",
+    loadChildren: () =>
+      import("./errors/errors.module").then((m) => m.ErrorsModule),
+  
+  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
   ],
   imports: [
     NavigationModule,
@@ -44,7 +48,7 @@ const appRoutes: Routes = [
     TemplateModule,
     MatButtonModule,
     BrowserModule,
-    HeaderModule,
+    LayoutModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
   ],

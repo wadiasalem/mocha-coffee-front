@@ -3,10 +3,17 @@
     <app-page-title title="MENU" width ="auto" ></app-page-title>
     <div class="menu-content" *ngIf="!categError ; else categErrorElse">
       <div class="left-nav item">
-        <h3>Filter</h3>
+        <div *ngIf="categorySelected ;else notSelected">
+          <h3>Filter</h3>
           <ul>
             <li *ngFor="let item of categ" (click)="select(item.id)" id="{{item.id}}">{{item.name}}</li>
           </ul>
+        </div>
+        <ng-template #notSelected>
+          <div class="waiting horizontal">
+            <img src="/assets/mocha/waiting.gif" alt="">
+          </div>
+        </ng-template>
       </div>
       <div class="right-content" >
         <!-- initial page when no category selected -->
@@ -51,17 +58,22 @@
         
         <!-- Productes when category selected -->
         <ng-template #categorySelectedElse>
-          <div *ngIf="!productError ; else productErrorElse">
-            <ng-template ngFor let-item [ngForOf]="product">
-              <div class="item-product vertical">
-                <img src="{{item.url}}" alt="" >
-                {{item.name}}
-              </div>
+            <div class="product" *ngIf="!productError ; else productErrorElse">
+              <ng-template ngFor let-item [ngForOf]="product">
+                <div class="item-product vertical">
+                  <img src="{{item.img}}" alt="" >
+                  <div class="title">
+                    {{item.name}}
+                  </div>
+                  <span class="price">
+                    {{item.price}} DT
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+            <ng-template #productErrorElse>
+              <h3>{{productError}}</h3>
             </ng-template>
-          </div>
-          <ng-template #productErrorElse>
-            <h3>{{productError}}</h3>
-          </ng-template>
         </ng-template>
         <!-- Productes when category selected -->
       </div>

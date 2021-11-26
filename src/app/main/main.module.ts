@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { MenuComponent } from './menu/menu.component';
 import {TemplateModule} from '../template/template.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,36 +17,17 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-
-const routes : Routes= [
-  {
-  path: "sign-in", 
-  component : SignInComponent
-},
-{ 
-  path: "sign-up", 
-  component : SignUpComponent
-},
-{ 
-  path: "menu", 
-  component : MenuComponent
-},
-{ 
-  path: "gifts", 
-  component : GiftsComponent
-},
-{ 
-  path: "", 
-  component : HomeComponent
-},
-]
-
+import { OrderComponent } from './order/order.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { routes } from './routes.service';
 
 @NgModule({
   declarations: [
     HomeComponent,
     MenuComponent,
-    GiftsComponent
+    GiftsComponent,
+    OrderComponent,
+    ReservationComponent
   ],
   imports: [
     FormsModule,

@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authGuard.isConnected();
+    this.authGuard.isConnected(['/']);
     this.loginForm = this._formBuilder.group({
         login   : ['', [Validators.required, Validators.email]],
         password: ['', Validators.required],

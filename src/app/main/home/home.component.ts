@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuradService } from '../auth/auth-gurad.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isConnected : boolean ;
+
+  constructor(private authGuard : AuthGuradService) { }
 
   ngOnInit(): void {
+    this.isConnected = this.authGuard.isConnected([]);
+    console.log(this.isConnected)
   }
 
 }
