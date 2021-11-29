@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { CartService } from '@services/cart.service';
 
@@ -23,10 +24,6 @@ const menu = [
   {
     title : "Reservation",
     href : "#"
-  },
-  {
-    title : "Order",
-    href : "/order"
   }
 ];
 
@@ -35,14 +32,23 @@ const menu = [
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit , OnDestroy {
+export class HeaderComponent implements OnInit {
 
   menu :Array<menuItem>= menu;
   isconnected : boolean = false ;
-  cart : {items:{[id: string]: number},length : number};
+  cart : {
+    items : Array<{
+      id :number
+      name : string,
+      price : number,
+      quantity :number
+    }>,
+    length : number,
+    total : number
+  };
 
-  constructor(private auth : AuthService,private _cart : CartService) { 
-    this.cart = {items:{},length :0};
+  constructor(private auth : AuthService,private _cart : CartService,private routes : Router) { 
+    this.cart = {items:[],length :0,total:0};
   }
 
   ngOnInit(): void {
@@ -50,12 +56,12 @@ export class HeaderComponent implements OnInit , OnDestroy {
       this.isconnected = value;
     });
     this._cart.getAll().subscribe((cart)=>{
-      this.cart.items = cart;
-      this.cart.length = Object.keys(cart).length;
+      this.cart = cart;
     })
   }
 
-  ngOnDestroy(){
+  Mycart(){
+    this.routes.navigate(['/dashboard'],{queryParams:{cart:'y'}});
   }
 
 }

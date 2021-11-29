@@ -23,7 +23,6 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.auth.isConnected());
     if(this.auth.getIsConnected())
       this.Router.navigate(['/']);
     this.loginForm = this._formBuilder.group({

@@ -5,8 +5,6 @@
         <form 
           name="loginForm" 
           [formGroup]="loginForm" 
-          novalidate 
-          (ngSubmit)="Authenticate()"
           class="form vertical">
           <mat-form-field appearance="fill">
             <mat-label>Email or Username</mat-label>
@@ -42,7 +40,7 @@
 
           </div>
           <div class="submit-button">
-            <button mat-raised-button color="accent"  aria-label="LOG IN"
+            <button mat-raised-button color="accent"  (click)="Authenticate()"
                   [disabled]="loginForm.invalid">
               LOGIN
           </button>

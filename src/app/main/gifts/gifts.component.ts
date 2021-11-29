@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
@@ -38,10 +38,11 @@ export class GiftsComponent implements OnInit {
     private cart : CartService,
     private _snackBar: MatSnackBar
     ) {
-      this.sortList = this.sort.getSort();
+      
     }
 
   ngOnInit(): void {
+    this.sortList = this.sort.getSort();
     this.SearchForm = this._formBuilder.group({
       search   : ['']
     });
@@ -153,13 +154,15 @@ export class GiftsComponent implements OnInit {
     this.element[0] = null ;
   }
 
-  addToCart(id : string){
+  addToCart(id : string,name : string , price : string){
     let quantity :number = +(<HTMLInputElement>document.getElementById("Q"+id)).value
-    this.cart.add(id,quantity);
+    this.cart.add(id,quantity,name,parseInt(price));
+    this.sortList = this.sort.getSort();
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
+
 
 }

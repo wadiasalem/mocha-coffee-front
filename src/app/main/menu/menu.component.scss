@@ -1,4 +1,5 @@
-@import '/src/app/theme.scss';
+
+@use '/src/app/theme.scss' as style;
 
 .menu{
   margin-top: 100px;
@@ -9,13 +10,13 @@
     justify-content: space-between;
     h3{
       text-align: center;
-      color: $base-color;
+      color: style.$base-color;
     }
     .left-nav{
       height: 700px;
       width: 25%;
       background-color: #fff;
-      color: $base-color;
+      color: style.$base-color;
       .waiting{
         width: 100%;
         height: 100%;
@@ -27,12 +28,12 @@
         list-style: none;
         padding-inline-start: 0;
         .selected{
-          color: $orange-color;
+          color: style.$orange-color;
         }
         li{
           margin-top: 10px;
           padding-bottom: 10px;
-          border-bottom: solid 2px $base-color;
+          border-bottom: solid 2px style.$base-color;
           cursor: pointer;
         }
       }
@@ -43,14 +44,14 @@
         h3{
           text-align: left;
           width: 100%;
-          color: $base-color;
-          border-bottom: solid 3px $base-color;
+          color: style.$base-color;
+          border-bottom: solid 3px style.$base-color;
         }
         .section{
           display: flex;
           flex-wrap: wrap;
           .item-categ{
-            color: $base-color;
+            color: style.$base-color;
             width: auto;
             padding: 20px;
             img{
@@ -66,10 +67,11 @@
         display: flex;
         flex-wrap: wrap;
         margin-top: 50px;
+        position: relative;
         .item-product{
           background-color: #fff;
           border-radius: 10px;
-          color: $base-color;
+          color: style.$base-color;
           text-align: center;
           width: 190px;
           padding: 10px 10px 30px 10px;
@@ -84,13 +86,88 @@
             margin-bottom: 10px;
           }
           .price{
-            color: $orange-color;
+            color: style.$orange-color;
             font-size: 15px;
             position: absolute;
             bottom: 10px;
 
           }
+          .description-poly{
+            display: none;
+            position: absolute;
+            bottom: 50px;
+          }
+
           
+        }
+        .description{
+          display :none;
+          background-color: #E0E0E0;
+          border-radius: 10px;
+          padding: 20px;
+          position:absolute;
+          z-index: 10;
+          right: 0;
+          left: 0;
+          height: 300px;
+          margin-top: -100px;
+          box-shadow: 0 4px 4px style.$shadow-color;
+          .close-btn{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+          }
+          .description-content{
+            display: flex;
+            height: 100%;
+            width: 100%;
+            .description-img{
+              width: 30%;
+              height: 100%;
+                img{
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 7px;
+                  object-fit: cover;
+                  object-position: center;
+                  
+                }
+            }
+            .description-text{
+              width: 70%;
+              margin-left: 20px;
+              
+              color: #626262;
+              h3{
+                text-align: left;
+                color: style.$base-color;
+              }
+              .price{
+                color: style.$orange-color;
+                
+              }
+              mat-form-field{
+                width: 100px;
+                margin-top: 20px;
+              }
+              .actions{
+                margin-bottom: 20px;
+                width: 330px;
+                justify-content: space-between;
+                .add-to-cart{
+                  border: solid 1px #F36295;
+                  color: #F36295;
+                  background-color: transparent;
+                }
+                .command-now{
+                  background-color: #F36295;
+                  color: #fff;
+                  border: solid 1px transparent;
+                }
+              }
+              
+            }
+          }
         }
       }
       

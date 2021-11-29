@@ -1,0 +1,125 @@
+<div *ngIf="cart.length!=0 ;else cartEmpty" class="cart">
+  <mat-stepper #stepper [linear]="true">
+    <mat-step>
+        <ng-template matStepLabel>Manage you cart</ng-template>
+        <div class="step-content">
+          <div class="clear-cart">
+            <button mat-button (click)="clearCart()">
+              Clear cart <mat-icon>remove_shopping_cart</mat-icon>
+            </button>
+          </div>
+          <div class="cart-list">
+            <ng-template  ngFor let-item [ngForOf]="cart.items">
+                <div class="cart-item" *ngIf="item">
+                  <div class="ref">
+                    Ref : {{item.id}}
+                  </div>
+                  <div class="name">
+                    name : {{item.name}}
+                  </div>
+                  <span class="quantity">
+                    1 x {{item.quantity}}
+                  </span>
+                  <div class="price">
+                    <span>Price : {{item.price}} DT</span><span>Total : {{item.price*item.quantity}} DT</span>
+                  </div>
+                </div>
+            </ng-template>
+            <mat-divider class="line"></mat-divider>
+            <div class="total">
+              <span>Total TTC</span><span class="total-price">{{cart.total}} DT</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      
+    </mat-step>
+    <mat-step [stepControl]="ShippingFormGroup" label="Fill out your address">
+      <form [formGroup]="ShippingFormGroup">
+        <div class="address step-content">
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea #address matInput placeholder="Ex. 100 Main St" formControlName="address"></textarea>
+            <mat-hint align="end">{{address.value.length}} / 255</mat-hint>
+            <mat-error *ngIf="ShippingFormGroup.controls['address'].hasError('required') ;else max">
+              Address required
+            </mat-error>
+            <ng-template #max>
+              <mat-error>
+                Address max length is 255
+              </mat-error>
+            </ng-template>
+          </mat-form-field>
+        </div>
+        <div style="text-align: right;">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Payment</ng-template>
+      <form [formGroup]="PaymentForma">
+        <div class="address step-content">
+          <mat-form-field appearance="fill">
+            <mat-label>Cart number</mat-label>
+            <input #len matInput type="number" placeholder="0000 0000 0000 0000" formControlName="cartNumber">
+            <mat-hint align="end">{{len.value.length}} / 16</mat-hint>
+            <mat-error *ngIf="PaymentForma.controls['cartNumber'].hasError('required') ;else format">
+              Cart number is required
+            </mat-error>
+            <ng-template #format>
+              <mat-error>
+                Wrong cart number
+              </mat-error>
+            </ng-template>
+            
+          </mat-form-field>
+          <div class="date-cvv">
+            <mat-form-field appearance="fill">
+              <mat-label>Expiration date</mat-label>
+              <input matInput placeholder="MM/YY" formControlName="date">
+              <mat-error *ngIf="PaymentForma.controls['date'].hasError('required') ;else formatDate">
+                date expiration is required
+              </mat-error>
+              <ng-template #formatDate>
+                <mat-error>
+                  Wrong date format
+                </mat-error>
+              </ng-template>
+              
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>CVV</mat-label>
+              <input type="number" matInput placeholder="123" formControlName="cvv">
+              <mat-error *ngIf="PaymentForma.controls['cvv'].hasError('required') ;else cvv">
+                CVV is required
+              </mat-error>
+              <ng-template #cvv>
+                <mat-error>
+                  Wrong date format
+                </mat-error>
+              </ng-template>
+              
+            </mat-form-field>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button (click)="shipping()">Shipping</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>
+<ng-template #cartEmpty>
+  <div class="cartEmpty vertical">
+    <h3>Your cart is empty</h3>
+    <p>Try to buy some awesom <a href="/gifts"><span>Gifts</span></a></p>
+    <img src="assets/mocha/not-found.png" alt="">
+  </div>
+</ng-template>
+

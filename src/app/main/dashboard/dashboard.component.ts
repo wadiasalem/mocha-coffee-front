@@ -1,21 +1,30 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 const nav = [
   {
     id : '0',
-    title : "General Account Settings"
+    title : "General"
+  },
+  {
+    id : '4',
+    title : "My Cart"
+  },
+  {
+    id : '5',
+    title : "My Orders"
   },
   {
     id : '1',
-    title : "My Gift Orders"
+    title : "Gift history"
   },
   {
     id : '2',
-    title : "My Coffee Orders"
+    title : "Orders history"
   },
   {
     id : '3',
-    title : "My Reservations"
+    title : "Reservations history"
   }
 ]
 @Component({
@@ -32,7 +41,14 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
 
   selected : HTMLElement | null ;
 
-  constructor(private auth : AuthService,private cdRef:ChangeDetectorRef) { 
+  constructor(
+    private auth : AuthService,
+    private cdRef:ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private routes : Router
+    ) { 
+    if(!this.auth.getIsConnected())
+      {this.routes.navigate(['auth/sign-in'])}
     this.name = localStorage.getItem('name');
     this.points = localStorage.getItem('points');
   }
@@ -40,6 +56,12 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
 
   ngAfterViewInit(): void {
     this.select('0');
+    this.route.queryParams
+      .subscribe(params => {
+        if(params.cart=='y')
+          this.select('4');
+      }
+    );
   }
 
   ngAfterViewChecked(): void {

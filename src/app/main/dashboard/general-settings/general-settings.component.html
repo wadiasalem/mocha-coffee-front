@@ -1,1 +1,121 @@
-<p>general-settings works!</p>
+<div class="general-settings">
+  <h3>General Account Settings</h3>
+  <mat-accordion class="setting">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal informations
+        </mat-panel-title>
+        <mat-panel-description>
+          <!-- descripe -->
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form 
+        [formGroup]="personalForm"
+        name="PersonalFormForm" 
+        #PersonalformDirective="ngForm" 
+        >
+        <div class="settings">
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <span matPrefix>+216 &nbsp;</span>
+            <input matInput type="tel" name="tel" formControlName="number" placeholder="12-345-678">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-error>
+              Format phone number is wrong
+          </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea #address matInput placeholder="Ex. 100 Main St" formControlName="address"></textarea>
+            <mat-hint align="end">{{address.value.length}} / 255</mat-hint>
+            <mat-error>
+              Address max length is 255
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hideOldPassword ? 'password' : 'text'" formControlName="password" required>
+            <button mat-icon-button matSuffix (click)="hideOldPassword = !hideOldPassword">
+              <mat-icon>{{hideOldPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>
+                Password is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-divider class="line"></mat-divider>
+        <div class="submit">
+          <button mat-button (click)="updatePersonal()" [disabled]="personalForm.invalid">Update</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion class="setting">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Account Security
+        </mat-panel-title>
+        <mat-panel-description>
+          <!-- descripe -->
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form 
+        [formGroup]="SecurityForm"
+        name="SecurityFormForm" 
+        #SecurityformDirective="ngForm" 
+      >
+        <div class="settings">
+          <mat-form-field appearance="fill">
+            <mat-label>Old Password</mat-label>
+            <input matInput [type]="hideOldPassword ? 'password' : 'text'" formControlName="oldPassword" required>
+            <button mat-icon-button matSuffix (click)="hideOldPassword = !hideOldPassword">
+              <mat-icon>{{hideOldPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>
+                Password is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>New password</mat-label>
+            <input matInput [type]="hideNewPassword ? 'password' : 'text'" formControlName="newPassword" required>
+            <button mat-icon-button matSuffix (click)="hideNewPassword = !hideNewPassword">
+              <mat-icon>{{hideNewPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>
+                Password is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" required>
+            <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
+              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="SecurityForm.get('confirmPassword')?.hasError('required')">
+              Confirm Password is required
+            </mat-error>
+            <mat-error 
+            *ngIf="!SecurityForm.get('confirmPassword')?.hasError('required') &&
+            SecurityForm.get('confirmPassword')?.hasError('mustMatch')">
+              Confirm Password doesn't match
+          </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-divider class="line"></mat-divider>
+        <div class="submit">
+          <button (click)="updateSecurity()" mat-button [disabled]="SecurityForm.invalid">Update</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+

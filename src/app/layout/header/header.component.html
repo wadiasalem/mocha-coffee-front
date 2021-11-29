@@ -5,7 +5,7 @@
       <ul>
         <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
       </ul>
-      <a *ngIf="cart.length != 0" href=""><mat-icon matBadge="{{cart.length}}" matBadgeColor="accent">shopping_cart</mat-icon></a>
+      <a *ngIf="cart.length != 0" (click)="Mycart()"><mat-icon matBadge="{{cart.length}}" matBadgeColor="accent">shopping_cart</mat-icon></a>
       <a *ngIf="!isconnected ; else Connected" href="/auth/sign-in" ><button class="orange-btn extra-small-btn">Login</button></a>
       <ng-template #Connected>
         <a href="/dashboard" class="profile"><mat-icon>account_circle</mat-icon></a>

@@ -1,1 +1,49 @@
-<p>gift-orders works!</p>
+
+<div class="gifts-history" *ngIf="history.length ; else historyEmpty">
+  <h3>
+    Your purchase history
+  </h3>
+  <div class="history-content item">
+    <mat-accordion class="gifts">
+      <mat-expansion-panel 
+      *ngFor="let item of history" 
+      class="gift-item" 
+      (opened)="open(item.detail)"
+      (closed)="close()"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Ref : {{item.command.id}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Date : {{datepipe.transform(item.command.created_at, 'dd-MM-YYYY HH:mm:ss')}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor="let detail of details">
+          <mat-divider></mat-divider>
+          <div class="cart-item">
+            <div class="ref">
+              Ref : {{detail.id}}
+            </div>
+            <div class="name">
+              name : {{detail.name}}
+            </div>
+            <span class="quantity">
+              1 x {{test(item,detail.id)}}
+            </span>
+            <div class="price">
+              <span>Price : {{detail.price}} DT</span><span>Total : {{detail.price*test(item,detail.id)}}DT</span>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<ng-template #historyEmpty>
+  <div class="historyEmpty vertical">
+    <h3>Your don't have any command yet</h3>
+    <p>Try to buy some awesom <a href="/gifts"><span>Gifts</span></a></p>
+    <img src="assets/mocha/not-found.png" alt="">
+  </div>
+</ng-template>

@@ -17,7 +17,6 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { OrderComponent } from './order/order.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { routes } from '@services/routes.service';
@@ -28,7 +27,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HomeComponent,
     MenuComponent,
     GiftsComponent,
-    OrderComponent,
     ReservationComponent,
   ],
   imports: [

@@ -7,6 +7,15 @@ import { TemplateModule } from 'src/app/template/template.module';
 import { GiftOrdersComponent } from './gift-orders/gift-orders.component';
 import { CoffeeOrdersComponent } from './coffee-orders/coffee-orders.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { CartComponent } from './cart/cart.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -16,7 +25,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
     DashboardComponent,
     GiftOrdersComponent,
     CoffeeOrdersComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    CartComponent
   ],
   exports:[
     DashboardComponent,
@@ -25,6 +35,15 @@ import { ReservationsComponent } from './reservations/reservations.component';
     CommonModule,
     MatDividerModule,
     TemplateModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatExpansionModule,
+    HttpClientModule
   ]
 })
 export class DashboardModule { }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,8 +17,10 @@ export class MenuComponent implements OnInit {
   product : any =[];
   productError : string ='';
 
+  element : Array<HTMLElement | null> = [];
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient,private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.http.get(`${environment.API_URL}/menu`)
@@ -48,6 +51,48 @@ export class MenuComponent implements OnInit {
         else
           this.productError = res.description;
       });
+  }
+
+  showDescription(id:string){
+    if(this.element[1] && this.element[0])
+      {
+        this.element[1].style.display = 'none';
+        this.element[0].style.display = 'none';
+        this.element[1] = null ;
+        this.element[0] = null ;
+      }
+    
+    if(this.element[1]!=document.getElementById("D"+id)){
+      if (this.element[1] && this.element[2]) {
+        this.element[1].style.display = 'none';
+        this.element[2].style.display = 'none';
+      }
+  
+      this.element[1] = document.getElementById("D"+id);
+      this.element[0] = document.getElementById("P"+id);
+      if (this.element[1] && this.element[0]) {
+        this.element[1].style.display = 'block';
+        this.element[0].style.display = 'block';
+        this.element[1].scrollIntoView({behavior: "smooth", block: "center"});
+      }
+    }
+  }
+
+  close(){
+    if(this.element[1] && this.element[0])
+      {
+        this.element[1].style.display = 'none';
+        this.element[0].style.display = 'none';
+      }
+    this.element[1] = null ;
+    this.element[0] = null ;
+  }
+
+  addToCart(id : string,name : string , price : string){
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="view">
   <div class="dashboard">
     <app-page-title title="Dashboard" width ="245px" ></app-page-title>
-    <div class="dashboard-content horizontal">
+    <div class="dashboard-content">
       <div class="left-nav item vertical">
         <img class="profile-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
         <h3>{{name}}</h3>
@@ -17,6 +17,9 @@
       <div class="right-nav">
         <div *ngIf="navigation('0')">
           <app-general-settings></app-general-settings>
+        </div>
+        <div *ngIf="navigation('4')">
+          <app-cart></app-cart>
         </div>
         <div *ngIf="navigation('1')">
           <app-gift-orders></app-gift-orders>

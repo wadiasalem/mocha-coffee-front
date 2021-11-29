@@ -4,6 +4,9 @@
   margin-top: 100px;
   margin-bottom: 50px;
   .dashboard-content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
     
     .left-nav{
       position: relative;
@@ -47,6 +50,11 @@
         background-color: #FD5353;
         border: solid 2px #FD5353;
       }
+    }
+    .right-nav{
+      width: 60%;
+      height: 100%;
+      padding-top: 50px;
     }
   }
 }

@@ -1,0 +1,51 @@
+@use '/src/app/theme.scss' as style ;
+
+.gifts-history{
+  h3{
+    color: style.$base-color;
+    margin-bottom: 48px;
+  }
+  .history-content{
+    background-color: #fff;
+    min-height: 561px;
+    .gift-item{
+      border-radius: 25px;
+      margin-bottom: 20px;
+      .cart-item{
+        border: solid 2px style.$orange-color;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 5px 0;
+        .quantity,.ref{
+          color: style.$black-color;
+          font-size: 10px;
+        }
+        .name{
+          color: style.$base-color;
+        }
+        .price{
+          display: flex;
+          justify-content: space-between;
+          color: style.$black-color;
+        }
+      }
+    }
+  }
+  
+}
+.historyEmpty{
+  height: 700px;
+  justify-content: center;
+  h3{
+    color: style.$base-color;
+  }
+  p{
+    color: style.$black-color;
+    span{
+      color: style.$orange-color;
+    }
+  }
+  img{
+    width: 50%;
+  }
+}
