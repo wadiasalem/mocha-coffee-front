@@ -9,7 +9,7 @@
             a Mocha Coffee
           </div>
           <div *ngIf="isConnected ; else notConnected">
-            <a (click)="logout()"><button class="white-btn small-btn">My Dashbord</button></a>
+            <a href="/dashboard/settings"><button class="white-btn small-btn">My Dashbord</button></a>
           </div>
           <ng-template #notConnected>
             <div>

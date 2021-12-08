@@ -1,1 +1,58 @@
-<p>coffee-orders works!</p>
+<div class="gifts-history" *ngIf="history?.length ; else historyEmpty">
+  <h3>
+    Your purchase history
+  </h3>
+  <div class="history-content item">
+    <mat-accordion class="gifts">
+      <mat-expansion-panel 
+      *ngFor="let item of history" 
+      class="gift-item" 
+      (opened)="open(item.detail)"
+      (closed)="close()"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Ref : {{item.order.id}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Date : {{datepipe.transform(item.order.created_at, 'dd-MM-YYYY HH:mm:ss')}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="head-order">
+          <div *ngIf="item.order.category == 'delivery' ; else delivered">
+            <span>In progress</span><mat-icon class="icon" style="color: grey;">pending</mat-icon>
+          </div>
+          <ng-template #delivered>
+            <div>
+              <span>Delivered</span><mat-icon class="icon" style="color: greenyellow;">task_alt</mat-icon>
+            </div>
+          </ng-template>
+        </div>
+        <div *ngFor="let detail of details">
+          <mat-divider></mat-divider>
+          <div class="cart-item">
+            <div class="ref">
+              Ref : {{detail.id}}
+            </div>
+            <div class="name">
+              name : {{detail.name}}
+            </div>
+            <span class="quantity">
+              1 x {{getQuantity(item,detail.id)}}
+            </span>
+            <div class="price">
+              <span>Price : {{detail.price}} DT</span><span>Total : {{detail.price*getQuantity(item,detail.id)}}DT</span>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<ng-template #historyEmpty>
+  <div class="historyEmpty vertical">
+    <h3>Your don't have any order yet</h3>
+    <p>Try to buy some awesom <a href="/menu"><span>Coffee</span></a></p>
+    <img src="assets/mocha/not-found.png" alt="">
+  </div>
+</ng-template>

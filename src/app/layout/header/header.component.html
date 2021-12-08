@@ -5,10 +5,23 @@
       <ul>
         <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
       </ul>
-      <a *ngIf="cart.length != 0" (click)="Mycart()"><mat-icon matBadge="{{cart.length}}" matBadgeColor="accent">shopping_cart</mat-icon></a>
-      <a *ngIf="!isconnected ; else Connected" href="/auth/sign-in" ><button class="orange-btn extra-small-btn">Login</button></a>
+      <a *ngIf="food?.length != 0" href="/dashboard/my-orders">
+        <mat-icon matBadge="{{food.length}}" matBadgeColor="accent">
+          fastfood
+        </mat-icon>
+        </a>
+      <a *ngIf="cart?.length != 0" href="/dashboard/my-cart">
+        <mat-icon matBadge="{{cart.length}}" matBadgeColor="accent">
+          shopping_cart
+        </mat-icon>
+      </a>
+      <a *ngIf="!isconnected ; else Connected" href="/auth/sign-in" >
+        <button class="orange-btn extra-small-btn">
+          Login
+        </button>
+      </a>
       <ng-template #Connected>
-        <a href="/dashboard" class="profile"><mat-icon>account_circle</mat-icon></a>
+        <a href="/dashboard/settings" class="profile"><mat-icon>account_circle</mat-icon></a>
       </ng-template>
     </div>
   </div>

@@ -9,14 +9,18 @@
         <mat-divider class="line"></mat-divider>
         <div class="nav">
           <ul>
-            <li class="" id="{{item.id}}" (click)="select(item.id)" *ngFor="let item of nav">{{item.title}}</li>
+            <li class="" id="{{item.path}}" routerLink="{{item.path}}" queryParamsHandling="merge" (click)="select(item.path)" *ngFor="let item of nav">{{item.title}}</li>
           </ul>
         </div>
         <button class="logout-btn small-btn" (click)="logout()">Logout</button>
       </div>
       <div class="right-nav">
-        <div *ngIf="navigation('0')">
+        <router-outlet></router-outlet>
+        <!-- <div *ngIf="navigation('0')">
           <app-general-settings></app-general-settings>
+        </div>
+        <div *ngIf="navigation('5')">
+          <app-order></app-order>
         </div>
         <div *ngIf="navigation('4')">
           <app-cart></app-cart>
@@ -29,7 +33,7 @@
         </div>
         <div *ngIf="navigation('3')">
           <app-reservations></app-reservations>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

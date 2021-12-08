@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { CartService } from '@services/cart.service';
+import { OrderService } from '@services/order.service';
 
 interface menuItem {
   title : string,
@@ -15,7 +16,7 @@ const menu = [
   },
   {
     title : "Rewards",
-    href : "#"
+    href : "/rewords"
   },
   {
     title : "Gift-Center",
@@ -23,7 +24,7 @@ const menu = [
   },
   {
     title : "Reservation",
-    href : "#"
+    href : "/reservation"
   }
 ];
 
@@ -37,17 +38,21 @@ export class HeaderComponent implements OnInit {
   menu :Array<menuItem>= menu;
   isconnected : boolean = false ;
   cart : {
-    items : Array<{
-      id :number
-      name : string,
-      price : number,
-      quantity :number
-    }>,
+    items : Array<any>,
     length : number,
     total : number
   };
 
-  constructor(private auth : AuthService,private _cart : CartService,private routes : Router) { 
+  food : {
+    items : Array<any>,
+    length : number,
+    total : number
+  };
+
+  constructor(
+    private auth : AuthService,
+    private _food : OrderService,
+    private _cart : CartService) { 
     this.cart = {items:[],length :0,total:0};
   }
 
@@ -58,10 +63,10 @@ export class HeaderComponent implements OnInit {
     this._cart.getAll().subscribe((cart)=>{
       this.cart = cart;
     })
+    this._food.getAll().subscribe((food)=>{
+      this.food = food;
+    })
   }
 
-  Mycart(){
-    this.routes.navigate(['/dashboard'],{queryParams:{cart:'y'}});
-  }
 
 }

@@ -1,0 +1,179 @@
+@use '/src/app/theme.scss' as style;
+
+.reservation{
+  margin: 100px 0 50px 0;
+  .header,.description{
+    color: style.$base-color;
+  } 
+  .select-date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0 50px 0;
+    height: 100px;
+    width: 100%;
+    background-color: style.$orange-color;
+    color: #fff;
+    .day-item{
+      margin: 0 20px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    .day-item-selected{
+      background-color: #ab7134;
+    }
+    .one-day{
+      display: flex ;
+      align-items: center;
+      flex-direction: column;
+      .day{
+        font-size: 30px;
+      }
+    }
+    .date-picker{
+      height: 50px;
+      font-size: 50px;
+      
+    }
+  }
+  .reservation-content{
+    .time{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: style.$base-color;
+      .time-select{
+        width: 80px;
+        margin: 0 5px;
+      }
+    }
+    h3{
+      color: style.$orange-color;
+    }
+    .quantity{
+      margin: 20px 0;
+      text-align: right;
+      color: style.$black-color;
+    }
+    .form{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h4{
+        color: style.$base-color;
+      }
+      
+      .input{
+        display: flex;
+        align-items: center;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        .put{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: solid 1px style.$base-color;
+          text-align:center;
+          color: style.$base-color;
+          font-size: 15px;
+        }
+        .icon{
+          color: style.$orange-color;
+          cursor: pointer;
+        }
+      }
+    }
+    .place{
+      margin: 50px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      .stair{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img{
+          width: 150px;
+        }
+        button{
+          margin: 50px 0;
+        }
+      }
+      .floor{
+        position: relative;
+        border-radius: 10px;
+        padding: 20px;
+        width: 40vw;
+        height: 42vw;
+        background-color: #fff;
+        box-shadow: 0 0 6px rgb(0, 0, 0,20%);
+        color: style.$base-color;
+        img{
+          width: calc(100% - 40px);
+          position: absolute;
+          opacity:0;
+        }
+        .img-selected{
+          opacity:1;
+        }
+        
+      }
+      .stair{
+        .up{
+          animation: upRotate 2s ;
+        }
+        .down{
+          animation: downRotate 2s ;
+        }
+      }
+      .selected{
+        animation: selected 2s ;
+      }
+    }
+    
+    .action{
+      text-align: right;
+      margin: 20px 0;
+    }
+  }
+}
+
+@keyframes selected {
+  0% {
+    opacity:1;
+    transform:  rotateX(0deg);
+  }
+
+  50% {
+    opacity:0;
+    transform:  rotateX(90deg);
+  }
+
+
+  100% {
+    opacity:1;
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes upRotate {
+  0% {
+    transform:  rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes downRotate {
+  0% {
+    transform:  rotate(0deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}

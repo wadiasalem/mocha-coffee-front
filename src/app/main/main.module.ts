@@ -10,7 +10,7 @@ import { GiftsComponent } from './gifts/gifts.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import {MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -21,6 +21,8 @@ import { ReservationComponent } from './reservation/reservation.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { routes } from '@services/routes.service';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { RewordsComponent } from './rewords/rewords.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,15 @@ import { DashboardModule } from './dashboard/dashboard.module';
     MenuComponent,
     GiftsComponent,
     ReservationComponent,
+    RewordsComponent,
   ],
   imports: [
     DashboardModule,
+    TemplateModule,
+    AuthModule,
+
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatSnackBarModule,
     FormsModule,
     MatSelectModule,
@@ -42,11 +50,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    AuthModule,
+    
     HttpClientModule,
-    TemplateModule,
     CommonModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  exports : []
 })
 export class MainModule { }

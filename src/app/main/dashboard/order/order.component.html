@@ -1,15 +1,15 @@
-<div *ngIf="cart?.length ;else cartEmpty" class="cart">
+<div *ngIf="order?.length ;else cartEmpty" class="cart">
   <mat-stepper #stepper [linear]="true">
     <mat-step>
-        <ng-template matStepLabel>Manage you cart</ng-template>
+        <ng-template matStepLabel>Manage you order</ng-template>
         <div class="step-content">
           <div class="clear-cart">
             <button mat-button (click)="clearCart()">
-              Clear cart <mat-icon>remove_shopping_cart</mat-icon>
+              Clear order <mat-icon>remove_shopping_cart</mat-icon>
             </button>
           </div>
           <div class="cart-list">
-            <ng-template  ngFor let-item [ngForOf]="cart.items">
+            <ng-template  ngFor let-item [ngForOf]="order.items">
                 <div class="cart-item" *ngIf="item">
                   <div class="ref">
                     Ref : {{item.id}}
@@ -27,7 +27,7 @@
             </ng-template>
             <mat-divider class="line"></mat-divider>
             <div class="total">
-              <span>Total TTC</span><span class="total-price">{{cart.total}} DT</span>
+              <span>Total TTC</span><span class="total-price">{{order.total}} DT</span>
             </div>
           </div>
         </div>
@@ -117,8 +117,8 @@
 </div>
 <ng-template #cartEmpty>
   <div class="cartEmpty vertical">
-    <h3>Your cart is empty</h3>
-    <p>Try to buy some awesom <a href="/gifts"><span>Gifts</span></a></p>
+    <h3>Your order is empty</h3>
+    <p>Try to buy some awesom <a href="/menu"><span>Coffee</span></a></p>
     <img src="assets/mocha/not-found.png" alt="">
   </div>
 </ng-template>

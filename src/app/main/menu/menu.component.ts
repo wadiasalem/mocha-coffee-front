@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import {OrderService} from '@services/order.service'
 
 @Component({
   selector: 'app-menu',
@@ -20,7 +21,11 @@ export class MenuComponent implements OnInit {
   element : Array<HTMLElement | null> = [];
 
 
-  constructor(private http: HttpClient,private _snackBar: MatSnackBar) {}
+  constructor(
+    private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private food : OrderService
+    ) {}
 
   ngOnInit(): void {
     this.http.get(`${environment.API_URL}/menu`)
@@ -89,6 +94,8 @@ export class MenuComponent implements OnInit {
   }
 
   addToCart(id : string,name : string , price : string){
+    let quantity :number = +(<HTMLInputElement>document.getElementById("Q"+id)).value
+    this.food.add(id,quantity,name,parseInt(price));
   }
 
   openSnackBar(message: string, action: string) {

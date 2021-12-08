@@ -16,6 +16,41 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderComponent } from './order/order.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes : Routes = [
+  {
+    path : "",
+    component : DashboardComponent,
+    children : [
+      {
+        path : "settings",
+        component : GeneralSettingsComponent
+      },
+      {
+        path : "my-cart",
+        component : CartComponent
+      },
+      {
+        path : "my-orders",
+        component : OrderComponent
+      },
+      {
+        path : "gift-history",
+        component : GiftOrdersComponent
+      },
+      {
+        path : "order-history",
+        component : CoffeeOrdersComponent
+      },
+      {
+        path : "reservations-history",
+        component : ReservationsComponent
+      },
+    ]
+  }
+];
 
 
 
@@ -26,12 +61,14 @@ import { HttpClientModule } from '@angular/common/http';
     GiftOrdersComponent,
     CoffeeOrdersComponent,
     ReservationsComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent
   ],
   exports:[
     DashboardComponent,
   ],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
     MatDividerModule,
     TemplateModule,

@@ -157,7 +157,6 @@ export class GiftsComponent implements OnInit {
   addToCart(id : string,name : string , price : string){
     let quantity :number = +(<HTMLInputElement>document.getElementById("Q"+id)).value
     this.cart.add(id,quantity,name,parseInt(price));
-    this.sortList = this.sort.getSort();
   }
 
   openSnackBar(message: string, action: string) {

@@ -1,0 +1,78 @@
+@use '/src/app/theme.scss' as style;
+.cart{
+  
+  mat-stepper{
+    border-radius: 0 0 50px 50px ;
+    .clear-cart{
+      text-align: right;
+    }
+    .cart-list{
+      .cart-item{
+        border: solid 2px style.$orange-color;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 5px 0;
+        .quantity,.ref{
+          color: style.$black-color;
+          font-size: 10px;
+        }
+        .name{
+          color: style.$base-color;
+        }
+        .price{
+          display: flex;
+          justify-content: space-between;
+          color: style.$black-color;
+        }
+      }
+      .line{
+        margin: 10px 0;
+      }
+      .total{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        color: style.$black-color;
+        padding: 0 12px;
+        .total-price{
+          color: yellowgreen;
+        }
+      }
+    }
+    .address{
+      .date-cvv{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        mat-form-field{
+          width: 30%;
+        }
+      }
+      mat-form-field{
+        width: 100%;
+      }
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+    .step-content{
+      margin: 30px 0;
+    }
+  }
+}
+.cartEmpty{
+  height: 700px;
+  justify-content: center;
+  h3{
+    color: style.$base-color;
+  }
+  p{
+    color: style.$black-color;
+    span{
+      color: style.$orange-color;
+    }
+  }
+  img{
+    width: 50%;
+  }
+}

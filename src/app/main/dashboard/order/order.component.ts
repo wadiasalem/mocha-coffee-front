@@ -2,19 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
-import { CartService } from '@services/cart.service';
+import { OrderService } from '@services/order.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.scss']
 })
-export class CartComponent implements OnInit {
+export class OrderComponent implements OnInit {
 
-
-  cart :{
+  order :{
     items : Array<any>,
     length : number,
     total : number
@@ -25,12 +24,12 @@ export class CartComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _cart : CartService,
+    private _order : OrderService,
     private http : HttpClient,
     private auth : AuthService
     ) {
-    this._cart.getAll().subscribe((data)=>{
-      this.cart = data ;
+    this._order.getAll().subscribe((data)=>{
+      this.order = data ;
     })
   }
 
@@ -49,17 +48,17 @@ export class CartComponent implements OnInit {
   }
 
   clearCart(){
-    this._cart.clearCart();
+    this._order.clearfood();
   }
 
   shipping(){
     let header = this.auth.getAuthorization();
-    let cart = this._cart.getCart();
+    let cart = this._order.getfood();
     this.http.post(
-      `${environment.API_URL}/client/shop`,
-      {cart : cart.items},
+      `${environment.API_URL}/client/order`,
+      {order : cart.items},
       {headers:header}).subscribe((result:any)=>{
-        this._cart.clearCart();
+        this._order.clearfood();
         Swal.fire({
           imageUrl: 'assets/mocha/yee.png',
           imageHeight : '150',
@@ -67,6 +66,7 @@ export class CartComponent implements OnInit {
           icon: "success",
         });
     },(error)=>{
+      console.log(error)
       Swal.fire({
         title: "Erreur!",
           text: error.description,
@@ -75,5 +75,4 @@ export class CartComponent implements OnInit {
     })
   }
 
-  
 }

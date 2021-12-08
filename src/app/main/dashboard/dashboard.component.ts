@@ -3,28 +3,28 @@ import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 const nav = [
   {
-    id : '0',
-    title : "General"
+    title : "General",
+    path : "settings"
   },
   {
-    id : '4',
-    title : "My Cart"
+    title : "My Cart",
+    path : "my-cart"
   },
   {
-    id : '5',
-    title : "My Orders"
+    title : "My Orders",
+    path : "my-orders"
   },
   {
-    id : '1',
-    title : "Gift history"
+    title : "Gift history",
+    path : "gift-history"
   },
   {
-    id : '2',
-    title : "Orders history"
+    title : "Orders history",
+    path : "order-history"
   },
   {
-    id : '3',
-    title : "Reservations history"
+    title : "Reservations history",
+    path : "reservations-history"
   }
 ]
 @Component({
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
   name : string | null;
   points : string | null;
 
-  nav : Array<{id:string,title:string}> = nav;
+  nav : Array<any> = nav;
 
   selected : HTMLElement | null ;
 
@@ -55,13 +55,11 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
 
 
   ngAfterViewInit(): void {
-    this.select('0');
-    this.route.queryParams
-      .subscribe(params => {
-        if(params.cart=='y')
-          this.select('4');
-      }
-    );
+    let path = this.route.firstChild?.snapshot.routeConfig?.path
+    let id : string =  path ? path: 'settings';
+
+    this.select(id);
+
   }
 
   ngAfterViewChecked(): void {
@@ -78,12 +76,6 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
       this.selected = document.getElementById(id);
       this.selected?.classList.add('selected');
     }
-  }
-
-  navigation(id :string) : boolean{ 
-    if(id==this.selected?.id)
-      return true;
-    else return false ;
   }
 
   logout(){

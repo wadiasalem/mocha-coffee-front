@@ -2,28 +2,33 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
-import { ClientModule } from './client/client.module';
+import { AdminComponent } from './admin/admin.component';
+import { EmployerComponent } from './employer/employer.component';
+import { EmployerModule } from './employer/employer.module';
 
-const appRoutes : Routes = [
+const routes : Routes = [
   {
     path : "admin",
     loadChildren: () =>
       import("./admin/admin.module").then((m) => m.AdminModule),
+    component : AdminComponent,
   },
   {
-    path : "client",
+    path : "emplyer",
     loadChildren: () =>
-      import("./client/client.module").then((m) => m.ClientModule),
+      import("./employer/employer.module").then((m) => m.EmployerModule),
+    component : EmployerComponent
   },
+    
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
-    CommonModule,
     AdminModule,
-    ClientModule,
-    RouterModule.forRoot(appRoutes),
+    EmployerModule,
+    RouterModule.forChild(routes),
   ]
 })
 export class NavigationModule { }

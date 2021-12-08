@@ -1,1 +1,109 @@
-<p>reservation works!</p>
+<div class="reservation">
+  <form [formGroup]="Reservation">
+  <div class="view">
+    <app-page-title title="RESERVATION" width ="auto" ></app-page-title>
+    <div class="header">
+      <h3>Welcome to MochaCafe</h3>
+    </div>
+    <div class="description">
+      Choose the date and table that suits you most for a better experience.
+    </div>
+  </div>
+  <div class="select-date">
+    <div id="{{date.getDate()}}" (click)="select(date)" 
+    class="one-day day-item " 
+    *ngFor="let date of dates ; index as i;">
+
+      <div>{{day[date.getDay()]}}</div>
+      <div class="day">{{date.getDate()}}</div>
+      <div>{{month[date.getMonth()]}}</div>
+    </div>
+    <div id="5" class="day-item">
+      <input 
+      [matDatepicker]="picker" 
+      (dateChange)="change()" 
+      formControlName="date" 
+      [matDatepickerFilter]="myFilter" 
+      style="display: none;" #selectedDate>
+
+      <mat-datepicker (dateChange)="change()" touchUi="true" #picker></mat-datepicker>
+      <mat-icon class="date-picker" mat-raised-button (click)="picker.open()">date_range</mat-icon>
+    
+    </div>
+  </div>
+  <div class="view">
+    <div class="reservation-content">
+      <div class="time">
+        Time : 
+        <mat-form-field class="time-select" appearance="fill">
+          <mat-select  name="hour" formControlName="hour" >
+            <mat-option *ngFor="let hour of hour" [value]="hour">
+              {{hour}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        :
+        <mat-form-field class="time-select" appearance="fill">
+          <mat-select  name="minute" formControlName="minute" >
+            <mat-option *ngFor="let minute of minute" [value]="minute">
+              {{minute}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <h3>How many people?</h3>
+      <mat-divider></mat-divider>
+      <div class="quantity">Quantity</div>
+      <div class="form">
+        
+          <h4>Normal</h4>
+          <div class="input"> 
+            <mat-icon class="icon" 
+              onclick="this.parentNode.querySelector('[type=number]').stepDown();">
+              remove_circle
+            </mat-icon>
+            <input formControlName="normal"  class="put" type="number" max="100" min="1">
+            <mat-icon class="icon" 
+              onclick="this.parentNode.querySelector('[type=number]').stepUp();">
+              add_circle
+            </mat-icon>
+          </div>
+        
+      </div>
+      <mat-divider></mat-divider>
+      <div class="form">
+        <h4>Child (-10 years)</h4>
+        <div class="input">
+          <mat-icon class="icon" onclick="this.parentNode.querySelector('[type=number]').stepDown();">remove_circle</mat-icon>
+          <input formControlName="child"  class="put" type="number" name="" max="100" min="0">
+          <mat-icon class="icon" onclick="this.parentNode.querySelector('[type=number]').stepUp();">add_circle</mat-icon>
+        </div>
+        
+      </div>
+      
+      <mat-divider></mat-divider>
+      <h3>What table you’d like?</h3>
+      <div class="place">
+        <div id="flour" class="floor">
+            <div>
+              {{flourTitle}}
+            </div>
+            <img id="ground" class="img-selected" src="assets/reservation/ground-floor.png" alt="">
+            <img id="ferst"   src="assets/reservation/ferst-floor.png" alt="">
+        </div>
+        <div class="stair">
+          <img id="stair" src="assets/reservation/stair.png" alt="">
+          <div>
+            <button (click)="stair()" class="orange-btn extra-small-btn">{{!flourTitle}}</button>
+          </div>
+        </div>
+      </div>
+      
+      <mat-divider></mat-divider>
+      <div class="action">
+        <input type="submit" class="orange-btn extra-small-btn" value="Confirm">
+      </div>
+    </div>
+  </div>
+</form>
+</div>
