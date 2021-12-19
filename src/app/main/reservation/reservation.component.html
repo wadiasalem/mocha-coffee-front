@@ -1,5 +1,8 @@
 <div class="reservation">
-  <form [formGroup]="Reservation">
+  <form 
+  [formGroup]="Reservation"
+  #form="ngForm" 
+  >
   <div class="view">
     <app-page-title title="RESERVATION" width ="auto" ></app-page-title>
     <div class="header">
@@ -37,7 +40,7 @@
         Time : 
         <mat-form-field class="time-select" appearance="fill">
           <mat-select  name="hour" formControlName="hour" >
-            <mat-option *ngFor="let hour of hour" [value]="hour">
+            <mat-option *ngFor="let hour of hour" [value]="hour" (click)="getReservations()">
               {{hour}}
             </mat-option>
           </mat-select>
@@ -45,7 +48,7 @@
         :
         <mat-form-field class="time-select" appearance="fill">
           <mat-select  name="minute" formControlName="minute" >
-            <mat-option *ngFor="let minute of minute" [value]="minute">
+            <mat-option *ngFor="let minute of minute" [value]="minute" (click)="getReservations()">
               {{minute}}
             </mat-option>
           </mat-select>
@@ -62,7 +65,7 @@
               onclick="this.parentNode.querySelector('[type=number]').stepDown();">
               remove_circle
             </mat-icon>
-            <input formControlName="normal"  class="put" type="number" max="100" min="1">
+            <input formControlName="normal"  class="put" type="number" max="100" min="1" #normal>
             <mat-icon class="icon" 
               onclick="this.parentNode.querySelector('[type=number]').stepUp();">
               add_circle
@@ -74,34 +77,52 @@
       <div class="form">
         <h4>Child (-10 years)</h4>
         <div class="input">
-          <mat-icon class="icon" onclick="this.parentNode.querySelector('[type=number]').stepDown();">remove_circle</mat-icon>
-          <input formControlName="child"  class="put" type="number" name="" max="100" min="0">
-          <mat-icon class="icon" onclick="this.parentNode.querySelector('[type=number]').stepUp();">add_circle</mat-icon>
+          <mat-icon class="icon" 
+              onclick="this.parentNode.querySelector('[type=number]').stepDown();">
+              remove_circle
+            </mat-icon>
+          <input formControlName="child"  class="put" type="number" max="100" min="0" #child>
+          <mat-icon class="icon" 
+            onclick="this.parentNode.querySelector('[type=number]').stepUp();">
+            add_circle
+          </mat-icon>
         </div>
         
       </div>
       
       <mat-divider></mat-divider>
       <h3>What table you’d like?</h3>
-      <div class="place">
-        <div id="flour" class="floor">
-            <div>
-              {{flourTitle}}
+      <div *ngIf="
+      this.Reservation.controls['hour'].value && 
+      this.Reservation.controls['minute'].value
+      " class="place">
+        <div id="flour" class="floor" >
+            <img src="assets/reservation/first-floor.png" alt="">
+            <div class="table-click">
+
+              <div 
+              *ngFor="let table of tables?.tables" 
+              style="top : {{table.y}}%;left : {{table.x}}%"
+              class="table" 
+              id="{{table.table_number}}">
+                <img 
+                *ngIf="this.selectedTable.includes(table.table_number)" 
+                (click)="removeTable(table.table_number)"
+                src="assets/icons/check.png" alt="table.table_number">
+                <img *ngIf="this.Reservations.includes(table.table_number);else notReserved" src="assets/icons/reserved.png" alt="1">
+                
+                <ng-template #notReserved>
+                  <div class="selectTable" (click)="selectTable(table.table_number)">
+                  </div>
+                </ng-template>
+              </div> 
             </div>
-            <img id="ground" class="img-selected" src="assets/reservation/ground-floor.png" alt="">
-            <img id="ferst"   src="assets/reservation/ferst-floor.png" alt="">
-        </div>
-        <div class="stair">
-          <img id="stair" src="assets/reservation/stair.png" alt="">
-          <div>
-            <button (click)="stair()" class="orange-btn extra-small-btn">{{!flourTitle}}</button>
-          </div>
         </div>
       </div>
       
       <mat-divider></mat-divider>
       <div class="action">
-        <input type="submit" class="orange-btn extra-small-btn" value="Confirm">
+        <button mat-raised-button color="accent" [disabled]="Reservation.invalid" class="btn" (click)="reserve()">Confirm</button>
       </div>
     </div>
   </div>

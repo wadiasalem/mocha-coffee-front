@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminModule } from './admin/admin.module';
+import { AdminGuardService } from '@services/admin-guard.service';
+import { AuthGuradService } from '@services/auth-gurad.service';
 import { AdminComponent } from './admin/admin.component';
 import { EmployerComponent } from './employer/employer.component';
-import { EmployerModule } from './employer/employer.module';
 
 const routes : Routes = [
   {
     path : "admin",
+    canActivate : [AdminGuardService,AuthGuradService],
     loadChildren: () =>
       import("./admin/admin.module").then((m) => m.AdminModule),
     component : AdminComponent,
@@ -26,8 +26,6 @@ const routes : Routes = [
   declarations: [
   ],
   imports: [
-    AdminModule,
-    EmployerModule,
     RouterModule.forChild(routes),
   ]
 })

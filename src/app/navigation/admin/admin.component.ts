@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RoleGuardService } from '@services/role-guard.service';
 
 @Component({
@@ -8,12 +10,25 @@ import { RoleGuardService } from '@services/role-guard.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private _roleGuard : RoleGuardService) { 
-    this._roleGuard.roleCheck(['1']);
-  }
+  toDay : any;
+  datepipe : DatePipe = new DatePipe('en-US');
+  selected : HTMLElement | null ;
+
+  constructor(private route : ActivatedRoute ) { }
 
   ngOnInit(): void {
-    
+    this.toDay = this.datepipe.transform(new Date(), 'dd-MM-YYYY HH:mm:ss') ;
+    this.route.firstChild?.url.subscribe((data)=>{
+      this.menuSelect(data[0].path);
+    })
+  }
+
+  menuSelect(id : string){
+    this.selected?.classList.remove('orange-btn');
+    this.selected?.classList.add('white-orange-btn');
+    this.selected = document.getElementById(id);
+    this.selected?.classList.remove('white-orange-btn');
+    this.selected?.classList.add('orange-btn');
   }
 
 }

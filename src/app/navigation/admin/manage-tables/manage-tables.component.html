@@ -1,1 +1,94 @@
-<p>manage-tables works!</p>
+<div class="manage-tables">
+  <div class="add-table">
+    <p>Select Table or add one </p><a><mat-icon (click)="openDialog()">add_circle_outline</mat-icon></a>
+    
+  </div>
+  <div class="tables" *ngIf="tables?.length ; else noTables">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Table</mat-label>
+      <mat-select>
+        <mat-option 
+        *ngFor="let tab of tables" 
+        value="tab.table_number" 
+        (click)="information(tab.table_number)">
+        {{tab.table_number}}
+      </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="tableInformations">
+      <h3>InCome statistics : </h3>
+      <div class="InComeStatistics">
+        <div class="toDayInCome">
+          ToDay Income : <div>{{tableInformations.toDayInCome}}</div>
+        </div>
+        <div class="commandes">
+          <div class="contain">
+            <div class="commandes-count">Command Found : {{tableInformations.commandeData?.length}}</div>
+          <div *ngFor="let command of tableInformations.commandeData">
+            commande
+          </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Reservations informations : </h3>
+      <div class="ReservationsStatistics">
+        <div class="Reservations">
+          <div class="contain">
+            <div class="Reservations-count">Reservations Found : {{tableInformations.reservations?.length}}</div>
+            <div class="Reservation" *ngFor="let reservation of tableInformations.reservations">
+              <div class="Reservation-item Reservation-head">
+                <div class="ref">
+                  Ref : {{reservation.data.id}}
+                </div>
+                <div class="client">
+                  Client : {{reservation.data.client}}
+                </div>
+              </div>
+              <div class="Reservation-line">
+                <div class="Reservation-content">
+                  <div>
+                    <div>
+                      Mr/Mme : <span class="result">{{reservation.client.name}}</span> 
+                    </div>
+                    <div *ngIf="reservation.client.phone">
+                      phone number : <span class="result">{{reservation.client.phone}}</span>
+                    </div>
+                    <div>
+                      Resered the Table number <span class="result">{{reservation.table}}</span> <br>
+                      from : <span class="result">{{reservation.data.date_start}}</span> <br>
+                      to : <span class="result">{{reservation.data.date_end}}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      Person : 
+                    </div>
+                    <div class="person">
+                      <div>
+                        Norml : <span class="result">{{reservation.data.normal}}</span>
+                      </div>
+                      <div>
+                        Child : <span class="result">{{reservation.data.child}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <ng-template  #noTables>
+    <div class="tables notfound">
+      <h3>There is no table added try to add one .</h3>
+      <img src="assets/mocha/not-found.png" alt="">
+    </div>
+  </ng-template>
+</div>
+

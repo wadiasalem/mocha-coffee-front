@@ -1,0 +1,43 @@
+@use '/src/app/theme.scss' as style;
+.admin{
+  .admin-thumbnail{
+    background-color: #b8d7dc;
+    color: #ffffff;
+    height: 400px;
+    margin-top: 70px;
+    .view{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h3{
+        font-size: 70px;
+      }
+      img{
+        height: 100%;
+      }
+    }
+    
+  }
+  .admin-content{
+    margin: 50px 0;
+    background-color: #fff;
+    padding: 30px !important;
+    .head{
+      border-bottom: solid 2px style.$orange-color;
+      .date{
+        text-align: right;
+        color: style.$base-color;
+      }
+    }
+    .nav{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+      .btn{
+        width: 200px;
+        margin: 0 10px;
+      }
+    }
+  }
+}

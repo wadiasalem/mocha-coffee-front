@@ -45,10 +45,7 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
     private auth : AuthService,
     private cdRef:ChangeDetectorRef,
     private route: ActivatedRoute,
-    private routes : Router
     ) { 
-    if(!this.auth.getIsConnected())
-      {this.routes.navigate(['auth/sign-in'])}
     this.name = localStorage.getItem('name');
     this.points = localStorage.getItem('points');
   }

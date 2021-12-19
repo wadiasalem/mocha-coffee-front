@@ -1,2 +1,45 @@
-<p>Good Day chef</p>
-<router-outlet></router-outlet>
+<div class="admin">
+  <div class="admin-thumbnail">
+    <div class="view">
+      <h3>Good Day Chef</h3>
+      <img src="assets/mocha/admin.png" alt="">
+    </div>
+  </div>
+  <div class="view">
+    <div class="item admin-content">
+      <div class="head">
+        <div class="date">
+          {{toDay}}
+        </div>
+        <div class="nav">
+          <a (click)="menuSelect('check-stock')" routerLink="/admin/check-stock">
+            <button id="check-stock"  class="btn extra-small-btn white-orange-btn">
+              Check Stock</button>
+          </a>
+          <a (click)="menuSelect('check-income')" routerLink="/admin/check-income">
+            <button id="check-income" class="btn extra-small-btn white-orange-btn">
+              Check Income</button>
+          </a>
+          <a (click)="menuSelect('manage-tables')" routerLink="/admin/manage-tables">
+            <button id="manage-tables" class="btn extra-small-btn white-orange-btn">
+              Manage Tables</button>
+          </a>
+          <a (click)="menuSelect('manage-employers')" routerLink="/admin/manage-employers">
+            <button id="manage-employers" class="btn extra-small-btn white-orange-btn">
+              Manage Employers</button>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="selected ; else notSelected">
+        <router-outlet></router-outlet>
+      </div>
+      <ng-template #notSelected>
+        <div>
+          <p>not Selected</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+</div>
+

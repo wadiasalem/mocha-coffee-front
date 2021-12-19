@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import { CartService } from './cart.service';
 })
 export class AuthService {
 
-  isconnected : BehaviorSubject<boolean>  ;
+  private isconnected : BehaviorSubject<boolean>  ;
 
   constructor(private http : HttpClient,private router : Router,private cart:CartService) { 
     if(localStorage.getItem('token'))
@@ -38,7 +38,7 @@ export class AuthService {
           this.router.navigate(["/"]);
         }
         else{
-          this.router.navigate(["/"]);
+          this.router.navigate(["/admin"]);
         }
         Swal.fire({
           timer: 1000,
@@ -80,7 +80,7 @@ export class AuthService {
           this.router.navigate(["/"]);
         }
         else{
-          this.router.navigate(["/"]);
+          this.router.navigate(["/admin"]);
 
         }
         Swal.fire({
@@ -105,17 +105,17 @@ export class AuthService {
 
   logout(){
     let option =this.getAuthorization();
-    this.http.post(`${environment.API_URL}/auth/logout`,null,{headers:option})
-    .subscribe(
-      (data: any) => {
-        if(data.status == 'success'){
+    this.http.post(`${environment.API_URL}/logout`,null,{headers:option})
+    .subscribe((data: any) => {
           localStorage.clear();
+          this.cart.clearCart();
           this.isconnected.next(false);
-          this.router.navigate(["/"]);
-        }
+          this.router.navigate(["/auth/sign-in"]);
+        
+      },(error)=>{
+        console.log(error);
       });
-    this.cart.clearCart();
-    localStorage.clear();
+    
   }
 
   getAuthorization():HttpHeaders{

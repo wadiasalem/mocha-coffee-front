@@ -31,6 +31,7 @@ export class SignInComponent implements OnInit {
         remember : ['']
     });
     
+    window.scrollTo(0,0);
   }
 
   Authenticate(){

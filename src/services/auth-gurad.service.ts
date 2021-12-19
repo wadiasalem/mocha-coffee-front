@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuradService {
+export class AuthGuradService implements CanActivate {
 
   constructor(private Router : Router) { }
 
-  canUse(){
-    if(localStorage.getItem('token'))
+  canActivate(
+    route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+      if(localStorage.getItem('token'))
       return true;
     else{
       this.Router.navigate(['auth/sign-in']);
       return false;
     }
-      
   }
 
 }

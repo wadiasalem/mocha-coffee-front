@@ -90,90 +90,51 @@
     .place{
       margin: 50px 0;
       display: flex;
-      align-items: center;
-      justify-content: space-around;
-      .stair{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        img{
-          width: 150px;
-        }
-        button{
-          margin: 50px 0;
-        }
-      }
+      justify-content: center;
       .floor{
         position: relative;
-        border-radius: 10px;
+        border-radius: 15px;
         padding: 20px;
-        width: 40vw;
-        height: 42vw;
+        width: 80%;
         background-color: #fff;
         box-shadow: 0 0 6px rgb(0, 0, 0,20%);
         color: style.$base-color;
         img{
-          width: calc(100% - 40px);
-          position: absolute;
-          opacity:0;
+          border-radius: 10px;
+          width: 100%
+          
         }
-        .img-selected{
-          opacity:1;
+        .table-click{
+          position: absolute;
+          height: calc(100% - 40px);
+          width: calc(100% - 40px);
+          top: 20px;
+          z-index: 800;
+          .table{
+            position: absolute;
+            cursor: pointer;
+            height: 30px;
+            width: 30px;
+            img{
+              width: 100%
+            }
+            .selectTable{
+              height: 100%;
+            }
+          }
+          
         }
         
-      }
-      .stair{
-        .up{
-          animation: upRotate 2s ;
-        }
-        .down{
-          animation: downRotate 2s ;
-        }
-      }
-      .selected{
-        animation: selected 2s ;
       }
     }
     
     .action{
       text-align: right;
       margin: 20px 0;
+      .btn{
+        border-radius: 25px;
+      }
     }
   }
 }
 
-@keyframes selected {
-  0% {
-    opacity:1;
-    transform:  rotateX(0deg);
-  }
-
-  50% {
-    opacity:0;
-    transform:  rotateX(90deg);
-  }
-
-
-  100% {
-    opacity:1;
-    transform: rotateX(0deg);
-  }
-}
-
-@keyframes upRotate {
-  0% {
-    transform:  rotate(0deg);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
-}
-
-@keyframes downRotate {
-  0% {
-    transform:  rotate(0deg);
-  }
-  100% {
-    transform: rotate(-45deg);
-  }
-}

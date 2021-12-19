@@ -1,0 +1,119 @@
+@use '/src/app/theme.scss' as style ;
+
+.manage-tables{
+  .add-table{
+    margin: 20px 0;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    color: style.$base-color;
+    p{
+      margin: 0 10px;
+    }
+  }
+  .tables{
+    h3{
+      color: style.$orange-color;
+    }
+    .InComeStatistics{
+      margin: 20px;
+      .toDayInCome{
+        display: flex;
+        align-items: center;
+        color: style.$black-color;
+        margin: 20px 0;
+        div{
+          text-align: center;
+          background-color: greenyellow;
+          color: #fff;
+          border-radius: 7px;
+          min-width: 50px;
+          padding: 10px;
+          margin: 0 20px;
+          
+        }
+      }
+    }
+    .ReservationsStatistics{
+      margin: 20px;
+      .Reservation{
+        
+        border-radius: 10px;
+        background-color: style.$base-color;
+        padding: 10px;
+        color: #fff;
+        margin: 10px 0 ;
+        .Reservation-item{
+          margin-bottom: 10px;
+        }
+        .Reservation-head{
+          max-width: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .client,.ref{
+            font-size: 13px;
+          }
+          .client{
+            width: 85.41px;
+          }
+        }
+        .Reservation-line{
+          border-top: solid 2px #fff;
+          padding-top: 20px;
+          font-size: 13px;
+          .result{
+            font-size: 15px;
+          }
+          .Reservation-content{
+            max-width: 500px;
+            display: flex;
+            justify-content: space-between;
+            
+            .person{
+              padding: 0 10px;
+            }
+          }
+        }
+        
+        
+      }
+    }
+    .Reservations,.commandes{
+      min-height: 200px;
+      max-height: 500px;
+      border-radius: 10px;
+      border: solid 2px style.$base-color;
+      padding: 10px;
+      .contain{
+        min-height: 180px;
+        max-height: 480px;
+        overflow-y: auto;
+        white-space: nowrap;
+        .Reservations-count,.commandes-count{
+          color: grey;
+          font-size: 12px;
+        }
+      }
+      
+    }
+    
+  }
+  .notfound{
+    color: style.$base-color;
+    text-align: center;
+    img{
+      width: 50%;
+    }
+  }
+}
+
+.adding{
+  h3{
+    color: style.$base-color
+  }
+  button,mat-form-field{
+    width: 100% ;
+  }
+}
+  

@@ -12,30 +12,36 @@ import { LayoutModule } from './layout/layout.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
+import { AuthService } from '@services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientGuardService } from '@services/client-guard.service';
 
 
 const appRoutes: Routes = [
-  { 
-    path: "", 
-    redirectTo : "app/home",
-    pathMatch : "full"
-  },
   {
-    path : "app",
+    path: "auth", 
+    loadChildren: () =>
+      import("../app/main/auth/auth.module").then(((m)=>m.AuthModule)),
+  },
+  //client routes
+  {
+    path : "",
+    canActivate : [ClientGuardService],
     loadChildren: () =>
       import("./main/main.module").then((m) => m.MainModule),
-    },
+  },
+  //admin/table/employer routes
   {
-    path: "mocha",
+    path: "",
       loadChildren: () =>
       import("./navigation/navigation.module").then((m) => m.NavigationModule),
 
-    },
-    {
+  },
+  {
       path : "**",
       redirectTo : "/error/404"
     
-    },
+  },
   {
     path : "error",
     loadChildren: () =>
@@ -49,18 +55,16 @@ const appRoutes: Routes = [
     AppComponent,
   ],
   imports: [
-    NavigationModule,
-    ErrorsModule,
     TemplateModule,
-    MainModule,
     MatButtonModule,
     LayoutModule,
     
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

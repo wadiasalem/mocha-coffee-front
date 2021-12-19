@@ -1,0 +1,33 @@
+
+<form [formGroup]="TableForm" class="adding"> 
+  <h3>Add Table : </h3>
+  <mat-form-field appearance="fill">
+    <mat-label>User Name Table</mat-label>
+    <input matInput formControlName="user_name" >
+    <mat-error *ngIf="TableForm.get('user_name')?.hasError('required')">
+      User Name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email Table</mat-label>
+    <input matInput formControlName="email" >
+    <mat-error *ngIf="TableForm.get('email')?.hasError('required')">
+      Email Table is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password Table</mat-label>
+    <input matInput formControlName="password" >
+    <mat-error *ngIf="TableForm.get('password')?.hasError('required')">
+      Password Table is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Number Table</mat-label>
+    <input matInput formControlName="table_number" >
+    <mat-error *ngIf="TableForm.get('table_number')?.hasError('required')">
+      Number Table is required
+    </mat-error>
+  </mat-form-field>
+  <button (click)="addTable()" class="btn orange-btn extra-small-btn">ADD</button>
+</form>

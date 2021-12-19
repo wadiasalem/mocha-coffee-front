@@ -21,7 +21,6 @@ export class RoleGuardService {
 
     if(!result){
       this._auth.logout();
-      this.route.navigate(['/auth/sign-in']);
     }
     
   }
