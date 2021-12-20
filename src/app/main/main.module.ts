@@ -33,7 +33,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     RewordsComponent,
   ],
   imports: [
-    DashboardModule,
     TemplateModule,
     AuthModule,
 

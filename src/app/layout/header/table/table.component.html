@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="view horizontal">
+    <a href="/admin" ><img class="logo" src="assets/icons/logo-text.png" alt=""></a>
+    <div class="header-menu horizontal menu-right">
+      <a (click)="buy()">
+        <mat-icon matBadge="{{food.length}}" matBadgeColor="accent">
+          fastfood
+        </mat-icon>
+        </a>
+      <a (click)="logout()">
+        <button class="btn extra-small-btn">
+          Logout
+        </button>
+      </a>
+    </div>
+  </div>
+</header>

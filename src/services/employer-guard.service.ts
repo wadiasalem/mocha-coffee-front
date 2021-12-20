@@ -9,18 +9,24 @@ import { AuthService } from './auth.service';
 export class EmployerGuardService implements CanActivate{
 
   constructor(
-    private _auth : AuthService,
-    private Router : Router) { }
+    private router : Router) { }
   canActivate(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if(localStorage.getItem('role') == '4' ){
       return true
     }else{
-      if(this._auth.getIsConnected() == true){
-        this._auth.logout();
-      }
-      this.Router.navigate(['auth/sign-in']);
+      switch (localStorage.getItem("role")) {
+        case "1":
+          this.router.navigate(["/admin"]);
+          break;
+        case "2":
+          this.router.navigate(["/"]);
+          break;
+        case "3":
+          this.router.navigate(["/table"]);
+          break;
+        }
       return false;
     } 
   }

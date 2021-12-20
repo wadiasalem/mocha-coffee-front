@@ -1,72 +1,30 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component} from '@angular/core';
 import { AuthService } from '@services/auth.service';
-import { CartService } from '@services/cart.service';
-import { OrderService } from '@services/order.service';
-
-interface menuItem {
-  title : string,
-  href : string
-}
-
-const menu = [
-  {
-    title : "Menu",
-    href : "/menu"
-  },
-  {
-    title : "Rewards",
-    href : "/rewords"
-  },
-  {
-    title : "Gift-Center",
-    href : "/gifts"
-  },
-  {
-    title : "Reservation",
-    href : "/reservation"
-  }
-];
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent  {
 
-  menu :Array<menuItem>= menu;
-  isconnected : boolean = false ;
-  cart : {
-    items : Array<any>,
-    length : number,
-    total : number
-  };
+  role : string | null = null;
 
-  food : {
-    items : Array<any>,
-    length : number,
-    total : number
-  };
+  constructor(private _auth : AuthService){
 
-  constructor(
-    private auth : AuthService,
-    private _food : OrderService,
-    private _cart : CartService) { 
-    this.cart = {items:[],length :0,total:0};
-  }
-
-  ngOnInit(): void {
-    this.auth.isConnected().subscribe((value)=>{
-      this.isconnected = value;
-    });
-    this._cart.getAll().subscribe((cart)=>{
-      this.cart = cart;
+    this._auth.isConnected().subscribe((data)=>{
+      if(data){
+        switch (localStorage.getItem('role')) {
+          case '1': this.role = 'admin';break;
+          case '2': this.role = 'client';break;
+          case '3': this.role = 'table';break;
+          case '4': this.role = 'employer';break;
+        }
+      }else{
+        this.role = null ;
+      }
     })
-    this._food.getAll().subscribe((food)=>{
-      this.food = food;
-    })
+    
   }
-
 
 }

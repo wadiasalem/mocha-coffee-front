@@ -1,0 +1,79 @@
+
+<form [formGroup]="EmployerForm" class="adding"> 
+  <h3>Add Employer : </h3>
+  <div class="Employer-Inputs">
+    <div class="employer-left">
+      <mat-form-field appearance="fill">
+        <mat-label>User Name Employer</mat-label>
+        <input matInput formControlName="user_name" >
+        <mat-error *ngIf="EmployerForm.get('user_name')?.hasError('required')">
+          User Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email Employer</mat-label>
+        <input matInput formControlName="email" >
+        <mat-error *ngIf="EmployerForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="!EmployerForm.get('email')?.hasError('required')
+        && EmployerForm.get('email')?.hasError('email')">
+          Email format invalid
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password Employer</mat-label>
+        <input matInput formControlName="password" >
+        <mat-error *ngIf="EmployerForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option value="6">Delivery employer</mat-option>
+          <mat-option value="5">Waitress employer</mat-option>
+        </mat-select>
+        <mat-error *ngIf="EmployerForm.get('category')?.hasError('required')">
+          Category is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="employer-right">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" >
+        <mat-error *ngIf="EmployerForm.get('name')?.hasError('required')">
+          name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" type="number">
+        <mat-error *ngIf="EmployerForm.get('phone')?.hasError('required')">
+          Phone number is required
+        </mat-error>
+        <mat-error 
+        *ngIf="!EmployerForm.get('phone')?.hasError('required') 
+        && EmployerForm.get('phone')?.invalid">
+          Phone number Format invalid
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Cin</mat-label>
+        <input matInput formControlName="cin" type="number">
+        <mat-error *ngIf="EmployerForm.get('cin')?.hasError('required')">
+          Cin is required
+        </mat-error>
+        <mat-error 
+        *ngIf="!EmployerForm.get('cin')?.hasError('required') 
+        && EmployerForm.get('cin')?.invalid">
+          Cin Format invalid
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="action">
+    <button [disabled]="EmployerForm.invalid" (click)="addEmployer()" class="btn orange-btn extra-small-btn">ADD</button>
+  </div>
+</form>

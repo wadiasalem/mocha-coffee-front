@@ -11,24 +11,6 @@
         <div class="date">
           {{toDay}}
         </div>
-        <div class="nav">
-          <a (click)="menuSelect('check-stock')" routerLink="/admin/check-stock">
-            <button id="check-stock"  class="btn extra-small-btn white-orange-btn">
-              Check Stock</button>
-          </a>
-          <a (click)="menuSelect('check-income')" routerLink="/admin/check-income">
-            <button id="check-income" class="btn extra-small-btn white-orange-btn">
-              Check Income</button>
-          </a>
-          <a (click)="menuSelect('manage-tables')" routerLink="/admin/manage-tables">
-            <button id="manage-tables" class="btn extra-small-btn white-orange-btn">
-              Manage Tables</button>
-          </a>
-          <a (click)="menuSelect('manage-employers')" routerLink="/admin/manage-employers">
-            <button id="manage-employers" class="btn extra-small-btn white-orange-btn">
-              Manage Employers</button>
-          </a>
-        </div>
       </div>
       <div *ngIf="selected ; else notSelected">
         <router-outlet></router-outlet>

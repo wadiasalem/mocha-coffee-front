@@ -62,4 +62,9 @@ export class OrderService {
     localStorage.setItem('food',JSON.stringify(this.food.getValue()));
   }
 
+  update(food : any ){
+    this.food.next(food) ;
+    this.store();
+  }
+
 }

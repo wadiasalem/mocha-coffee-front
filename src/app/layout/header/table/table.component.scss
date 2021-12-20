@@ -1,0 +1,99 @@
+@use '/src/app/theme.scss' as style;
+
+.header{
+  height: 70px;
+  width: 100%;
+  background-color: #fff;
+  color: style.$base-color;
+  box-shadow:   0 2px 6px style.$shadow-color;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  .view{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .logo{
+      margin: auto;
+      height: 50px;
+    }
+    .header-menu{
+      justify-content: space-between;
+      ul{
+        list-style-type: none;
+        padding-inline-start: 0;
+        li{
+          display: inline;
+        }
+      }
+      a{
+        margin: 20px;
+        color: style.$base-color;
+      }
+      .btn{
+        color: #fff;
+        background-color: #FD5353;
+        border: solid 2px #FD5353;
+      }
+    }
+  }
+}
+
+
+.logout-dialog{
+  mat-form-field{
+    width: 100%;
+  }
+  .action{
+    margin: 10px 0;
+    text-align: right;
+  }
+}
+
+.food-dialog{
+  .clear-all{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    color: style.$base-color;
+  }
+  h3{
+    color  : style.$base-color;
+  }
+  .food{
+    color: style.$black-color;
+      border : solid 2px style.$base-color;
+      border-radius: 10px;
+      margin: 10px 0;
+      padding: 0 1em 1em 1em;
+    }
+    .food-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .remove{
+        background-color: #FD5353;
+        color: #fff;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+      }
+    }
+    .food-content{
+      display: flex;
+      justify-content: space-between;
+      
+  }
+  
+  .total{
+    margin: 10px 0;
+    border-top: solid 2px style.$orange-color;
+  }
+  .total,.action{
+    text-align: right;
+  }
+}

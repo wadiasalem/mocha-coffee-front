@@ -1,0 +1,32 @@
+@use '/src/app/theme.scss' as style;
+.employer{
+  .employer-thumbnail{
+    background-color: #ffd589;
+    color: #ffffff;
+    height: 400px;
+    margin-top: 70px;
+    .view{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h3{
+        font-size: 60px;
+      }
+      img{
+        height: 70%;
+      }
+    }
+    
+  }
+  .employer-content{
+    margin: 50px 0;
+    background-color: #fff;
+    padding: 30px !important;
+    .head{
+      .date{
+        text-align: right;
+        color: style.$base-color;
+      }
+    }
+  }
+}

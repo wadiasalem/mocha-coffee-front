@@ -1,7 +1,6 @@
 <div class="manage-tables">
   <div class="add-table">
     <p>Select Table or add one </p><a><mat-icon (click)="openDialog()">add_circle_outline</mat-icon></a>
-    
   </div>
   <div class="tables" *ngIf="tables?.length ; else noTables">
     <mat-form-field appearance="fill">

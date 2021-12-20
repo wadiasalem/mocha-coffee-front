@@ -9,18 +9,24 @@ import { AuthService } from './auth.service';
 export class AdminGuardService implements CanActivate{
 
   constructor(
-    private _auth : AuthService,
-    private Router : Router) { }
+    private router : Router) { }
   canActivate(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if(localStorage.getItem('role') == '1' ){
       return true
     }else{
-      if(this._auth.getIsConnected() == true){
-        this._auth.logout();
+      switch (localStorage.getItem("role")) {
+      case "2":
+        this.router.navigate(["/"]);
+        break;
+      case "3":
+        this.router.navigate(["/table"]);
+        break;
+      case "4":
+        this.router.navigate(["/employer"]);
+        break;
       }
-      this.Router.navigate(['auth/sign-in']);
       return false;
     } 
   }

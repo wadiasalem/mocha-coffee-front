@@ -1,0 +1,45 @@
+@use '/src/app/theme.scss' as style ;
+
+.manage-employers{
+  .add-employer{
+    margin: 20px 0;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    color: style.$base-color;
+    p{
+      margin: 0 10px;
+    }
+  }
+}
+
+.adding{
+  h3{
+    color: style.$base-color;
+  }
+  .Employer-Inputs{
+    display: flex;
+    align-items: flex-start;
+
+    .employer-left{
+      padding-right : 20px ;
+      border-right: solid 2px style.$orange-color;
+    }
+
+    .employer-right{
+      padding-left : 20px ;
+    }
+
+    div{
+      width: calc(50% - 20px);
+    }
+    mat-form-field{
+      width: 100%;
+    }
+  }
+
+  .action{
+    text-align: right;
+    margin: 10px 0;
+  }
+}

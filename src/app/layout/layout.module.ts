@@ -6,24 +6,26 @@ import { HeaderComponent } from './header/header.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ClientComponent } from './header/client/client.component';
+import { HeaderModule } from './header/header.module';
 
 
 
 @NgModule({
   declarations: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   exports:[
     FooterComponent,
     HeaderComponent,
   ],
   imports: [
-    MatBadgeModule,
     CommonModule,
     MatDividerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HeaderModule
   ]
 })
 export class LayoutModule { }

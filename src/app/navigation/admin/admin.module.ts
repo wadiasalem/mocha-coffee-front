@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ManageTablesComponent,updateDialog } from './manage-tables/manage-tables.component';
-import { ManageEmployersComponent } from './manage-employers/manage-employers.component';
+import { addEmployer, ManageEmployersComponent } from './manage-employers/manage-employers.component';
 import { CheckIncomeComponent } from './check-income/check-income.component';
 import { CheckStockComponent } from './check-stock/check-stock.component';
 import { HttpClientJsonpModule } from '@angular/common/http';
@@ -37,6 +37,7 @@ const routes : Routes = [
 
 @NgModule({
   declarations: [
+    addEmployer,
     updateDialog,
     AdminComponent,
     ManageTablesComponent,

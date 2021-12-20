@@ -30,15 +30,10 @@
         margin: 20px;
         color: style.$base-color;
       }
-      .profile{
-        height: 30px;
-        width: 30px;
-        margin-right: 0px;
-        mat-icon{
-          height: 30px;
-          width: 30px;
-          font-size: 30px;
-        }
+      .btn{
+        color: #fff;
+        background-color: #FD5353;
+        border: solid 2px #FD5353;
       }
     }
   }

@@ -1,0 +1,13 @@
+
+<form [formGroup]="logoutForm" class="logout-dialog"> 
+  <mat-form-field appearance="fill">
+    <mat-label>Password Table</mat-label>
+    <input matInput formControlName="password" >
+    <mat-error *ngIf="logoutForm.get('password')?.hasError('required')">
+      Password Table is required
+    </mat-error>
+  </mat-form-field>
+  <div class="action">
+    <button (click)="logout()" class="btn orange-btn extra-small-btn">Logout</button>
+  </div>
+</form>

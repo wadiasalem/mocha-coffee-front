@@ -1,0 +1,34 @@
+<div class="food-dialog">
+  <div (click)="clear()">
+    <a class="clear-all">Clear all <mat-icon>clear_all</mat-icon></a>
+  </div>
+  <div *ngFor="let food of order.items">
+    <div *ngIf="food" class="food">
+      <div class="food-header">
+        <h3>
+          {{food.name}}
+        </h3>
+        <a class="remove" (click)="remove(food.id)">
+          X
+        </a>
+      </div>
+      <div class="food-content">
+        <div>
+          Price : {{food.price}} x {{food.quantity}}
+        </div>
+        <div>
+          {{food.price * food.quantity}}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="total">
+    <h3>{{order.total}}</h3>
+  </div>
+  <div class="action">
+    <button (click)="buy()" class="btn orange-btn extra-small-btn">
+       Order
+    </button>
+  </div>
+</div>

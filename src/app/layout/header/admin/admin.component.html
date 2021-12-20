@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="view horizontal">
+    <a href="/admin" ><img class="logo" src="assets/icons/logo-text.png" alt=""></a>
+    <div class="header-menu horizontal menu-right">
+      <ul>
+        <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
+      </ul>
+      <a (click)="logout()">
+        <button class="btn extra-small-btn">
+          Logout
+        </button>
+      </a>
+    </div>
+  </div>
+</header>

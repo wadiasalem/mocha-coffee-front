@@ -46,7 +46,7 @@ export class ManageTablesComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(updateDialog, {
       width: '300px',
-      data: {name: "this.name", animal: "this.animal"},
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -24,21 +24,32 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/login`, loginForm)
     .subscribe(
       (data: any) => {
+        console.log(data);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("username", data.user.user_name);
         localStorage.setItem("role", data.user.role);
         localStorage.setItem("email", data.user.email);
         this.isconnected.next(true);
-        if(localStorage.getItem("role")=="2") {
-          localStorage.setItem("name", data.client.name);
-          localStorage.setItem("points", data.client.points);
-          localStorage.setItem("number", data.client.phone?data.client.phone:'');
-          localStorage.setItem('address',data.client.address?data.client.address:'');
-          this.router.navigate(["/"]);
-        }
-        else{
-          this.router.navigate(["/admin"]);
+        switch (localStorage.getItem("role")) {
+          case "1":
+            this.router.navigate(["/admin"]);
+            break;
+          case "3":
+            localStorage.setItem("table_number", data.table.table_number);
+            this.router.navigate(["/table"]);
+            break;
+          case "4":
+            localStorage.setItem("name", data.employer.name);
+            this.router.navigate(["/employer"]);
+            break;
+          default:
+            localStorage.setItem("name", data.client.name);
+            localStorage.setItem("points", data.client.points);
+            localStorage.setItem("number", data.client.phone?data.client.phone:'');
+            localStorage.setItem('address',data.client.address?data.client.address:'');
+            this.router.navigate(["/"]);
+            break;
         }
         Swal.fire({
           timer: 1000,
@@ -66,22 +77,24 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/register`, loginForm)
     .subscribe(
       (data: any) => {
-        console.log(data.client)
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("username", data.user.user_name);
         localStorage.setItem("role", data.user.role);
         localStorage.setItem("email", data.user.email);
         this.isconnected.next(true);
-        if(localStorage.getItem("role")=="2") {
-          localStorage.setItem("name", data.client.name);
-          localStorage.setItem("points", data.client.points);
-          localStorage.setItem("number", data.client.phone?data.client.phone:'');
-          this.router.navigate(["/"]);
-        }
-        else{
-          this.router.navigate(["/admin"]);
-
+        
+        switch (localStorage.getItem("role")) {
+          case "1":this.router.navigate(["/admin"]);break;
+          case "3":this.router.navigate(["/table"]);break;
+          case "4":this.router.navigate(["/employer"]);break;
+          default:
+            localStorage.setItem("name", data.client.name);
+            localStorage.setItem("points", data.client.points);
+            localStorage.setItem("number", data.client.phone?data.client.phone:'');
+            localStorage.setItem('address',data.client.address?data.client.address:'');
+            this.router.navigate(["/"]);
+            break;
         }
         Swal.fire({
           timer: 1000,

@@ -1,33 +1,38 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { OrderService } from '@services/order.service';
 import { environment } from 'src/environments/environment';
-import {OrderService} from '@services/order.service'
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class TableComponent implements OnInit {
 
-  categ : any =[];
-  categError : string ='';
-  categorySelected : string = '';
-
-  product : any =[];
-  productError : string ='';
+  toDay : any;
+  datepipe : DatePipe = new DatePipe('en-US');
 
   element : Array<HTMLElement | null> = [];
 
+  table_number : string | null;
+  categ : any =[];
+  categError : string ='';
+  product : any =[];
+  productError : string ='';
 
   constructor(
     private http: HttpClient,
-    private _snackBar: MatSnackBar,
-    private food : OrderService
-    ) {}
+    private food : OrderService) { 
+    this.table_number = localStorage.getItem('table_number');
+  }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.toDay = this.datepipe.transform(new Date(), 'dd-MM-YYYY HH:mm:ss') ;
+    }, 1);
+
     this.http.get(`${environment.API_URL}/menu`)
       .subscribe((res: any) => {
         if(res.status == 'success')
@@ -37,16 +42,10 @@ export class MenuComponent implements OnInit {
         else
           this.categError = res.description;
       });
+    
   }
 
-  select(id : string):void {
-    document.getElementById(this.categorySelected)?.classList.remove('selected');
-
-    this.categorySelected=id;
-    setTimeout(() => {
-      document.getElementById(id)?.classList.add('selected');
-    }, 5);
-
+  select(id : string){
     this.http.get(`${environment.API_URL}/menu/product?id=${id}`)
       .subscribe((res: any) => {
         if(res.status == 'success')
@@ -56,6 +55,11 @@ export class MenuComponent implements OnInit {
         else
           this.productError = res.description;
       });
+  }
+
+  back(){
+    this.product = [];
+    this.productError = '' ;
   }
 
   showDescription(id:string){
@@ -96,10 +100,7 @@ export class MenuComponent implements OnInit {
   addToCart(id : string,name : string , price : string){
     let quantity :number = +(<HTMLInputElement>document.getElementById("Q"+id)).value
     this.food.add(id,quantity,name,parseInt(price));
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this.close();
   }
 
 }
