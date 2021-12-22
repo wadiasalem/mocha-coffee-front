@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { PusherService } from '@services/pusher.service';
 
 @Component({
   selector: 'app-employer',
@@ -13,7 +14,7 @@ export class EmployerComponent implements OnInit {
   datepipe : DatePipe = new DatePipe('en-US');
   name : string | null = "";
 
-  constructor() { }
+  constructor(private pusher : PusherService) { }
 
   ngOnInit(): void {
     setInterval(() => {
@@ -21,6 +22,7 @@ export class EmployerComponent implements OnInit {
     }, 1);
 
     this.name = localStorage.getItem('name');
+
   }
 
 }

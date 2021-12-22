@@ -41,6 +41,7 @@ export class AuthService {
             break;
           case "4":
             localStorage.setItem("name", data.employer.name);
+            localStorage.setItem("category", data.category);
             this.router.navigate(["/employer"]);
             break;
           default:

@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@services/order.service';
+import { PusherService } from '@services/pusher.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
