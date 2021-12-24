@@ -8,13 +8,6 @@ interface menuItem {
   href : string
 }
 
-const menu : Array<menuItem> = [
-  {
-    title : "Check Reservations",
-    href : "/employer/reservations"
-  },
-];
-
 
 @Component({
   selector: 'app-employer',
@@ -23,7 +16,7 @@ const menu : Array<menuItem> = [
 })
 export class EmployerComponent implements OnInit {
 
-  menu :Array<menuItem>= menu;
+  menu :Array<menuItem> = [];
   isconnected : boolean = false ;
   notif : number = 0 ;
 
@@ -38,6 +31,15 @@ export class EmployerComponent implements OnInit {
       this.isconnected = value;
     });
 
+    if(localStorage.getItem("category") == "waitress"){
+      this.menu = [
+        {
+          title : "Check Reservations",
+          href : "/employer/reservations"
+        },
+      ]
+    }
+
     const header = this.auth.getAuthorization();
     this.http.get(`${environment.API_URL}/employer/get-commands`,{headers : header})
     .subscribe((commands : any)=>{
@@ -49,6 +51,12 @@ export class EmployerComponent implements OnInit {
     this.pusher.channel.bind('created', (data : any) =>{
       if(data){
         this.notif += 1 ;
+      }
+    });
+
+    this.pusher.channel.bind('updated', (data : any) =>{
+      if(data){
+        this.notif -= 1 ;
       }
     });
   }

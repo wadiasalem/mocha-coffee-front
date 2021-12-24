@@ -32,7 +32,7 @@ export class ManageTablesComponent implements OnInit {
 
 
   getTables(){
-    let header = this._auth.getAuthorization();
+    const header = this._auth.getAuthorization();
 
     this.http.get(`${environment.API_URL}/admin/get-tables`,{headers : header})
     .subscribe((result : any)=>{
@@ -60,7 +60,6 @@ export class ManageTablesComponent implements OnInit {
 
     this.http.get(`${environment.API_URL}/admin/get-table-info`,{headers : header,params:{table_number:number}})
     .subscribe((result : any)=>{
-      console.log(result);
       this.tableInformations = result ;
     },((error : any)=>{
       console.log(error)

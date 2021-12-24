@@ -24,6 +24,10 @@ const menu = [
   {
     title : "Manage Employers",
     href : "/admin/manage-employers"
+  },
+  {
+    title : "Manage Rewords",
+    href : "/admin/manage-rewords"
   }
 ];
 

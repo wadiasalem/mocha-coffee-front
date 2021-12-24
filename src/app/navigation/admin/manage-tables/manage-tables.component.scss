@@ -33,6 +33,32 @@
           
         }
       }
+      .commandes-found{
+        margin: 10px 0 ;
+        .command{
+          background-color: style.$base-color;
+          color: #fff;
+          border-radius: 7px;
+          padding: 10px;
+          margin-bottom: 10px;
+          .head{
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+          }
+          .employer{
+            
+          }
+          .detail{
+            
+          }
+        } 
+        
+      }
+      
     }
     .ReservationsStatistics{
       margin: 20px;

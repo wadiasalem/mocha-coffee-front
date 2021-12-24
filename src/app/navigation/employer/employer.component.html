@@ -12,7 +12,25 @@
           {{toDay}}
         </div>
       </div>
-      <router-outlet></router-outlet>
+      <div *ngIf="!selected ; else notSelected" >
+        <div *ngIf="employer" class="stat">
+          <div class="welcom">
+            Welcome Back!
+          </div>
+          <div>
+            Today, you have served {{employer.today}} clients.
+          </div>
+          <div *ngIf="category == 'waitress'">
+            Tables Served : {{employer.total}}.
+          </div>
+          <div *ngIf="category == 'delivery employer'">
+            Client Served : {{employer.total}}.
+          </div>
+        </div>
+      </div>
+      <ng-template #notSelected>
+        <router-outlet></router-outlet>
+      </ng-template>
     </div>
   </div>
 </div>

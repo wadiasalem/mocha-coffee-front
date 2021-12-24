@@ -2,4 +2,42 @@
   <div class="add-employer">
     <p>Select Employer or add one </p><a><mat-icon (click)="openDialog()">add_circle_outline</mat-icon></a>
   </div>
+  <div class="data">
+    <div class="employers" *ngIf="employers?.length ; else noEmlpoyer">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Employer</mat-label>
+        <mat-select>
+          <mat-option 
+          *ngFor="let emp of employers" 
+          value="emp.id" 
+          (click)="information(emp.id)">
+          {{emp.name}}
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div  *ngIf="employer">
+        <div class="action">
+          <button (click)="deleteEmployer()" class="btn">Delete</button>
+        </div>
+        <div class="employer-Selected">
+          <div class="header">
+            <span>Ref : {{employer.employer.id}} </span> <span>Name : {{employer.employer.name}}</span>
+          </div>
+          <div class="content">
+            Category : {{employer.category.name}}<br>
+            He/She Served {{employer.data.today}} Today.<br>
+            Whith Total of {{employer.data.total}} of clients.
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    <ng-template #noEmlpoyer>
+      <div class="noEmployer">
+        No Employer Found
+      </div>
+    </ng-template>
+  </div>
+  
 </div>

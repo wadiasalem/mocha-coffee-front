@@ -1,0 +1,47 @@
+
+<div class="check-reservations">
+  <div class="Reservation" *ngFor="let reservation of reservations">
+    <div class="Reservation-item Reservation-head">
+      <div class="ref">
+        Ref : {{reservation.data.id}}
+      </div>
+      <div class="client">
+        Client : {{reservation.data.client}}
+      </div>
+    </div>
+    <div class="Reservation-line">
+      <div class="Reservation-content">
+        <div>
+          <div>
+            Mr/Mme : <span class="result">{{reservation.client.name}}</span> 
+          </div>
+          <div *ngIf="reservation.client.phone">
+            phone number : <span class="result">{{reservation.client.phone}}</span>
+          </div>
+          <div>
+            Resered the Table number <span class="result">{{reservation.table}}</span> <br>
+            from : <span class="result">{{reservation.data.date_start}}</span> <br>
+            to : <span class="result">{{reservation.data.date_end}}</span>
+          </div>
+        </div>
+        <div>
+          <div>
+            Person : 
+          </div>
+          <div class="person">
+            <div>
+              Norml : <span class="result">{{reservation.data.normal}}</span>
+            </div>
+            <div>
+              Child : <span class="result">{{reservation.data.child}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div *ngIf="!reservations" class="NoReservations">
+    There is no reservation for Today
+  </div>
+</div>

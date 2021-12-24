@@ -8,11 +8,16 @@ import { CheckIncomeComponent } from './check-income/check-income.component';
 import { CheckStockComponent } from './check-stock/check-stock.component';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { ManageRewordsComponent } from './manage-rewords/manage-rewords.component';
 
 
 
@@ -32,6 +37,10 @@ const routes : Routes = [
   {
   path : "manage-employers",
   component : ManageEmployersComponent
+},
+{
+  path : "manage-rewords",
+  component : ManageRewordsComponent
 }
 ];
 
@@ -43,9 +52,15 @@ const routes : Routes = [
     ManageTablesComponent,
     ManageEmployersComponent,
     CheckIncomeComponent,
-    CheckStockComponent
+    CheckStockComponent,
+    ManageRewordsComponent
   ],
   imports: [
+    FormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTabsModule,
     MatSelectModule,
     MatInputModule,
     MatDialogModule,

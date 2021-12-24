@@ -1,0 +1,17 @@
+@use '/src/app/theme.scss' as style ;
+
+.manage-rewords{
+  .add-reword{
+    margin: 20px 0;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    color: style.$base-color;
+    p{
+      margin: 0 10px;
+    }
+  }
+  .data{
+    
+  }
+}

@@ -31,6 +31,7 @@ days = [
 ];
 
 hour : Array<string> = [];
+LastHours : Array<string> = []; 
 
 minute : Array<string> = [] ;
 
@@ -42,9 +43,20 @@ minute : Array<string> = [] ;
         this.minute.push(index.toString());
     }
 
-    for (let index = 10; index < 22; index++) {
+    for (let index = 10 ; index < 22; index++) {
         this.hour.push(index.toString());
     }
+
+    let today = new Date();
+    if(today.getHours() > 21){
+      this.LastHours = this.hour ;
+    }else{
+      for (let index = today.getHours() + 1 ; index < 22; index++) {
+        this.LastHours.push(index.toString());
+    }
+    }
+
+    
 
   }
 }

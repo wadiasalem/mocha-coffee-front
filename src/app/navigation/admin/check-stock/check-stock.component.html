@@ -1,1 +1,122 @@
-<p>check-stock works!</p>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Gifts">
+    <div class="stock">
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" #MatSort="matSort" matSort>
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th class="short" mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td class="short" mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+          </ng-container>
+      
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+            <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+          </ng-container>
+      
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th class="short" mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+            <td class="short" mat-cell *matCellDef="let row">
+              <mat-form-field floatLabel="never">
+                <input (change)="updateGift(row.id,row.price,'price')" matInput placeholder="Name" [value]="row.price" [(ngModel)]="row.price">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+           <!-- Quantity Column -->
+           <ng-container matColumnDef="quantity">
+            <th class="short" mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+            <td class="short" mat-cell *matCellDef="let row">
+              <mat-form-field floatLabel="never">
+                <input (change)="updateGift(row.id,row.quantity,'quantity')" matInput placeholder="Name" [value]="row.quantity" [(ngModel)]="row.quantity">
+              </mat-form-field>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator #MatPaginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+  </mat-tab>
+
+
+  
+    <mat-tab label="Products">
+      <div class="stock">
+        <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter2($event)" placeholder="Ex. Mia" #input2>
+        </mat-form-field>
+        
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource2" #MatSort2="matSort" matSort>
+        
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th class="short" mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td class="short" mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+        
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+              <th class="short" mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+              <td class="short" mat-cell *matCellDef="let row">
+                <mat-form-field floatLabel="never">
+                  <input (change)="updateProduct(row.id,row.price,'price')" matInput placeholder="Name" [value]="row.price" [(ngModel)]="row.price">
+                </mat-form-field>
+              </td>
+            </ng-container>
+  
+             <!-- Quantity Column -->
+             <ng-container matColumnDef="quantity">
+              <th class="short" mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+              <td class="short" mat-cell *matCellDef="let row">
+                <mat-form-field floatLabel="never">
+                  <input (change)="updateProduct(row.id,row.stock,'stock')" matInput placeholder="Name" [value]="row.stock" [(ngModel)]="row.stock">
+                </mat-form-field>
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+        
+          <mat-paginator #MatPaginator2 [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+</mat-tab-group>

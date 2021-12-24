@@ -30,8 +30,7 @@ export class ReservationComponent implements OnInit {
   Reservation: FormGroup ;
 
   dates : Array<Date> = [];
-
-
+  today : Date;
 
   tables : any ;
   Reservations : Array<number> = [];
@@ -50,18 +49,21 @@ export class ReservationComponent implements OnInit {
     this.http.get(`${environment.API_URL}/client/tables`,{headers:header}).subscribe((result)=>{
       this.tables = result ;
     })
-
     
-    let today = new Date();
+    this.today = new Date()
+    
 
     this.minute = this.time.minute;
     this.month  = this.time.month;
     this.day  = this.time.days; 
-    this.hour = this.time.hour;
+    this.hour = this.time.LastHours;
+    if(this.today.getHours() > 21){
+      this.today = new Date(new Date().setDate(this.today.getDate()+ 1 ));
+    }
 
     
     for (let index = 0; index < 5; index++) {
-      this.dates.push(new Date(new Date().setDate(today.getDate()+ index )));
+      this.dates.push(new Date(new Date().setDate(this.today.getDate()+ index )));
     }
 
     window.addEventListener('load',()=>{
@@ -69,7 +71,7 @@ export class ReservationComponent implements OnInit {
     });
 
     this.Reservation = this.formBuilder.group({
-      date: new FormControl(today,Validators.required),
+      date: new FormControl(this.today,Validators.required),
       hour : ['',Validators.required],
       minute :['',Validators.required],
       normal: ['',Validators.required],
@@ -78,7 +80,7 @@ export class ReservationComponent implements OnInit {
     });
 
     this.Reservation.patchValue({
-      date : today,
+      date : this.today,
       child : 0,
       normal : 1
     });
@@ -93,6 +95,12 @@ export class ReservationComponent implements OnInit {
 
   select(date : Date){
     if(this.selected != document.getElementById(date.getDate().toString())){
+
+      if(date.getDate() == this.today.getDate())
+        this.hour = this.time.LastHours;
+      else
+        this.hour = this.time.hour;
+
       this.Reservation.reset();
       this.Reservation.patchValue({
         date:date,

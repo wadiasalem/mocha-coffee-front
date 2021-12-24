@@ -18,14 +18,30 @@
       <h3>InCome statistics : </h3>
       <div class="InComeStatistics">
         <div class="toDayInCome">
-          ToDay Income : <div>{{tableInformations.toDayInCome}}</div>
+          ToDay Income : <div>{{tableInformations.toDayInCome}} DT</div>
         </div>
         <div class="commandes">
           <div class="contain">
             <div class="commandes-count">Command Found : {{tableInformations.commandeData?.length}}</div>
-          <div *ngFor="let command of tableInformations.commandeData">
-            commande
-          </div>
+            <div class="commandes-found">
+              <div *ngFor="let command of tableInformations.commandeData" class="command" >
+                <div class="head">
+                  <span>Ref : {{command.commande.id}}</span><span>{{command.commande.category}}</span>
+                </div>
+                <div *ngIf="command.commande.category == 'served'" class="emploer">
+                  Served by {{command.employer}} at {{command.commande.served_at}}
+                </div>
+                <div *ngIf="command.commande.category == 'canceled'" class="emploer">
+                  Canceled by {{command.employer}} at {{command.commande.served_at}}
+                </div>
+                <div class="detail">
+                  <div *ngFor="let product of command.detaill">
+                    {{product.product}} x {{product.quantity}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          
           </div>
         </div>
       </div>
