@@ -1,15 +1,21 @@
 <div #allCommmands class="check-commands">
   <div *ngFor="let command of commands" class="command" id="{{command.command.id}}">
     <div class="header" (click)="select(command.command.id,command.detail)">
-      <span>Ref : {{command.command.id}}</span> <span>Table number : {{command.table}}</span> <span><mat-icon>expand_more</mat-icon></span>
+      <span>Ref : {{command.command.id}}</span> <span *ngIf="category == 'waitress'">Table number : {{command.buyer.table_number}}</span> <span><mat-icon>expand_more</mat-icon></span>
     </div>
     <div id="M{{command.command.id}}" *ngIf="command.command.id == selected">
       <div class="action">
         <button class="btn white-btn" (click)="action(command.command.id,'working')">Done</button>
         <button class="btn white-btn" (click)="action(command.command.id,'canceled')">Cancel</button>
       </div>
+      <div *ngIf="category == 'delivery employer'">
+        name : {{command.buyer.name}}<br>
+        number : {{command.buyer.phone}}<br>
+        address : {{command.buyer.address}}
+      </div>
       <div *ngIf="products">
         <div *ngFor="let product of products.products">
+          Command : <br>
           {{product.product.name}}  X  {{product.quantity}}
         </div>
       </div>

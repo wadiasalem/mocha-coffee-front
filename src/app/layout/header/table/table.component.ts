@@ -113,17 +113,22 @@ export class foodDialog implements OnInit {
 
 
   order : any;
+  client : FormGroup ;
 
   constructor(
     public dialogRef: MatDialogRef<foodDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private http : HttpClient,
     private _auth : AuthService,
-    private _order : OrderService
+    private _order : OrderService,
+    private formBuimder : FormBuilder
   ) {}
 
 
   ngOnInit(): void {
+    this.client = this.formBuimder.group({
+      email : ''
+    });
     this._order.getAll().subscribe((data)=>{
       this.order = data ;
     })
@@ -133,7 +138,10 @@ export class foodDialog implements OnInit {
     const header = this._auth.getAuthorization();
     this.http.post(
       `${environment.API_URL}/table/buy`,
-      this.order,
+      {
+        order : this.order,
+        client : this.client.value
+      },
       {headers : header})
     .subscribe((result : any)=>{
       Swal.fire({
@@ -144,6 +152,7 @@ export class foodDialog implements OnInit {
       this._order.clearfood();
       this.dialogRef.close();
     },((error)=>{
+      console.log(error);
       Swal.fire({
         title: "Erreur!",
         icon: "error",

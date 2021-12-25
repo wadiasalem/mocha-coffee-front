@@ -1,5 +1,32 @@
 <div class="view">
-  <div class="menu">
+  <div class="rewords">
     <app-page-title title="REWORDS" width ="auto" ></app-page-title>
+    <div class="item content">
+      <div *ngFor="let reword of rewords" class="reword">
+        <div class="image">
+          <img src="http://localhost:8000{{reword.image}}" alt="">
+        </div>
+        <div class="title">
+          <h3>
+            {{reword.reword.name}}
+          </h3>
+          <h5>
+            {{reword.reword.points}} PT needed
+          </h5>
+        </div>
+        <div class="description">
+          <p>{{reword.reword.description}}</p>
+        </div>
+        <div class="time">
+          From {{reword.reword.date_start}} to {{reword.reword.date_end}} 
+        </div>
+      </div>
+      <div class="noRewords" *ngIf="rewords?.length == 0 ">
+        <h3>
+          No rewords available!
+        </h3>
+        <img src="assets/mocha/not-found.png" alt="">
+      </div>
+    </div>
   </div>
 </div>

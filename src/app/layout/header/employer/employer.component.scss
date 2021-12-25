@@ -29,6 +29,9 @@
       a{
         margin: 20px;
         color: style.$base-color;
+        .mat-badge-content{
+          right: -22px !important;
+        }
       }
       .btn{
         color: #fff;
@@ -37,4 +40,5 @@
       }
     }
   }
+  
 }

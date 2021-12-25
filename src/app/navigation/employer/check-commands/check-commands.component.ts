@@ -16,11 +16,14 @@ export class CheckCommandsComponent implements OnInit {
   products : any ;
   @ViewChild('allCommmands') allCommmands : ElementRef ;
   selected : string ; 
+  category : string | null = "";
 
   constructor(
     private auth : AuthService,
     private pusher : PusherService,
-    private http : HttpClient) { }
+    private http : HttpClient) {
+      this.category = localStorage.getItem('category');
+    }
 
   ngOnInit(): void {
 
@@ -33,7 +36,6 @@ export class CheckCommandsComponent implements OnInit {
     })
 
     this.pusher.channel.bind('created', (data : any) =>{
-      
       if(data){
         const header = this.auth.getAuthorization();
         this.http.get(`${environment.API_URL}/employer/get-detail`,
@@ -41,7 +43,7 @@ export class CheckCommandsComponent implements OnInit {
         .subscribe((result:any)=>{
           const command = {
             command : data.command,
-            table : data.table,
+            buyer : data.buyer,
             detail : result.detail
           }
           this.commands.push(command);

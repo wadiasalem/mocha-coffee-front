@@ -44,10 +44,6 @@ const routes : Routes = [
         path : "order-history",
         component : CoffeeOrdersComponent
       },
-      {
-        path : "reservations-history",
-        component : ReservationsComponent
-      },
     ]
   }
 ];

@@ -26,6 +26,14 @@
   <div class="total">
     <h3>{{order.total}}</h3>
   </div>
+  <div class="email">
+    <form [formGroup]="client"> 
+      <mat-form-field appearance="fill">
+        <mat-label>Your email For points</mat-label>
+        <input matInput formControlName="email" >
+      </mat-form-field>
+      </form>
+  </div>
   <div class="action">
     <button (click)="buy()" class="btn orange-btn extra-small-btn">
        Order

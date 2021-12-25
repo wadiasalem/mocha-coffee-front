@@ -17,7 +17,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { ManageRewordsComponent } from './manage-rewords/manage-rewords.component';
+import { AddRewordComponent, ManageRewordsComponent } from './manage-rewords/manage-rewords.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -46,6 +48,7 @@ const routes : Routes = [
 
 @NgModule({
   declarations: [
+    AddRewordComponent,
     addEmployer,
     updateDialog,
     AdminComponent,
@@ -56,6 +59,8 @@ const routes : Routes = [
     ManageRewordsComponent
   ],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
     FormsModule,
     MatTableModule,
     MatSortModule,

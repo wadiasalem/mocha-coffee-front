@@ -24,7 +24,6 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/login`, loginForm)
     .subscribe(
       (data: any) => {
-        console.log(data);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("username", data.user.user_name);

@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { AuthService } from '@services/auth.service';
+import { environment } from 'src/environments/environment';
 const nav = [
   {
     title : "General",
@@ -21,10 +23,6 @@ const nav = [
   {
     title : "Orders history",
     path : "order-history"
-  },
-  {
-    title : "Reservations history",
-    path : "reservations-history"
   }
 ]
 @Component({
@@ -45,6 +43,7 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
     private auth : AuthService,
     private cdRef:ChangeDetectorRef,
     private route: ActivatedRoute,
+    private http : HttpClient
     ) { 
     this.name = localStorage.getItem('name');
     this.points = localStorage.getItem('points');
@@ -52,6 +51,14 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
 
 
   ngAfterViewInit(): void {
+    const header  = this.auth.getAuthorization();
+    this.http.get(`${environment.API_URL}/client/getPoints`,{headers : header})
+    .subscribe((result : any)=>{
+      this.points = result.points;
+      localStorage.setItem("points", result.points);
+    },(error)=>{
+      console.log(error)
+    })
     let path = this.route.firstChild?.snapshot.routeConfig?.path
     let id : string =  path ? path: 'settings';
 

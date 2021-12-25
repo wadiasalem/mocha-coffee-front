@@ -12,6 +12,53 @@
     }
   }
   .data{
+    .mat-elevation-z8{
+      box-shadow: 0 0 0 ;
+    }
+    table {
+      width: 100%;
+    }
     
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    .short{
+      width: 10%;
+    }
+    td, th {
+      width: 20%;
+    }
+  }
+}
+
+.adding{
+  h3{
+    color: style.$base-color;
+    margin-top: 0;
+  }
+  button,mat-form-field{
+    width: 100% ;
+  }
+
+  .select-img{
+    color: style.$black-color;
+    margin-bottom: 20px;
+    
+    input[type=file]::-webkit-file-upload-button{
+      display: none;
+    }
+    input{
+    }
+    .file-upload-button{
+      cursor: pointer;
+      color: #fff;
+      padding: 5px 10px;
+      background-color: style.$orange-color;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
   }
 }

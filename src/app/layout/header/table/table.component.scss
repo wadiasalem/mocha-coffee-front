@@ -93,6 +93,11 @@
     margin: 10px 0;
     border-top: solid 2px style.$orange-color;
   }
+  .email{
+    mat-form-field{
+      width: 100%;
+    }
+  }
   .total,.action{
     text-align: right;
   }

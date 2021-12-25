@@ -1,0 +1,53 @@
+<div class="add-reword">
+  <form [formGroup]="rewordForm" class="adding"> 
+  <h3>Add Reword : </h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Reword Name</mat-label>
+    <input matInput formControlName="name" >
+    <mat-error *ngIf="rewordForm.get('name')?.hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description Reword</mat-label>
+    <input matInput formControlName="description" >
+    <mat-error *ngIf="rewordForm.get('description')?.hasError('required')">
+      Description Reword is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Points</mat-label>
+    <input type="number" matInput formControlName="points" >
+    <mat-error *ngIf="rewordForm.get('points')?.hasError('required')">
+      points Reword is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [formGroup]="rewordForm" [rangePicker]="picker">
+      <input matStartDate formControlName="start" placeholder="Start date">
+      <input matEndDate formControlName="end" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  
+    <mat-error *ngIf="rewordForm.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+    <mat-error *ngIf="rewordForm.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+  </mat-form-field>
+
+  <div class="select-img">
+    <label class="file-upload-button">
+      <mat-icon>attachment</mat-icon>
+      <input formControlName="image" 
+      #imageInput
+      type="file"
+      accept="image/*"
+      (change)="processFile(imageInput)"/>
+      
+    </label>
+  </div>
+  
+    
+  <button [disabled]="rewordForm.invalid" (click)="addReword()" class="btn orange-btn extra-small-btn">ADD</button>
+</form>
+</div>
