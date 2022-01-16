@@ -120,7 +120,7 @@
                 class="item-grid-gift vertical" 
                 (click)="showDescription(item.id)">
 
-                  <img src="{{item.img}}" alt="" >
+                  <img src="{{BACKURL}}{{item.img}}" alt="" >
                   {{item.name}}
                   <span class="price">
                     {{item.price}} DT
@@ -139,7 +139,7 @@
                   </div>
                   <div class="description-content">
                     <div class="description-img">
-                      <img src="{{item.img}}" alt="" >
+                      <img src="{{BACKURL}}{{item.img}}" alt="" >
                     </div>
                       <div class="description-text">
                         <h3>

@@ -19,6 +19,8 @@ interface sort{
 })
 export class GiftsComponent implements OnInit {
 
+  BACKURL = environment.BACK_URL;
+
   filterForm : FormGroup ;
   SearchForm : FormGroup ;
 

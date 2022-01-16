@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class RewordsComponent implements OnInit {
 
+  BACKURL = environment.BACK_URL;
+
   rewords : Array<any> ;
   constructor(
     private http : HttpClient,

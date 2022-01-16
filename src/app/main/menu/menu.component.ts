@@ -11,6 +11,8 @@ import {OrderService} from '@services/order.service'
 })
 export class MenuComponent implements OnInit {
 
+  BACKURL = environment.BACK_URL;
+
   categ : any =[];
   categError : string ='';
   categorySelected : string = '';

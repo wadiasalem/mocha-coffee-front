@@ -13,7 +13,10 @@ export class AuthService {
 
   private isconnected : BehaviorSubject<boolean>  ;
 
-  constructor(private http : HttpClient,private router : Router,private cart:CartService) { 
+  constructor(
+    private http : HttpClient,
+    private router : Router,
+    private cart:CartService) { 
     if(localStorage.getItem('token'))
       this.isconnected = new BehaviorSubject<boolean>(true);
     else
@@ -126,6 +129,10 @@ export class AuthService {
           this.router.navigate(["/auth/sign-in"]);
         
       },(error)=>{
+        localStorage.clear();
+          this.cart.clearCart();
+          this.isconnected.next(false);
+          this.router.navigate(["/auth/sign-in"]);
         console.log(error);
       });
     
@@ -147,4 +154,12 @@ export class AuthService {
   getIsConnected() : boolean{
     return this.isconnected.value;
   }
+
+  resetPassword(data : any) {
+    return this.http.post(`${environment.API_URL}/auth/change-password`, data)
+  }
+
+  sendResetPasswordLink(data : any) {
+    return this.http.post(`${environment.API_URL}/auth/reset-password-request`, data)
+}
 }

@@ -11,6 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { ChangePasswordRequestComponent } from './change-password-request/change-password-request.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 const routes : Routes= [
   {
   path: "sign-in", 
@@ -19,6 +21,14 @@ const routes : Routes= [
 { 
   path: "sign-up", 
   component : SignUpComponent
+},
+{ 
+  path: "password-request", 
+  component : ChangePasswordRequestComponent
+},
+{ 
+  path: "change-password", 
+  component : ChangePasswordComponent
 }
 ]
 
@@ -26,6 +36,8 @@ const routes : Routes= [
   declarations: [
     SignInComponent,
     SignUpComponent,
+    ChangePasswordRequestComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     RouterModule,
