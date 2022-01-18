@@ -41,9 +41,11 @@
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
             <input matInput [type]="hideOldPassword ? 'password' : 'text'" formControlName="password" required>
-            <button mat-icon-button matSuffix (click)="hideOldPassword = !hideOldPassword">
-              <mat-icon>{{hideOldPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            
+            <mat-icon matSuffix (click)="hideOldPassword = !hideOldPassword">
+                {{hideOldPassword ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+            
             <mat-error>
                 Password is required
             </mat-error>
@@ -75,9 +77,10 @@
           <mat-form-field appearance="fill">
             <mat-label>Old Password</mat-label>
             <input matInput [type]="hideOldPassword ? 'password' : 'text'" formControlName="oldPassword" required>
-            <button mat-icon-button matSuffix (click)="hideOldPassword = !hideOldPassword">
-              <mat-icon>{{hideOldPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            <mat-icon matSuffix (click)="hideOldPassword = !hideOldPassword">
+              {{hideOldPassword ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+            
             <mat-error>
                 Password is required
             </mat-error>
@@ -86,9 +89,10 @@
           <mat-form-field appearance="fill">
             <mat-label>New password</mat-label>
             <input matInput [type]="hideNewPassword ? 'password' : 'text'" formControlName="newPassword" required>
-            <button mat-icon-button matSuffix (click)="hideNewPassword = !hideNewPassword">
-              <mat-icon>{{hideNewPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            <mat-icon matSuffix (click)="hideNewPassword = !hideNewPassword">
+              {{hideNewPassword ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+            
             <mat-error>
                 Password is required
             </mat-error>
@@ -97,9 +101,10 @@
           <mat-form-field appearance="fill">
             <mat-label>Confirm Password</mat-label>
             <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" required>
-            <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
-              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            
+              <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
+                {{hideConfirmPassword ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
             <mat-error *ngIf="SecurityForm.get('confirmPassword')?.hasError('required')">
               Confirm Password is required
             </mat-error>
