@@ -21,15 +21,7 @@ export class ManageEmployersComponent implements OnInit {
     private http : HttpClient) { }
 
   ngOnInit(): void {
-    const header = this._auth.getAuthorization();
-    this.http.get(
-      `${environment.API_URL}/admin/get-employers`,
-      {headers : header})
-    .subscribe((result : any)=>{
-      this.employers = result.data;
-    },((error)=>{
-      console.log(error);
-    })) 
+    this.getEmployers();
   }
 
   information(id:string){
@@ -82,7 +74,15 @@ export class ManageEmployersComponent implements OnInit {
   }
 
   getEmployers(){
-
+    const header = this._auth.getAuthorization();
+    this.http.get(
+      `${environment.API_URL}/admin/get-employers`,
+      {headers : header})
+    .subscribe((result : any)=>{
+      this.employers = result.data;
+    },((error)=>{
+      console.log(error);
+    })) 
   }
 
 }
@@ -137,6 +137,7 @@ export class addEmployer implements OnInit {
       this.dialogRef.close();
 
     },((error)=>{
+      console.log(error);
       Swal.fire({
         title: "Erreur!",
         text: error.error.discription,
