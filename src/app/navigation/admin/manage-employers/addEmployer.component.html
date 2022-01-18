@@ -31,8 +31,8 @@
       <mat-form-field appearance="fill">
         <mat-label>Category</mat-label>
         <mat-select formControlName="category">
-          <mat-option value="6">Delivery employer</mat-option>
-          <mat-option value="5">Waitress employer</mat-option>
+          <mat-option value="delivery employer">Delivery employer</mat-option>
+          <mat-option value="waitress">Waitress employer</mat-option>
         </mat-select>
         <mat-error *ngIf="EmployerForm.get('category')?.hasError('required')">
           Category is required
