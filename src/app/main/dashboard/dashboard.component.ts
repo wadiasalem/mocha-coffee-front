@@ -9,12 +9,12 @@ const nav = [
     path : "settings"
   },
   {
-    title : "My Cart",
-    path : "my-cart"
-  },
-  {
     title : "My Orders",
     path : "my-orders"
+  },
+  {
+    title : "My Gifts",
+    path : "my-cart"
   },
   {
     title : "Gift history",

@@ -37,7 +37,7 @@ export class CoffeeOrdersComponent implements OnInit {
       {order : items},
       {headers:header}
     ).subscribe((data:any)=>{
-      this.details = data.gifts ;
+      this.details = data.products ;
     },(error)=>{
       Swal.fire({
         title: "Erreur!",

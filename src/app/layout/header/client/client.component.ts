@@ -79,7 +79,6 @@ export class ClientComponent implements OnInit {
     if (!elementDiv?.contains(e.target as Node) && !elementIcon?.contains(e.target as Node)) {
       elementDiv?.classList.remove("open");
       this.opened = false;
-      console.log('test')
   }
   }
 
