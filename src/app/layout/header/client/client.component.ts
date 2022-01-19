@@ -48,11 +48,14 @@ export class ClientComponent implements OnInit {
     total : number
   };
 
+  opened : boolean = false ; 
+
   constructor(
     private auth : AuthService,
     private _food : OrderService,
     private _cart : CartService) { 
     this.cart = {items:[],length :0,total:0};
+    
   }
 
   ngOnInit(): void {
@@ -65,6 +68,34 @@ export class ClientComponent implements OnInit {
     this._food.getAll().subscribe((food)=>{
       this.food = food;
     })
+    
+    document.addEventListener('mouseup', this.closeMenu.bind(this));
+
+  }
+
+  closeMenu(e:any){
+    const elementDiv = document.getElementById("accountMenu");
+    const elementIcon = document.getElementById("accountIcon");
+    if (!elementDiv?.contains(e.target as Node) && !elementIcon?.contains(e.target as Node)) {
+      elementDiv?.classList.remove("open");
+      this.opened = false;
+      console.log('test')
+  }
+  }
+
+
+  logout(){
+    this.auth.logout();
+  }
+
+  openMenu(){
+    const element = document.getElementById("accountMenu");
+    if(!this.opened){
+      element?.classList.add("open");
+    }else{
+      element?.classList.remove("open");
+    }
+    this.opened = !this.opened
   }
 
 

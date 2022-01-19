@@ -1,7 +1,7 @@
 <header class="header">
   <div class="view horizontal">
     <a href="/" ><img class="logo" src="assets/icons/logo-text.png" alt=""></a>
-    <div class="header-menu horizontal menu-right">
+    <div class="header-menu horizontal">
       <ul>
         <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
       </ul>
@@ -21,7 +21,17 @@
         </button>
       </a>
       <ng-template #Connected>
-        <a href="/dashboard/settings" class="profile"><mat-icon>account_circle</mat-icon></a>
+        <a class="profile" (click)="openMenu()" id="accountIcon"><mat-icon>account_circle</mat-icon></a>
+        <div id="accountMenu" class="account">
+          <div class="content">
+            <a href="/dashboard/settings" class="line">Settings</a>
+            <a href="/dashboard/my-orders" class="line">My Orders</a>
+            <a href="/dashboard/my-cart" >My Gifts</a>
+            <a href="/dashboard/gift-history" >Gift history</a>
+            <a href="/dashboard/order-history" class="line">Orders history</a>
+            <a (click)="logout()"><div class="menuIcon"><mat-icon>logout</mat-icon></div> Logout</a>
+          </div>
+        </div>
       </ng-template>
     </div>
   </div>
