@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 })
 export class TableComponent implements OnInit {
 
+  BACK_URL : string = environment.BACK_URL
+
   toDay : any;
   datepipe : DatePipe = new DatePipe('en-US');
 

@@ -18,7 +18,7 @@
           <div class="section">
             <ng-template ngFor let-item [ngForOf]="categ">
               <div *ngIf="item.menu == 'Drinks'" class="item-categ vertical">
-                <img src="{{item.url}}" alt="" (click)="select(item.id)">
+                <img src="{{BACK_URL}}{{item.url}}" alt="" (click)="select(item.id)">
                 {{item.name}}
               </div>
             </ng-template>
@@ -29,7 +29,7 @@
           <div class="section">
             <ng-template ngFor let-item [ngForOf]="categ">
               <div *ngIf="item.menu == 'Food'" class="item-categ vertical">
-                <img src="{{item.url}}" alt="" (click)="select(item.id)">
+                <img src="{{BACK_URL}}{{item.url}}" alt="" (click)="select(item.id)">
                 {{item.name}}
               </div>
             </ng-template>
@@ -41,7 +41,7 @@
           <div class="section">
             <ng-template ngFor let-item [ngForOf]="categ">
               <div *ngIf="item.menu == 'DIY'" class="item-categ vertical">
-                <img src="{{item.url}}" alt="" (click)="select(item.id)">
+                <img src="{{BACK_URL}}{{item.url}}" alt="" (click)="select(item.id)">
                 {{item.name}}
               </div>
             </ng-template>
@@ -64,7 +64,7 @@
               [matRippleCentered]="true" 
               (click)="showDescription(item.id)"
               class="item-product vertical">
-                <img src="{{item.img}}" alt="" >
+                <img src="{{BACK_URL}}{{item.img}}" alt="" >
                 <div class="title">
                   {{item.name}}
                 </div>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="description-content">
                   <div class="description-img">
-                    <img src="{{item.img}}" alt="" >
+                    <img src="{{BACK_URL}}{{item.img}}" alt="" >
                   </div>
                     <div class="description-text">
                       <h3>

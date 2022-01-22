@@ -193,6 +193,7 @@ export class ReservationComponent implements OnInit {
         icon: "success",
       })
     },(error)=>{
+      console.log(error);
       Swal.fire({
         title : 'Error !',
         text: 'Internel Error',

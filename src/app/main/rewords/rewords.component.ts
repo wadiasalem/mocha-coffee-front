@@ -10,14 +10,17 @@ import { environment } from 'src/environments/environment';
 })
 export class RewordsComponent implements OnInit {
 
-  BACKURL = environment.BACK_URL;
+  BACKURL : string;
 
   rewords : Array<any> ;
   constructor(
     private http : HttpClient,
-    private _auth : AuthService) { }
+    private _auth : AuthService) {
+      this.BACKURL = environment.BACK_URL.slice(0, -1)
+    }
 
   ngOnInit(): void {
+    
     const header  = this._auth.getAuthorization();
     this.http.get(`${environment.API_URL}/rewords`,{headers:header})
       .subscribe((result:any)=>{

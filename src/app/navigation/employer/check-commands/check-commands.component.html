@@ -14,8 +14,8 @@
         address : {{command.buyer.address}}
       </div>
       <div *ngIf="products">
-        <div *ngFor="let product of products.products">
           Command : <br>
+        <div *ngFor="let product of products.products">
           {{product.product.name}}  X  {{product.quantity}}
         </div>
       </div>
