@@ -81,7 +81,7 @@ export class CheckCommandsComponent implements OnInit {
   action(id : string,todo : string){
     let toDo : string = todo ;
     if(toDo == "working"){
-      if(this.category== "1")
+      if(this.category== "waitress")
       {
         toDo = "served";
       }else{
