@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ManageRewordsComponent implements OnInit {
 
-  displayedColumns2: string[] = ['id', 'name', 'description','points','from','to'];
+  displayedColumns2: string[] = ['id', 'name', 'description','points','from','to','delete'];
   rewords : Array<any> ;
   dataSource2: MatTableDataSource<any>;
   @ViewChild("MatPaginator2") paginator2: MatPaginator;
@@ -42,7 +42,10 @@ export class ManageRewordsComponent implements OnInit {
         this.dataSource2.paginator = this.paginator2;
         this.dataSource2.sort = this.sort2;
     },(error)=>{
-      console.log(error);
+      this.rewords = [];
+        this.dataSource2 = new MatTableDataSource(this.rewords);
+        this.dataSource2.paginator = this.paginator2;
+        this.dataSource2.sort = this.sort2;
     })
   }
 
@@ -65,6 +68,16 @@ export class ManageRewordsComponent implements OnInit {
       this.getRewords();
     });
 
+  }
+
+  delete(id : string){
+    const header  = this._auth.getAuthorization();
+    this.http.delete(`${environment.API_URL}/admin/deleteReword`,
+    {headers : header,params : {id : id}}).subscribe((result:any)=>{
+      this.getRewords();
+    },(error)=>{
+      console.log(error);
+    })
   }
 }
 

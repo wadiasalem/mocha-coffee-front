@@ -29,6 +29,11 @@
     td, th {
       width: 20%;
     }
+
+    .delete{
+      color: style.$red-color;
+      cursor: pointer;
+    }
   }
 }
 
@@ -47,8 +52,6 @@
     
     input[type=file]::-webkit-file-upload-button{
       display: none;
-    }
-    input{
     }
     .file-upload-button{
       cursor: pointer;

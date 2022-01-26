@@ -45,7 +45,15 @@
          <!-- To Column -->
          <ng-container matColumnDef="to">
           <th  mat-header-cell *matHeaderCellDef mat-sort-header> To </th>
-          <td  mat-cell *matCellDef="let row">{{row.date_end}}</td>
+          <td  mat-cell *matCellDef="let row" >{{row.date_end}}</td>
+        </ng-container>
+
+        <!-- delete -->
+        <ng-container matColumnDef="delete">
+          <th  mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td  mat-cell *matCellDef="let row" >
+            <mat-icon class="delete" (click)="delete(row.id)">remove_circle</mat-icon>
+          </td>
         </ng-container>
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
