@@ -48,7 +48,7 @@ export class ClientComponent implements OnInit {
     total : number
   };
 
-  opened : boolean = false ; 
+  menuOpened : string|null = null ;
 
   constructor(
     private auth : AuthService,
@@ -74,12 +74,17 @@ export class ClientComponent implements OnInit {
   }
 
   closeMenu(e:any){
-    const elementDiv = document.getElementById("accountMenu");
-    const elementIcon = document.getElementById("accountIcon");
-    if (!elementDiv?.contains(e.target as Node) && !elementIcon?.contains(e.target as Node)) {
-      elementDiv?.classList.remove("open");
-      this.opened = false;
-  }
+    const accountMenu = document.getElementById("accountMenu");
+    const mainMenu = document.getElementById("mainMenu");
+
+    
+    if (!accountMenu?.contains(e.target as Node) && !mainMenu?.contains(e.target as Node)) {
+      const elementIcon = document.getElementById(this.menuOpened+"Icon");
+      if(!elementIcon?.contains(e.target as Node)){
+        accountMenu?.classList.remove("open");
+        mainMenu?.classList.remove("open");
+      }
+    }
   }
 
 
@@ -87,14 +92,14 @@ export class ClientComponent implements OnInit {
     this.auth.logout();
   }
 
-  openMenu(){
-    const element = document.getElementById("accountMenu");
-    if(!this.opened){
+  openMenu(id : string){
+    const element = document.getElementById(id);
+    if(!element?.classList.contains("open")){
       element?.classList.add("open");
+      this.menuOpened = id ;
     }else{
       element?.classList.remove("open");
     }
-    this.opened = !this.opened
   }
 
 

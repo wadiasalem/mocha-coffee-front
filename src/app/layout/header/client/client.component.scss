@@ -10,7 +10,6 @@
   position: fixed;
   top: 0;
   .view{
-    width: 100%;
     display: flex;
     justify-content: space-between;
     .logo{
@@ -28,9 +27,10 @@
         }
       }
       a{
-        margin: 20px;
+        margin: 20px 0 20px 20px;
         color: style.$base-color;
       }
+
       .profile{
         height: 30px;
         width: 30px;
@@ -68,7 +68,7 @@
             align-items: center;
             .menuIcon{
               background: inherit;
-              box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.7);
+              box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.4);
               height: 30px;
               width: 30px;
               border-radius: 50%;
@@ -88,17 +88,81 @@
       .account:before {
         content: '';
         position: absolute;
-        background: inherit;
         left: -25px;
         right: -25px;
         top: -25px;
         bottom: -25px;
-        box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.7);
-        filter: blur(10px);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border-radius: 10px;
+        box-shadow: 0 0 6px 0 style.$shadow-color;
+      }
+      .menu-drop{
+        height: 24px;
       }
     }
 
     
   }
+}
+@media screen and (min-width : 700px) {
+  .header{
+    .menu-drop{
+      display: none;
+    }
+
+  }
+}
+@media screen and (max-width : 700px) {
+  .header{
+
+    .menu{
+        visibility: hidden;
+        position: absolute;
+        right: 0px;
+        top: 80px;
+        border-radius: 10px;
+        background: inherit ;
+        border: solid 1px style.$base-color;
+        min-width: 180px;
+        min-height: 159px;
+        padding: 10px;
+        overflow: hidden;
+        margin-block-start : 0 ;
+        margin-block-end : 0 ;
+        .content{
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          min-width: 180px;
+          a{
+            margin: 10px 10px 0 10px;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: solid 1px style.$base-color ;
+          }
+          a:last-child {
+            border-bottom: none ;
+          }
+          
+      }
+      
+    }
+    .menu:before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      right: -25px;
+      top: -25px;
+      bottom: -25px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 0 6px 0 style.$shadow-color;
+    }
+  }
+  
 }

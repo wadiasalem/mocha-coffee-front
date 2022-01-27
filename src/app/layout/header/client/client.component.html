@@ -2,8 +2,10 @@
   <div class="view horizontal">
     <a href="/" ><img class="logo" src="assets/icons/logo-text.png" alt=""></a>
     <div class="header-menu horizontal">
-      <ul>
-        <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
+      <ul id="mainMenu" class="menu">
+        <div class="content">
+          <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
+        </div>
       </ul>
       <a *ngIf="food?.length != 0" href="/dashboard/my-orders">
         <mat-icon matBadge="{{food.length}}" matBadgeColor="accent">
@@ -15,13 +17,13 @@
           shopping_cart
         </mat-icon>
       </a>
-      <a *ngIf="!isconnected ; else Connected" href="/auth/sign-in" >
+      <a *ngIf="!isconnected ; else Connected" href="/auth/sign-in" class="btn-login">
         <button class="orange-btn extra-small-btn">
           Login
         </button>
       </a>
       <ng-template #Connected>
-        <a class="profile" (click)="openMenu()" id="accountIcon"><mat-icon>account_circle</mat-icon></a>
+        <a class="profile" (click)="openMenu('accountMenu')" id="accountMenuIcon"><mat-icon>account_circle</mat-icon></a>
         <div id="accountMenu" class="account">
           <div class="content">
             <a href="/dashboard/settings" class="line">Settings</a>
@@ -33,6 +35,7 @@
           </div>
         </div>
       </ng-template>
+      <a class="menu-drop" (click)="openMenu('mainMenu')" id="mainMenuIcon"><mat-icon>menu</mat-icon></a>
     </div>
   </div>
 </header>
