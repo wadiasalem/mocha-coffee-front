@@ -88,10 +88,10 @@
       .account:before {
         content: '';
         position: absolute;
-        left: -25px;
-        right: -25px;
-        top: -25px;
-        bottom: -25px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -153,10 +153,10 @@
     .menu:before {
       content: '';
       position: absolute;
-      left: -25px;
-      right: -25px;
-      top: -25px;
-      bottom: -25px;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);

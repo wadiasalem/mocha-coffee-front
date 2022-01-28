@@ -42,9 +42,6 @@
         font-weight: 500;
         margin-bottom: 10px;
       }
-      #sign-up{
-        margin-left: 20px;
-      }
     }
   }
   .flavors{
@@ -165,4 +162,45 @@
     }
   }
 
+}
+
+@media screen and (min-width : 700px) {
+  .home{
+    .home-thumbnail{
+      .thumbnail-content{
+        #sign-up{
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  
+}
+
+@media screen and (max-width : 700px) {
+  .home{
+    .thumbnail{
+      background-repeat: no-repeat;
+      height: 300px;
+    }
+    .home-thumbnail{
+      .thumbnail-content{
+        justify-content: center;
+        text-align: center;
+        .thumbnail-title{
+          font-size: 40px;
+          font-weight: 500;
+        }
+        .actions{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          a{
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+  
 }
