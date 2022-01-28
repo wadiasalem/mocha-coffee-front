@@ -44,73 +44,76 @@
       }
     }
   }
-  .flavors{
-    position:relative;
-    background-color: $base-color;
-    color: white;
-    margin-top: 150px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    h5{
-      margin-top: 50px;
-    }
-    .cup{
+  .flavors-part{
+    padding-top: 130px;
+    overflow: hidden;
+    .flavors{
+      position:relative;
+      background-color: $base-color;
+      color: white;
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      width: 100%;
-      margin-top: -10vw;
-      .cup-item{
+      flex-direction: column;
+      text-align: center;
+      h5{
+        margin-top: 50px;
+      }
+      .cup{
         display: flex;
         align-items: center;
-        flex-direction: column;
-        font-size: 20px;
-        div{
+        justify-content: space-around;
+        width: 100%;
+        margin-top: -10vw;
+        .cup-item{
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          font-size: 20px;
+          z-index: 900;
+          div{
+            border-radius: 50%;
+            margin-bottom: 20px;
+          }
+          img{
+            margin-top: -5vw;
+            height: 100%;
+          }
+        }
+        .circle1{
+          background-color: #CF9B64;
           border-radius: 50%;
-          height: 15vw;
-          width: 15vw;
-          margin-bottom: 20px;
+          height: 50px;
+          width: 50px;
+          position: absolute;
+          left: 200px;
+          top:200px ;
         }
-        img{
-          margin-top: -5vw;
-          height: 100%;
+    
+        .circle2{
+          background-color: #EDBD75;
+          border-radius: 50%;
+          height: 70px;
+          width: 70px;
+          position: absolute;
+          left: -50px;
+          top:-50px ;
         }
-      }
-      .circle1{
-        background-color: #CF9B64;
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-        position: absolute;
-        left: 200px;
-        top:200px ;
+    
+        .circle3{
+          background-color: #9E7B56;
+          border-radius: 50%;
+          height: 100px;
+          width: 100px;
+          position: absolute;
+          right: -50px;
+          top:-100px ;
+        }
+        
       }
   
-      .circle2{
-        background-color: #EDBD75;
-        border-radius: 50%;
-        height: 70px;
-        width: 70px;
-        position: absolute;
-        left: -50px;
-        top:-50px ;
-      }
-  
-      .circle3{
-        background-color: #9E7B56;
-        border-radius: 50%;
-        height: 100px;
-        width: 100px;
-        position: absolute;
-        right: -50px;
-        top:-100px ;
-      }
-      
     }
-
   }
+  
   .thumbnail2{
     background-image: url('/assets/img/home/thumbnail2.png');
   }
@@ -132,7 +135,6 @@
   }
 
   .left-item,.right-item{
-    width: 45%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -157,7 +159,6 @@
       width: 40%;
       img{
         width: 100%;
-        border-radius: 50px;;
       }
     }
   }
@@ -173,6 +174,25 @@
         }
       }
     }
+    .flavors{
+      .cup{
+        .cup-item{
+          div{
+            height: 15vw;
+            width: 15vw;
+          }
+        }
+      }
+    }
+    .left-item,.right-item{
+      width: 80%;
+    }
+    .books-insta{
+        img{
+          border-radius: 30px;
+        }
+      
+    }
   }
   
 }
@@ -182,6 +202,14 @@
     .thumbnail{
       background-repeat: no-repeat;
       height: 300px;
+    }
+    h5{
+      font-size: 40px;
+      font-weight: 500;
+    }
+    .thumbnail{
+      margin-top: -75px;
+      margin-bottom: -75px;
     }
     .home-thumbnail{
       .thumbnail-content{
@@ -197,7 +225,42 @@
             align-items: center;
           a{
             width: 80%;
+            margin-bottom: 10px;
           }
+        }
+      }
+    }
+    .flavors{
+      
+        .cup{
+          flex-direction: column;
+          .cup-item{
+            margin-bottom: 20px;
+          
+          div{
+            height: 50vw;
+            width: 50vw;
+          }
+        }
+        .circle3{
+          overflow: hidden;
+        }
+      }
+      
+    }
+    .left-item,.right-item{
+      width: 80%;
+    }
+    .gift,.order{
+      flex-direction: column;
+    }
+    .books-insta{
+      flex-direction: column;
+      .card{
+        width : calc(100% - 60px);
+        margin-bottom: 10px;
+        img{
+          border-radius: 30px;
         }
       }
     }

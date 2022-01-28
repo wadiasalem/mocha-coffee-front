@@ -114,32 +114,7 @@ $mocha-coffee-theme: mat.define-light-theme((
   border: solid 2px $orange-color ;
 }
 
-.small-btn{
-  font-size: 20px;
-  font-weight: 700;
-  height: 35px;
-  border-radius: 20px;
-  padding: 0 30px;
-  cursor: pointer;
-}
 
-.extra-small-btn{
-  font-size: 15px;
-  font-weight: 600;
-  height: 30px;
-  border-radius: 15px;
-  padding: 0 20px;
-  cursor: pointer;
-}
-
-.larg-btn{
-  font-size: 25px;
-  font-weight: 700;
-  height: 40px;
-  border-radius: 20px;
-  padding: 0 40px;
-  cursor: pointer;
-}
 
 .vertical{
   display: flex;
@@ -152,8 +127,74 @@ $mocha-coffee-theme: mat.define-light-theme((
   align-items: center;
 }
 
-.item{
-  padding: 50px;
-  border-radius: 50px;
-  position: relative ;
+
+
+@media screen and (min-width : 700px) {
+  .item{
+    padding: 50px;
+    border-radius: 50px;
+    position: relative ;
+  }
+
+  .small-btn{
+    font-size: 20px;
+    font-weight: 700;
+    height: 35px;
+    border-radius: 20px;
+    padding: 0 30px;
+    cursor: pointer;
+  }
+  
+  .extra-small-btn{
+    font-size: 15px;
+    font-weight: 600;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+  
+  .larg-btn{
+    font-size: 25px;
+    font-weight: 700;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 40px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width : 700px) {
+  .item{
+    padding: 30px;
+    border-radius: 30px;
+    position: relative ;
+  }
+
+  .extra-small-btn{
+    font-size: 15px;
+    font-weight: 500;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0 20px;
+    cursor: pointer;
+  }
+
+  .small-btn{
+    font-size: 20px;
+    font-weight: 600;
+    height: 35px;
+    border-radius: 20px;
+    padding: 0 30px;
+    cursor: pointer;
+  }
+  
+  .larg-btn{
+    font-size: 20px;
+    font-weight: 600;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 40px;
+    cursor: pointer;
+  }
 }
