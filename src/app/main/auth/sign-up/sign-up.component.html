@@ -90,12 +90,13 @@
             </mat-form-field>
           </div>
           
-          <div>
+          <div class="check-box-elements">
             <mat-checkbox class="remember-me" aria-label="Remember Me">
               Yes,I'd like email from MochaCoffe.
             </mat-checkbox>
             <mat-checkbox class="remember-me" aria-label="Remember Me">
-              Yes,I agree to the <a href="#">Termes and Conditions</a>.
+              <span class="test">Yes,I agree to the <a href="#">Termes and Conditions</a>.</span>
+              
             </mat-checkbox>
           </div>
           
@@ -108,7 +109,7 @@
 
           <div class="links">
             <a class="forgot-password" [routerLink]="'/auth/sign-in'">
-                Already have MochaCoffe Account
+                Already have MochaCoffe Account ?
             </a>
           </div>
           
