@@ -10,8 +10,6 @@
     
     .left-nav{
       position: relative;
-      height: 700px;
-      width: 25%;
       background-color: #fff;
       color: style.$base-color;
       .profile-img{
@@ -29,12 +27,36 @@
         ul{
           list-style: none;
           padding-inline-start: 0px;
-          margin-left: -50px;
           li{
             margin: 10px 0;
             padding-left: 50px !important;
             padding: 10px 0;
             cursor: pointer;
+          }
+        }
+      }
+      .logout-btn{
+        position: absolute;
+        color: #fff;
+        background-color: #FD5353;
+        border: solid 2px #FD5353;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:700px){
+  .dashboard{
+    .dashboard-content{
+      .left-nav{
+        height: 700px;
+        width: 25%;
+        .nav{
+          ul{
+            margin-left: -50px;
+          }
+          .element-selected{
+            display: none;
           }
           .selected{
             background-color: style.$orange-color;
@@ -42,20 +64,67 @@
             color: #fff;
           }
         }
+        .logout-btn{
+          bottom: 50px ;
+        }
+        
       }
-      .logout-btn{
-        position: absolute;
-        bottom: 50px;
-        color: #fff;
-        background-color: #FD5353;
-        border: solid 2px #FD5353;
+      .right-nav{
+        width: 60%;
+        height: 100%;
+        padding-top: 50px;
+        
       }
     }
-    .right-nav{
-      width: 60%;
-      height: 100%;
-      padding-top: 50px;
-      
+  }
+}
+
+@media screen and (max-width:700px){
+  $width : calc((100vw - 40px)/2);
+  .dashboard{
+    .dashboard-content{
+      flex-direction: column;
+      .left-nav{
+        margin-top: 120px;
+        padding-bottom: 80px;
+        width: -webkit-fill-available;
+        border-radius: 50% 50% 50px 50px / $width $width 50px 50px !important;
+        .profile-img{
+          margin-top: -130px;
+          border: solid 2px style.$orange-color;
+        }
+        .nav{
+          .element-selected{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          ul{
+            padding: 10px;
+          }
+          .selected{
+            background-color: style.$orange-color;
+            border-radius: 7px;
+            color: #fff;
+          }
+          .nav-list{
+            display: none;
+            border: solid 1px style.$base-color ;
+            border-radius: 10px;
+          }
+          .open-list{
+            display: block !important;
+          }
+        }
+        .logout-btn{
+          bottom: 20px ;
+        }
+        
+      }
+      .right-nav{
+        width: 100%;
+        padding-top: 50px;
+      }
     }
   }
 }

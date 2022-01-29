@@ -86,4 +86,13 @@ export class DashboardComponent implements OnInit,AfterViewChecked,AfterViewInit
     this.auth.logout();
   }
 
+  openNav(){
+    const element = document.getElementById("nav-list");
+    if(element?.classList.contains("open-list")){
+      element?.classList.remove("open-list");
+    }else{
+      element?.classList.add("open-list");
+    }
+  }
+
 }

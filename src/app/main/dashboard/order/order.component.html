@@ -1,6 +1,6 @@
 <div *ngIf="order?.length ;else cartEmpty" class="cart">
-  <mat-stepper #stepper [linear]="true">
-    <mat-step>
+  <mat-stepper #stepper [linear]="true" orientation="vertical">
+    <mat-step >
         <ng-template matStepLabel>Manage you order</ng-template>
         <div class="step-content">
           <div class="clear-cart">

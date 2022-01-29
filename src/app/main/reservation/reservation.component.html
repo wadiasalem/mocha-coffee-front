@@ -99,7 +99,7 @@
         <div id="flour" class="floor" >
             <img src="assets/reservation/first-floor.png" alt="">
             <div class="table-click">
-
+              
               <div 
               *ngFor="let table of tables?.tables" 
               style="top : {{table.y}}%;left : {{table.x}}%"
@@ -109,7 +109,8 @@
                 *ngIf="this.selectedTable.includes(table.table_number)" 
                 (click)="removeTable(table.table_number)"
                 src="assets/icons/check.png" alt="table.table_number">
-                <img *ngIf="this.Reservations.includes(table.table_number);else notReserved" src="assets/icons/reserved.png" alt="1">
+                <img *ngIf="this.Reservations.includes(table.table_number);else notReserved" 
+                src="assets/icons/reserved.png" alt="1">
                 
                 <ng-template #notReserved>
                   <div class="selectTable" (click)="selectTable(table.table_number)">

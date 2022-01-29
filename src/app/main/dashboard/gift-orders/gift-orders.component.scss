@@ -7,7 +7,8 @@
   }
   .history-content{
     background-color: #fff;
-    min-height: 561px;
+    height: 561px;
+    overflow-y: auto;
     .gift-item{
       border-radius: 25px;
       margin-bottom: 20px;
@@ -34,7 +35,6 @@
   
 }
 .historyEmpty{
-  height: 700px;
   justify-content: center;
   h3{
     color: style.$base-color;
@@ -47,5 +47,11 @@
   }
   img{
     width: 50%;
+  }
+}
+
+@media screen and (min-width : 700px) {
+  .cartEmpty{
+    height: 700px;
   }
 }

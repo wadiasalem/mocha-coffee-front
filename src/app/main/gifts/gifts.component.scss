@@ -29,8 +29,6 @@
     justify-content: space-between;
     
     .left-nav{
-      height: 700px;
-      width: 25%;
       background-color: #fff;
       color: style.$base-color;
       .form-search{
@@ -86,7 +84,6 @@
     }
     .right-content{
       padding-top: 30px;
-      width: 63%;
       .sort-view{
         color: style.$base-color;
         justify-content: space-between;
@@ -100,7 +97,6 @@
       }
       .grid{
         display: flex;
-        flex-wrap: wrap;
         position: relative;
         .item-grid-gift{
           background-color: #fff;
@@ -108,7 +104,6 @@
           border-radius: 10px;
           color: style.$base-color;
           text-align: center;
-          width: 190px;
           height: fit-content;
           padding: 10px 10px 40px 10px;
           margin: 10px;
@@ -141,7 +136,6 @@
         z-index: 10;
         right: 0;
         left: 0;
-        height: 300px;
         margin-top: -100px;
         box-shadow: 0 4px 4px style.$shadow-color;
         .close-btn{
@@ -166,9 +160,7 @@
               }
           }
           .description-text{
-            width: 70%;
             margin-left: 20px;
-            
             color: #626262;
             h3{
               text-align: left;
@@ -184,7 +176,6 @@
             }
             .actions{
               margin-bottom: 20px;
-              width: 330px;
               justify-content: space-between;
               .add-to-cart{
                 border: solid 1px #F36295;
@@ -271,3 +262,81 @@
   }
 }
 
+@media screen and (min-width:700px) {
+  .gifts{
+    .gifts-content{
+      .left-nav{
+        height: 700px;
+        width: 25%;
+      }
+      .right-content{
+        width: 63%;
+        .grid{
+          flex-wrap: wrap;
+          .item-grid-gift{
+            width: 190px;
+          }
+          .description{
+            height: 300px;
+            .description-content{
+              .description-text{
+                width: 70%;
+                .actions{
+                  width: 330px;
+                }
+                
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+@media screen and (max-width:700px) {
+  .gifts{
+    .subscription{
+      display: none;
+    }
+    .gifts-content{
+      flex-direction: column;
+      .right-content{
+        .sort-view{
+          flex-direction: column;
+          .view{
+            display: none;
+          }
+        }
+        .grid{
+          flex-direction: column;
+          .description{
+            .description-content{
+              .description-img{
+                display: none;
+              }
+              .description-text{
+                width: 100%;
+                h3{
+                  margin-top: 50px;
+                  text-align: center;
+                }
+                .actions{
+                  margin-bottom: 20px;
+                  justify-content: space-between;
+                  flex-direction: column;
+                  .add-to-cart{
+                    margin-bottom: 10px
+                  }
+                }
+                
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}

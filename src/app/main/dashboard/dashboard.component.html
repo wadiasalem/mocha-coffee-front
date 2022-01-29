@@ -8,7 +8,9 @@
         <div>{{points}} pts</div>
         <mat-divider class="line"></mat-divider>
         <div class="nav">
-          <ul>
+          <div class="element-selected"><span>{{selected?.textContent}}</span> 
+            <mat-icon (click)="openNav()">more_vert</mat-icon></div>
+          <ul class="nav-list" id="nav-list">
             <li class="" id="{{item.path}}" routerLink="{{item.path}}" queryParamsHandling="merge" (click)="select(item.path)" *ngFor="let item of nav">{{item.title}}</li>
           </ul>
         </div>
@@ -16,24 +18,6 @@
       </div>
       <div class="right-nav">
         <router-outlet></router-outlet>
-        <!-- <div *ngIf="navigation('0')">
-          <app-general-settings></app-general-settings>
-        </div>
-        <div *ngIf="navigation('5')">
-          <app-order></app-order>
-        </div>
-        <div *ngIf="navigation('4')">
-          <app-cart></app-cart>
-        </div>
-        <div *ngIf="navigation('1')">
-          <app-gift-orders></app-gift-orders>
-        </div>
-        <div *ngIf="navigation('2')">
-          <app-coffee-orders></app-coffee-orders>
-        </div>
-        <div *ngIf="navigation('3')">
-          <app-reservations></app-reservations>
-        </div> -->
       </div>
     </div>
   </div>

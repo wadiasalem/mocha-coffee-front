@@ -91,23 +91,19 @@
       margin: 50px 0;
       display: flex;
       justify-content: center;
-      .floor{
-        position: relative;
-        border-radius: 15px;
+      border-radius: 15px;
         padding: 20px;
-        width: 80%;
         background-color: #fff;
         box-shadow: 0 0 6px rgb(0, 0, 0,20%);
+      .floor{
+        position: relative;
         color: style.$base-color;
+        border-radius: 15px;
         img{
           border-radius: 10px;
-          width: 100%
-          
         }
         .table-click{
           position: absolute;
-          height: calc(100% - 40px);
-          width: calc(100% - 40px);
           top: 20px;
           z-index: 800;
           .table{
@@ -115,9 +111,6 @@
             cursor: pointer;
             height: 30px;
             width: 30px;
-            img{
-              width: 100%
-            }
             .selectTable{
               height: 100%;
             }
@@ -137,4 +130,55 @@
     }
   }
 }
+
+@media screen and (min-width : 700px) {
+  .reservation{
+    .floor{
+      img{
+        width: 100%;
+      }
+      .table-click{
+        position: absolute;
+        height: calc(100% - 40px);
+        width: calc(100% - 40px);
+      }
+    }
+
+  }
+  
+}
+
+@media screen and (max-width : 700px) {
+  .reservation{
+    .select-date{
+      .one-day{
+        display: none;
+      }
+      .day-item{
+        mat-icon{
+          width: auto;
+        }
+      }
+    }
+    .floor{
+        height: 50vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-padding: 100px;
+        img{
+          height: 100%;
+        }
+        
+        .table-click{
+          position: absolute;
+          height: 50vh;
+          width: calc(50vh*1.83712466);
+        }
+      
+        
+      }
+    }
+  }
+  
+
 

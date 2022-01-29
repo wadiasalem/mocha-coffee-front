@@ -61,7 +61,6 @@
   }
 }
 .cartEmpty{
-  height: 700px;
   justify-content: center;
   h3{
     color: style.$base-color;
@@ -74,5 +73,11 @@
   }
   img{
     width: 50%;
+  }
+}
+
+@media screen and (min-width : 700px) {
+  .cartEmpty{
+    height: 700px;
   }
 }
