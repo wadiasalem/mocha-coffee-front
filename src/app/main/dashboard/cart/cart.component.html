@@ -1,4 +1,7 @@
 <div *ngIf="cart?.length ;else cartEmpty" class="cart">
+  <div class="message">
+    This is a test version : Cart number 4242424242424242
+  </div>
   <mat-stepper #stepper [linear]="true" orientation="vertical">
     <mat-step>
         <ng-template matStepLabel>Manage you cart</ng-template>

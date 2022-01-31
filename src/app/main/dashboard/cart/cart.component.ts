@@ -53,11 +53,12 @@ export class CartComponent implements OnInit {
   }
 
   shipping(){
-    let header = this.auth.getAuthorization();
+    if(!this.PaymentForma.invalid){
+      let header = this.auth.getAuthorization();
     let cart = this._cart.getCart();
     this.http.post(
       `${environment.API_URL}/client/shop`,
-      {cart : cart.items},
+      {cart : cart.items,payment : this.PaymentForma.value},
       {headers:header}).subscribe((result:any)=>{
         this._cart.clearCart();
         Swal.fire({
@@ -69,10 +70,12 @@ export class CartComponent implements OnInit {
     },(error)=>{
       Swal.fire({
         title: "Erreur!",
-          text: error.description,
+          text: error.error.message,
           icon: "error",
       });
     })
+    }
+    
   }
 
   

@@ -1,6 +1,9 @@
 @use '/src/app/theme.scss' as style;
 .cart{
-  
+  .message{
+    color: style.$base-color;
+    margin: 20px 0;
+  }
   mat-stepper{
     border-radius: 0 0 50px 50px ;
     .clear-cart{

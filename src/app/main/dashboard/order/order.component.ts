@@ -52,11 +52,12 @@ export class OrderComponent implements OnInit {
   }
 
   shipping(){
+    if(!this.PaymentForma.invalid){
     let header = this.auth.getAuthorization();
     let cart = this._order.getfood();
     this.http.post(
       `${environment.API_URL}/client/order`,
-      {order : cart.items},
+      {order : cart.items,payment : this.PaymentForma.value},
       {headers:header}).subscribe((result:any)=>{
         this._order.clearfood();
         Swal.fire({
@@ -69,10 +70,11 @@ export class OrderComponent implements OnInit {
       console.log(error)
       Swal.fire({
         title: "Erreur!",
-          text: error.description,
+          text: error.error.message,
           icon: "error",
       });
     })
+  }
   }
 
 }
