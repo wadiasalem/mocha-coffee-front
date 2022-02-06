@@ -38,8 +38,9 @@ export class authInterceptor implements HttpInterceptor {
             return next.handle(this.addAuthenticationToken(httpRequest,data.access_token));
           }
         }))
+      }else{
+        return throwError(err);
       }
-      return of(null);
     }));
   }
 
