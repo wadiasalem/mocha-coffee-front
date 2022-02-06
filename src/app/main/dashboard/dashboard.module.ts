@@ -18,6 +18,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './order/order.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes : Routes = [
   {
@@ -76,7 +77,8 @@ const routes : Routes = [
     ReactiveFormsModule,
     MatIconModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ]
 })
 export class DashboardModule { }

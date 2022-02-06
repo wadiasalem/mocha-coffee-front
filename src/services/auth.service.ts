@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -27,7 +27,10 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/login`, loginForm)
     .subscribe(
       (data: any) => {
-        localStorage.setItem("token", data.access_token);
+        console.log(data);
+        localStorage.setItem("token", data.token.access_token);
+        localStorage.setItem("refresh", data.token.refresh_token);
+        localStorage.setItem("token_expire", data.token.expires_in);
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("username", data.user.user_name);
         localStorage.setItem("role", data.user.role);

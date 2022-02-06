@@ -104,7 +104,7 @@
         }
         .table-click{
           position: absolute;
-          top: 20px;
+          top: 0;
           z-index: 800;
           .table{
             position: absolute;
@@ -138,9 +138,8 @@
         width: 100%;
       }
       .table-click{
-        position: absolute;
-        height: calc(100% - 40px);
-        width: calc(100% - 40px);
+        height: 100%;
+        width: 100%;
       }
     }
 
@@ -170,7 +169,6 @@
         }
         
         .table-click{
-          position: absolute;
           height: 50vh;
           width: calc(50vh*1.83712466);
         }

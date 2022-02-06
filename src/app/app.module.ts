@@ -13,8 +13,9 @@ import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
 import { AuthService } from '@services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClientGuardService } from '@services/client-guard.service';
+import { authInterceptor } from './errors/error401/interceptor401';
 
 
 const appRoutes: Routes = [
@@ -64,7 +65,16 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useFactory: function(http: HttpClient,auth : AuthService) {
+        return new authInterceptor(http,auth);
+      },
+      multi: true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

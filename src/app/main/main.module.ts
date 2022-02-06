@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import {TemplateModule} from '../template/template.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { GiftsComponent } from './gifts/gifts.component';
 import {MatDividerModule} from '@angular/material/divider';
@@ -23,6 +23,7 @@ import { routes } from '@services/routes.service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RewordsComponent } from './rewords/rewords.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { authInterceptor } from '../errors/error401/interceptor401';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     CommonModule,
     RouterModule.forChild(routes),
   ],
-  exports : []
+  exports : [],
+  providers : [
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptor, 
+      multi: true 
+    }
+  ]
 })
 export class MainModule { }

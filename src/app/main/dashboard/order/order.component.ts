@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
 import { OrderService } from '@services/order.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
@@ -26,7 +27,8 @@ export class OrderComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _order : OrderService,
     private http : HttpClient,
-    private auth : AuthService
+    private auth : AuthService,
+    private spinner : NgxSpinnerService
     ) {
     this._order.getAll().subscribe((data)=>{
       this.order = data ;
@@ -52,6 +54,7 @@ export class OrderComponent implements OnInit {
   }
 
   shipping(){
+    this.spinner.show();
     if(!this.PaymentForma.invalid){
     let header = this.auth.getAuthorization();
     let cart = this._order.getfood();
@@ -73,6 +76,8 @@ export class OrderComponent implements OnInit {
           text: error.error.message,
           icon: "error",
       });
+    },()=>{
+      this.spinner.hide();
     })
   }
   }
