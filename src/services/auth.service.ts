@@ -27,6 +27,7 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/login`, loginForm)
     .subscribe(
       (data: any) => {
+        console.log(data.token)
         localStorage.setItem("token", data.token.access_token);
         localStorage.setItem("refresh", data.token.refresh_token);
         localStorage.setItem("token_expire", data.token.expires_in);
@@ -81,7 +82,9 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/register`, loginForm)
     .subscribe(
       (data: any) => {
-        localStorage.setItem("token", data.access_token);
+        localStorage.setItem("token", data.token.access_token);
+        localStorage.setItem("refresh", data.token.refresh_token);
+        localStorage.setItem("token_expire", data.token.expires_in);
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("username", data.user.user_name);
         localStorage.setItem("role", data.user.role);
