@@ -5,6 +5,8 @@ import { CheckCommandsComponent } from './check-commands/check-commands.componen
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CheckReservationsComponent } from './check-reservations/check-reservations.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { authInterceptor } from 'src/app/errors/error401/interceptor401';
 
 const routes : Routes = [
   {
@@ -28,6 +30,13 @@ const routes : Routes = [
     MatIconModule,
     CommonModule,
     RouterModule.forChild(routes)
+  ],
+  providers : [
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptor, 
+      multi: true 
+    }
   ]
 })
 export class EmployerModule { }

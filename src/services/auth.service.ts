@@ -27,7 +27,6 @@ export class AuthService {
     this.http.post(`${environment.API_URL}/auth/login`, loginForm)
     .subscribe(
       (data: any) => {
-        console.log(data.token)
         localStorage.setItem("token", data.token.access_token);
         localStorage.setItem("refresh", data.token.refresh_token);
         localStorage.setItem("token_expire", data.token.expires_in);

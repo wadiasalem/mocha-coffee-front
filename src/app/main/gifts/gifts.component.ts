@@ -69,6 +69,19 @@ export class GiftsComponent implements OnInit {
           this.giftsError = res.description;
         }
       });
+
+      document.addEventListener('mouseup', this.closeMenu.bind(this));
+  }
+
+  closeMenu(e:any){
+    const description = document.getElementsByClassName("description-content");
+    const accountMenuContent = document.getElementById("accountMenuContent");
+    
+    
+    // if (!description?.contains(e.target as Node)) {
+    //     mainMenu?.classList.remove("open");
+      
+    // }
   }
 
   viewChange(value : string){
@@ -121,28 +134,12 @@ export class GiftsComponent implements OnInit {
     
   }
 
-  showDescription(id:string){
-    if(this.element[1] && this.element[0])
-      {
-        this.element[1].style.display = 'none';
-        this.element[0].style.display = 'none';
-        this.element[1] = null ;
-        this.element[0] = null ;
-      }
-    
-    if(this.element[1]!=document.getElementById("D"+id)){
-      if (this.element[1] && this.element[2]) {
-        this.element[1].style.display = 'none';
-        this.element[2].style.display = 'none';
-      }
-  
-      this.element[1] = document.getElementById("D"+id);
-      this.element[0] = document.getElementById("P"+id);
-      if (this.element[1] && this.element[0]) {
-        this.element[1].style.display = 'block';
-        this.element[0].style.display = 'block';
-        this.element[1].scrollIntoView({behavior: "smooth", block: "center"});
-      }
+  showDescription(id : string){
+    const element = document.getElementById(id);
+    if(!element?.classList.contains("open")){
+      element?.classList.add("open");
+    }else{
+      element?.classList.remove("open");
     }
   }
 

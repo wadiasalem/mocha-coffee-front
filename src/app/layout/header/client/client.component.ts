@@ -76,9 +76,11 @@ export class ClientComponent implements OnInit {
   closeMenu(e:any){
     const accountMenu = document.getElementById("accountMenu");
     const mainMenu = document.getElementById("mainMenu");
-
+    const mainMenuContent = document.getElementById("mainMenuContent");
+    const accountMenuContent = document.getElementById("accountMenuContent");
     
-    if (!accountMenu?.contains(e.target as Node) && !mainMenu?.contains(e.target as Node)) {
+    
+    if (!accountMenuContent?.contains(e.target as Node) && !mainMenuContent?.contains(e.target as Node)) {
       const elementIcon = document.getElementById(this.menuOpened+"Icon");
       if(!elementIcon?.contains(e.target as Node)){
         accountMenu?.classList.remove("open");

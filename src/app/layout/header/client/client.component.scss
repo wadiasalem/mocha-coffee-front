@@ -44,50 +44,13 @@
       .open{
         visibility: visible !important;
       }
+      
+      .menu-drop{
+        height: 24px;
+      }
       .account{
         visibility: hidden;
-        position: absolute;
-        right: 0px;
-        top: 80px;
-        border-radius: 10px;
-        background: inherit ;
-        border: solid 1px style.$base-color;
-        min-width: 180px;
-        min-height: 238px;
-        padding: 10px;
-        overflow: hidden;
-        .content{
-          position: absolute;
-          display: flex;
-          flex-direction: column;
-          min-width: 180px;
-          a{
-            margin: 10px 10px 0 10px;
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            .menuIcon{
-              background: inherit;
-              box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.4);
-              height: 30px;
-              width: 30px;
-              border-radius: 50%;
-              margin-right: 10px;
-              mat-icon{
-                font-size: 20px;
-                margin: 5px;
-              }
-            }
-          }
-          .line{
-            border-bottom: solid 1px style.$base-color ;
-          }
-        }
-        
-      }
-      .account:before {
-        content: '';
-        position: absolute;
+        position: fixed;
         left: 0;
         right: 0;
         top: 0;
@@ -95,11 +58,41 @@
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-radius: 10px;
-        box-shadow: 0 0 6px 0 style.$shadow-color;
-      }
-      .menu-drop{
-        height: 24px;
+        .content{
+          background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+          border-radius: 10px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
+          a{
+            color: #fff;
+            margin: 15px 15px 0 15px;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .menuIcon{
+          background: inherit;
+          box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.6);
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          margin-right: 15px;
+          mat-icon{
+            font-size: 20px;
+            margin: 5px;
+          }
+        }
+        
+        .line{
+          border-bottom: solid 1px #fff ;
+        }
+        
       }
     }
 
@@ -111,48 +104,20 @@
     .menu-drop{
       display: none;
     }
+    .account .content{
+      min-width: 200px;
+    }
 
   }
 }
 @media screen and (max-width : 700px) {
   .header{
-
-    .menu{
-        visibility: hidden;
-        position: absolute;
-        right: 0px;
-        top: 80px;
-        border-radius: 10px;
-        background: inherit ;
-        border: solid 1px style.$base-color;
-        min-width: 180px;
-        min-height: 159px;
-        padding: 10px;
-        overflow: hidden;
-        margin-block-start : 0 ;
-        margin-block-end : 0 ;
-        .content{
-          position: absolute;
-          display: flex;
-          flex-direction: column;
-          min-width: 180px;
-          a{
-            margin: 10px 10px 0 10px;
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            border-bottom: solid 1px style.$base-color ;
-          }
-          a:last-child {
-            border-bottom: none ;
-          }
-          
-      }
-      
+    .account .content{
+      min-width: 70vw;
     }
-    .menu:before {
-      content: '';
-      position: absolute;
+    .menu{
+      visibility: hidden;
+      position: fixed;
       left: 0;
       right: 0;
       top: 0;
@@ -160,9 +125,46 @@
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-radius: 10px;
-      box-shadow: 0 0 6px 0 style.$shadow-color;
+      margin-block-start : 0 ;
+        margin-block-end : 0 ;
+      .content{
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        min-width: 70vw;
+        a{
+          color: #fff;
+          margin: 15px 15px 0 15px;
+          padding-bottom: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: solid 1px #fff ;
+        }
+        a:last-child {
+          border-bottom: none ;
+        }
+        .menuIcon{
+          background: inherit;
+          box-shadow: inset 0 0 0 3000px rgba(255, 255, 255, 0.6);
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          margin-right: 15px;
+          mat-icon{
+            font-size: 20px;
+            margin: 5px;
+          }
+        }
+      }
+      
     }
+    
   }
   
 }

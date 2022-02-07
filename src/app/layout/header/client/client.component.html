@@ -3,7 +3,7 @@
     <a href="/" ><img class="logo" src="assets/icons/logo-text.png" alt=""></a>
     <div class="header-menu horizontal">
       <ul id="mainMenu" class="menu">
-        <div class="content">
+        <div id="mainMenuContent" class="content">
           <a *ngFor="let item of menu" href="{{item.href}}"><li>{{item.title}}</li></a>
         </div>
       </ul>
@@ -25,7 +25,7 @@
       <ng-template #Connected>
         <a class="profile" (click)="openMenu('accountMenu')" id="accountMenuIcon"><mat-icon>account_circle</mat-icon></a>
         <div id="accountMenu" class="account">
-          <div class="content">
+          <div id="accountMenuContent" class="content">
             <a href="/dashboard/settings" class="line">Settings</a>
             <a href="/dashboard/my-orders" >My Orders</a>
             <a href="/dashboard/my-cart" class="line">My Gifts</a>

@@ -6,7 +6,7 @@ import { ManageTablesComponent,updateDialog } from './manage-tables/manage-table
 import { addEmployer, ManageEmployersComponent } from './manage-employers/manage-employers.component';
 import { CheckIncomeComponent } from './check-income/check-income.component';
 import { CheckStockComponent } from './check-stock/check-stock.component';
-import { HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AddRewordComponent, ManageRewordsComponent } from './manage-rewords/manage-rewords.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { authInterceptor } from 'src/app/errors/error401/interceptor401';
 
 
 
@@ -75,6 +76,13 @@ const routes : Routes = [
     HttpClientJsonpModule,
     CommonModule,
     RouterModule.forChild(routes)
+  ],
+  providers : [
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptor, 
+      multi: true 
+    }
   ]
 })
 export class AdminModule { }

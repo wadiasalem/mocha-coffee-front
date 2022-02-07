@@ -125,18 +125,8 @@
                   <span class="price">
                     {{item.price}} DT
                   </span>
-                  <div id="P{{item.id}}" class="description-poly">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="61" height="76" viewBox="0 0 61 76">
-                      <path id="Polygon_1" data-name="Polygon 1" d="M30.5,0,61,76H0Z" fill="#e0e0e0"/>
-                    </svg>                    
-                  </div>
                 </div>
-                <div id="D{{item.id}}" class="description">
-                  <div class="close-btn"> 
-                    <button  mat-mini-fab color="warn" (click)="close()">
-                      <mat-icon>close</mat-icon>
-                    </button>
-                  </div>
+                <div id="{{item.id}}" class="description">
                   <div class="description-content">
                     <div class="description-img">
                       <img src="{{BACKURL}}{{item.img}}" alt="" >
@@ -155,6 +145,9 @@
                           <mat-label>Quantity</mat-label>
                           <input value="1" id="Q{{item.id}}" matInput type="number" placeholder="1"  min="1" max="{{item.quantity}}">
                         </mat-form-field>
+                        <div class="details">
+                          {{item.description}}
+                        </div>
                         <div class="actions horizontal">
                           <button 
                           class="extra-small-btn add-to-cart" 
@@ -167,9 +160,7 @@
                             (click)="openSnackBar('Product added', 'OK')"
                             >COMMAND NOW</button></a>
                         </div>
-                        <div class="details">
-                          {{item.description}}
-                        </div>
+                        
                         
                       </div>
                   </div>

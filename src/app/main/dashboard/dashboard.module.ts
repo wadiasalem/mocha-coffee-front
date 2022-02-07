@@ -15,10 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OrderComponent } from './order/order.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { authInterceptor } from 'src/app/errors/error401/interceptor401';
 
 const routes : Routes = [
   {
@@ -79,6 +80,13 @@ const routes : Routes = [
     MatExpansionModule,
     HttpClientModule,
     NgxSpinnerModule
+  ],
+  providers : [
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptor, 
+      multi: true 
+    }
   ]
 })
 export class DashboardModule { }

@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //services
@@ -5,6 +6,7 @@ import { AdminGuardService } from '@services/admin-guard.service';
 import { AuthGuradService } from '@services/auth-gurad.service';
 import { EmployerGuardService } from '@services/employer-guard.service';
 import { TableGuardService } from '@services/table-guard.service';
+import { authInterceptor } from '../errors/error401/interceptor401';
 //modules
 import { AdminComponent } from './admin/admin.component';
 import { EmployerComponent } from './employer/employer.component';
@@ -40,6 +42,13 @@ const routes : Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
+  ],
+  providers : [
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptor, 
+      multi: true 
+    }
   ]
 })
 export class NavigationModule { }
