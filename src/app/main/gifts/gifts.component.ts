@@ -7,9 +7,9 @@ import { CartService } from '@services/cart.service';
 import { Sort } from '@services/sort.service';
 
 interface sort{
-  name : String,
-  sort_by : String,
-  value : String
+  name : string,
+  sort_by : string,
+  value : string
 }
 
 @Component({
@@ -31,7 +31,7 @@ export class GiftsComponent implements OnInit {
   sortList : Array<sort> ;
   sortSelected : sort;
 
-  element : Array<HTMLElement | null> = [];
+  giftSelected : string ;
 
   constructor(
     private http: HttpClient,
@@ -40,7 +40,7 @@ export class GiftsComponent implements OnInit {
     private cart : CartService,
     private _snackBar: MatSnackBar
     ) {
-      
+      this.giftSelected = '' ;
     }
 
   ngOnInit(): void {
@@ -74,18 +74,13 @@ export class GiftsComponent implements OnInit {
   }
 
   closeMenu(e:any){
-    const description = document.getElementsByClassName("description-content");
-    const accountMenuContent = document.getElementById("accountMenuContent");
+    const description = document.getElementById(this.giftSelected);
+    const descriptionContent = document.getElementById("D"+this.giftSelected);
     
-    
-    // if (!description?.contains(e.target as Node)) {
-    //     mainMenu?.classList.remove("open");
+    if (!descriptionContent?.contains(e.target as Node)) {
+      description?.classList.remove("open");
       
-    // }
-  }
-
-  viewChange(value : string){
-    this.layout = value;
+    }
   }
 
   filter(){
@@ -99,11 +94,16 @@ export class GiftsComponent implements OnInit {
         value : 'asc'
       };
 
-    let name = this.SearchForm.get('search')?.value;
-    let min = this.filterForm.get('min')?.value;
-    let max = this.filterForm.get('max')?.value;
-
-    this.http.get(`${environment.API_URL}/gifts/filter?name=${name}&min=${min}&max=${max}&sort=${sort.sort_by}&by=${sort.value}`)
+    this.http.get(`${environment.API_URL}/gifts/filter`,
+    {
+      params : {
+        name : this.SearchForm.get('search')?.value,
+        min : this.filterForm.get('min')?.value,
+        max : this.filterForm.get('max')?.value,
+        sort : sort.sort_by,
+        by : sort.value
+      }
+    })
       .subscribe((res: any) => {
         if(res.status == 'success')
           {this.gifts = res.data;
@@ -128,29 +128,17 @@ export class GiftsComponent implements OnInit {
     });
     this.sortSelected ={
       name : '-Select-',
-    sort_by :'id',
-    value : 'asc'
+      sort_by :'id',
+      value : 'asc'
     }
-    
   }
 
   showDescription(id : string){
     const element = document.getElementById(id);
     if(!element?.classList.contains("open")){
       element?.classList.add("open");
-    }else{
-      element?.classList.remove("open");
+      this.giftSelected = id ;
     }
-  }
-
-  close(){
-    if(this.element[1] && this.element[0])
-      {
-        this.element[1].style.display = 'none';
-        this.element[0].style.display = 'none';
-      }
-    this.element[1] = null ;
-    this.element[0] = null ;
   }
 
   addToCart(id : string,name : string , price : string){

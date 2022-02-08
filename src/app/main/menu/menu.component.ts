@@ -20,14 +20,16 @@ export class MenuComponent implements OnInit {
   product : any =[];
   productError : string ='';
 
-  element : Array<HTMLElement | null> = [];
+  giftSelected : string ;
 
 
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
     private food : OrderService
-    ) {}
+    ) {
+      this.giftSelected = '' ;
+    }
 
   ngOnInit(): void {
     this.http.get(`${environment.API_URL}/menu`)
@@ -39,7 +41,20 @@ export class MenuComponent implements OnInit {
         else
           this.categError = res.description;
       });
+
+    document.addEventListener('mouseup', this.closeMenu.bind(this));
   }
+
+  closeMenu(e:any){
+    const description = document.getElementById(this.giftSelected);
+    const descriptionContent = document.getElementById("D"+this.giftSelected);
+    
+    if (!descriptionContent?.contains(e.target as Node)) {
+      description?.classList.remove("open");
+      
+    }
+  }
+
 
   select(id : string):void {
     document.getElementById(this.categorySelected)?.classList.remove('selected');
@@ -60,39 +75,14 @@ export class MenuComponent implements OnInit {
       });
   }
 
-  showDescription(id:string){
-    if(this.element[1] && this.element[0])
-      {
-        this.element[1].style.display = 'none';
-        this.element[0].style.display = 'none';
-        this.element[1] = null ;
-        this.element[0] = null ;
-      }
+  showDescription(id : string){
     
-    if(this.element[1]!=document.getElementById("D"+id)){
-      if (this.element[1] && this.element[2]) {
-        this.element[1].style.display = 'none';
-        this.element[2].style.display = 'none';
-      }
-  
-      this.element[1] = document.getElementById("D"+id);
-      this.element[0] = document.getElementById("P"+id);
-      if (this.element[1] && this.element[0]) {
-        this.element[1].style.display = 'block';
-        this.element[0].style.display = 'block';
-        this.element[1].scrollIntoView({behavior: "smooth", block: "center"});
-      }
+    const element = document.getElementById(id);
+    console.log(element)
+    if(!element?.classList.contains("open")){
+      element?.classList.add("open");
+      this.giftSelected = id ;
     }
-  }
-
-  close(){
-    if(this.element[1] && this.element[0])
-      {
-        this.element[1].style.display = 'none';
-        this.element[0].style.display = 'none';
-      }
-    this.element[1] = null ;
-    this.element[0] = null ;
   }
 
   addToCart(id : string,name : string , price : string){

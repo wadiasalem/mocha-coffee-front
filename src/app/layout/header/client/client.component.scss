@@ -6,7 +6,7 @@
   background-color: #fff;
   color: style.$base-color;
   box-shadow:   0 2px 6px style.$shadow-color;
-  z-index: 999;
+  z-index: 990;
   position: fixed;
   top: 0;
   .view{
@@ -55,12 +55,12 @@
         right: 0;
         top: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         .content{
-          background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-          border-radius: 10px;
+          background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+          border-radius: 15px;
           position: absolute;
           left: 50%;
           top: 50%;
@@ -116,20 +116,21 @@
       min-width: 70vw;
     }
     .menu{
+      z-index: 991;
       visibility: hidden;
       position: fixed;
       left: 0;
       right: 0;
       top: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       margin-block-start : 0 ;
-        margin-block-end : 0 ;
+      margin-block-end : 0 ;
       .content{
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        border-radius: 15px;
         position: absolute;
         left: 50%;
         top: 50%;

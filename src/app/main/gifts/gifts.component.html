@@ -76,18 +76,18 @@
       </div>
       <div class="right-content" >
         <div class="sort-view horizontal">
-          <div class="view horizontal">
+          <div class="gift-view horizontal">
             View : 
             <mat-button-toggle-group
             name="view"
             aria-label="view style"
             appearance="legacy"
             value="grid">
-              <mat-button-toggle value="grid" (click)="viewChange('grid')">
+              <mat-button-toggle value="grid" (click)="layout = 'grid'">
                 Grid 
                 <mat-icon aria-hidden="false" aria-label="apps icon">apps</mat-icon>
               </mat-button-toggle>
-              <mat-button-toggle value="list" (click)="viewChange('list')">
+              <mat-button-toggle value="list" (click)="layout = 'list'">
                 List 
                 <mat-icon aria-hidden="false" aria-label="view_headline icon">view_headline</mat-icon>
               </mat-button-toggle>
@@ -127,7 +127,7 @@
                   </span>
                 </div>
                 <div id="{{item.id}}" class="description">
-                  <div class="description-content">
+                  <div id="D{{item.id}}" class="description-content">
                     <div class="description-img">
                       <img src="{{BACKURL}}{{item.img}}" alt="" >
                     </div>
@@ -135,16 +135,27 @@
                         <h3>
                           {{item.name}}
                         </h3>
-                        <div>
-                          <span class="price">
-                            {{item.price}} DT
-                          </span><br>
-                          In Stock : {{item.quantity}}
+                        <div class="description-stock">
+                          <mat-form-field appearance="outline" >
+                            <mat-label>Quantity</mat-label>
+                            <input 
+                            value="1" 
+                            id="Q{{item.id}}" 
+                            matInput 
+                            type="number" 
+                            inputmode="numeric"
+                            placeholder="1" 
+                            min="1" 
+                            max="{{item.quantity}}">
+                          </mat-form-field>
+                          <div class="description-price">
+                            <span class="price">
+                              {{item.price}} DT
+                            </span><br>
+                            In Stock : {{item.quantity}}
+                          </div>
+                          
                         </div>
-                        <mat-form-field appearance="outline" >
-                          <mat-label>Quantity</mat-label>
-                          <input value="1" id="Q{{item.id}}" matInput type="number" placeholder="1"  min="1" max="{{item.quantity}}">
-                        </mat-form-field>
                         <div class="details">
                           {{item.description}}
                         </div>
@@ -186,7 +197,8 @@
                   </div>
                   <mat-form-field appearance="outline" >
                     <mat-label>Quantity</mat-label>
-                    <input value="1" id="Q{{item.id}}" matInput type="number" placeholder="1"  min="1" max="{{item.quantity}}">
+                    <input value="1" id="Q{{item.id}}" inputmode="numeric" 
+                    matInput type="number" placeholder="1"  min="1" max="{{item.quantity}}">
                   </mat-form-field>
                   <div class="actions horizontal">
                     <button 

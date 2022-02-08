@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
 interface sort{
-  name : String,
-  sort_by : String,
-  value : String
+  name : string,
+  sort_by : string,
+  value : string
 }
 
 @Injectable({
